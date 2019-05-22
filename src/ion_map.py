@@ -24,7 +24,7 @@
 
 import numpy as np
 import pandas as pd
-from scipy.sparse import coo_matrix
+from scipy.sparse import coo_matrix, csr_matrix, isspmatrix_csr
 
 # Returns a ion intensity map given a CSV file
 def constructIonMap(infile, mz_round=2, etime_round=2):
@@ -42,3 +42,12 @@ def constructIonMap(infile, mz_round=2, etime_round=2):
     mite = coo_matrix((data, (row, col)),
                       shape=(int(np.amax(row) + 1), int(np.amax(col) + 1)))
     return mite
+
+# Returns the intersection of two ion intensity maps
+def ionMapIntersection(mite1, mite2):
+    if (not isspmatrix_csr(mite1)):
+        mite1 = mite1.tocsr()
+    if (not isspmatrix_csr(mite2)):
+        mite2 = mite2.tocsr()
+    intersection = mite1.astype(bool).multiply(mite2.astype(bool))
+    return intersection 
