@@ -43,22 +43,30 @@ def constructIonMap(infile, mz_round=2, etime_round=2):
                       shape=(int(np.amax(row) + 1), int(np.amax(col) + 1)))
     return mite
 
-# Returns the intersection of two ion intensity maps and the count of
-# coincident cells
+# Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
     if (not isspmatrix_csr(mite1)):
         mite1 = mite1.tocsr()
     if (not isspmatrix_csr(mite2)):
         mite2 = mite2.tocsr()
     intersection = mite1.multiply(mite2)
-    return intersection, intersection.count_nonzero()
+    return intersection
 
-# Returns the symmetric difference of two ion intensity maps and the count of
-# divergent cells
+# Returns the symmetric difference of two ion intensity maps
 def ionMapSymmetricDiff(mite1, mite2):
     if (not isspmatrix_csr(mite1)):
         mite1 = mite1.tocsr()
     if (not isspmatrix_csr(mite2)):
         mite2 = mite2.tocsr()
     symmetric_diff = (mite1 - mite2) + (mite2 - mite1)
-    return symmetric_diff, symmetric_diff.count_nonzero()
+    return symmetric_diff
+
+# Returns a distance matrix given a list of mites
+def calculateDistMatrix(mites):
+    dist_matrix = np.empty([len(mites), len(mites)])
+    np.fill_diagonal(dist_matrix, 0)
+    for i in range(len(mites)):
+        for j in range(i + 1, len(mites)):
+            symmetric_diff = ionMapSymmetricDiff(mites[i], mites[j])
+            dist_matrix[i][j] = symmetric_diff.count_nonzero()
+    return dist_matrix
