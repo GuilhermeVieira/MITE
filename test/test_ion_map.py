@@ -11,6 +11,9 @@ from scipy.sparse            import isspmatrix_coo, isspmatrix_csr
 from scipy.spatial.distance  import squareform
 from scipy.cluster.hierarchy import dendrogram, linkage
 
+mz_round = 2
+etime_round = 2
+
 def __plotExamples(matrices, files):
     for index, (m, f) in enumerate(zip(matrices, files)):
         plt.subplot(1, len(matrices), index + 1)
@@ -22,15 +25,15 @@ def __plotExamples(matrices, files):
 
 def test_construction():
     filename = dir_path + '/example_pgiq.csv'
-    mite = im.constructIonMap(filename, 2, 2)
+    mite = im.constructIonMap(filename, mz_round, etime_round) 
     assert isspmatrix_coo(mite)
     __plotExamples([mite], [filename])
 
 def test_intersection():
     file1 = dir_path + '/example_pgiq_0.csv'
     file2 = dir_path + '/example_pgiq_1.csv'
-    mite1 = im.constructIonMap(file1, 2, 2)
-    mite2 = im.constructIonMap(file2, 2, 2)
+    mite1 = im.constructIonMap(file1, mz_round, etime_round)
+    mite2 = im.constructIonMap(file2, mz_round, etime_round)
     intersection = im.ionMapIntersection(mite1, mite2)
     count = intersection.count_nonzero()
     assert isspmatrix_csr(intersection)
@@ -40,8 +43,8 @@ def test_intersection():
 def test_symmetricDiff():
     file1 = dir_path + '/example_pgiq_0.csv'
     file2 = dir_path + '/example_pgiq_1.csv'
-    mite1 = im.constructIonMap(file1, 2, 2)
-    mite2 = im.constructIonMap(file2, 2, 2)
+    mite1 = im.constructIonMap(file1, mz_round, etime_round)
+    mite2 = im.constructIonMap(file2, mz_round, etime_round)
     symmetric_diff = im.ionMapSymmetricDiff(mite1, mite2)
     count = symmetric_diff.count_nonzero()
     assert isspmatrix_csr(symmetric_diff)
@@ -59,7 +62,7 @@ def test_distMatrix():
     files.sort()
     files.pop(0)
     for f in files:
-        mite = im.constructIonMap(filepath + f, 2, 2)
+        mite = im.constructIonMap(filepath + f, mz_round, etime_round)
         mites.append(mite)
     dist_matrix = im.calculateDistMatrix(mites)
     Z = linkage(squareform(dist_matrix, checks=False), 'average')
