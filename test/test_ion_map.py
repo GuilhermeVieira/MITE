@@ -4,10 +4,12 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 import sys
 sys.path.insert(0, dir_path + '/../src/')
 
-import ion_map as im
+import ion_map          as im
 import matplotlib.pylab as plt
 import pytest
-from scipy.sparse import isspmatrix_coo, isspmatrix_csr
+from scipy.sparse            import isspmatrix_coo, isspmatrix_csr
+from scipy.spatial.distance  import squareform
+from scipy.cluster.hierarchy import dendrogram, linkage
 
 def __plotExamples(matrices, files):
     for index, (m, f) in enumerate(zip(matrices, files)):
@@ -25,8 +27,8 @@ def test_construction():
     __plotExamples([mite], [filename])
 
 def test_intersection():
-    file1 = dir_path + '/example_pgiq.csv'
-    file2 = dir_path + '/example_pgiq.csv'
+    file1 = dir_path + '/example_pgiq_0.csv'
+    file2 = dir_path + '/example_pgiq_1.csv'
     mite1 = im.constructIonMap(file1, 2, 2)
     mite2 = im.constructIonMap(file2, 2, 2)
     intersection = im.ionMapIntersection(mite1, mite2)
@@ -36,8 +38,8 @@ def test_intersection():
                    [file1, file2, 'Intersection (count = ' + str(count) + ')'])
 
 def test_symmetricDiff():
-    file1 = dir_path + '/example_pgiq.csv'
-    file2 = dir_path + '/example_pgiq.csv'
+    file1 = dir_path + '/example_pgiq_0.csv'
+    file2 = dir_path + '/example_pgiq_1.csv'
     mite1 = im.constructIonMap(file1, 2, 2)
     mite2 = im.constructIonMap(file2, 2, 2)
     symmetric_diff = im.ionMapSymmetricDiff(mite1, mite2)
@@ -50,13 +52,17 @@ def test_symmetricDiff():
 def test_distMatrix():
     files = []
     mites = []
-    filepath = dir_path + '/../input/ion_map/'
+    filepath = dir_path + '/'
     for filename in os.listdir(filepath):
-        files.append(filename)
+        if filename.endswith('.csv'):
+            files.append(filename)
     files.sort()
-    for i in range(0, len(files), 2):
-        mite1 = im.constructIonMap(filepath + files[i], 2, 2)
-        mite2 = im.constructIonMap(filepath + files[i+1], 2, 2)
-        intersection = im.ionMapIntersection(mite1, mite2)
-        mites.append(intersection)
+    files.pop(0)
+    for f in files:
+        mite = im.constructIonMap(filepath + f, 2, 2)
+        mites.append(mite)
     dist_matrix = im.calculateDistMatrix(mites)
+    Z = linkage(squareform(dist_matrix, checks=False), 'average')
+    fig = plt.figure(figsize=(25, 10))
+    dn = dendrogram(Z)
+    plt.show()

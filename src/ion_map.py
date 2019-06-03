@@ -77,7 +77,7 @@ def ionMapSymmetricDiff(mite1, mite2):
 
 # Returns a distance matrix given a list of mites
 def calculateDistMatrix(mites):
-    dist_matrix = np.empty([len(mites), len(mites)])
+    dist_matrix = np.zeros([len(mites), len(mites)])
     np.fill_diagonal(dist_matrix, 0)
     for i in range(len(mites)):
         for j in range(i + 1, len(mites)):
