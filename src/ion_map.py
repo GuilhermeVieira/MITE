@@ -26,6 +26,24 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import coo_matrix, csr_matrix, isspmatrix_csr
 
+# Converts and returns the matrices to CSR format if they are not in CSR
+# format.
+def __convertToCSR(mite1, mite2):
+    if (not isspmatrix_csr(mite1)):
+        mite1 = mite1.tocsr()
+    if (not isspmatrix_csr(mite2)):
+        mite2 = mite2.tocsr()
+    return mite1, mite2
+
+# Resize and returns the matrices if their shapes are different.
+def __resizeMatrices(mite1, mite2):
+    if (mite1.shape != mite2.shape):
+        s0 = max(mite1.shape[0], mite2.shape[0])
+        s1 = max(mite1.shape[1], mite2.shape[1])
+        mite1.resize((s0, s1))
+        mite2.resize((s0, s1))
+    return mite1, mite2
+
 # Returns an ion intensity map given a CSV file
 def constructIonMap(infile, mz_round=2, etime_round=2):
     df = pd.read_csv(infile,
@@ -45,19 +63,15 @@ def constructIonMap(infile, mz_round=2, etime_round=2):
 
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
-    if (not isspmatrix_csr(mite1)):
-        mite1 = mite1.tocsr()
-    if (not isspmatrix_csr(mite2)):
-        mite2 = mite2.tocsr()
+    mite1, mite2 = __convertToCSR(mite1, mite2)
+    mite1, mite2 = __resizeMatrices(mite1, mite2)
     intersection = mite1.multiply(mite2)
     return intersection
 
 # Returns the symmetric difference of two ion intensity maps
 def ionMapSymmetricDiff(mite1, mite2):
-    if (not isspmatrix_csr(mite1)):
-        mite1 = mite1.tocsr()
-    if (not isspmatrix_csr(mite2)):
-        mite2 = mite2.tocsr()
+    mite1, mite2 = __convertToCSR(mite1, mite2)
+    mite1, mite2 = __resizeMatrices(mite1, mite2)
     symmetric_diff = (mite1 - mite2) + (mite2 - mite1)
     return symmetric_diff
 
