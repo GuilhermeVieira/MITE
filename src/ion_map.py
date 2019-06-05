@@ -44,21 +44,10 @@ def __resizeMatrices(mite1, mite2):
         mite2.resize((s0, s1))
     return mite1, mite2
 
-# Returns an ion intensity map given a CSV file
-def constructIonMap(infile, mz_round=2, etime_round=2):
-    df = pd.read_csv(infile,
-                     index_col='#',
-                     header=0,
-                     names=['#', 'mz', 'etime'])
-    row = np.array(df.mz.values)
-    col = np.array(df.etime.values)
-    data = np.ones(row.shape, dtype=bool)
-    row *= 10 ** mz_round
-    col *= 10 ** etime_round
-    row = np.trunc(row)
-    col = np.trunc(col)
-    mite = coo_matrix((data, (row, col)),
-                      shape=(int(np.amax(row) + 1), int(np.amax(col) + 1)))
+# Returns an ion intensity map in CSR format given a CSV file
+def constructIonMap(infile):
+    df = pd.read_csv(infile, index_col=0, na_filter=False)
+    mite = csr_matrix(df.to_numpy(dtype=bool))
     return mite
 
 # Returns the intersection of two ion intensity maps
