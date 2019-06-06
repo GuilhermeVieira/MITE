@@ -1,8 +1,7 @@
 ##################################################################################
 ##                                                                              ##
-##   Module that constructs the ion intensity map (or matrix of intensity by    ##
-##   time of elution) from a CSV file containing the m/z and the elution time   ##
-##   of each ion detected.                                                      ##
+##   Module that manipulates the ion intensity maps (or matrix of intensity by  ##
+##   time of elution) extracted from mass spectrometry raw files.               ##
 ##                                                                              ##
 ##   This file is part of the featsel program                                   ##
 ##   Copyright (C) 2019 Gustavo Mendes Maciel                                   ##
@@ -24,16 +23,7 @@
 
 import numpy as np
 import pandas as pd
-from scipy.sparse import coo_matrix, csr_matrix, isspmatrix_csr
-
-# Converts and returns the matrices to CSR format if they are not in CSR
-# format.
-def __convertToCSR(mite1, mite2):
-    if (not isspmatrix_csr(mite1)):
-        mite1 = mite1.tocsr()
-    if (not isspmatrix_csr(mite2)):
-        mite2 = mite2.tocsr()
-    return mite1, mite2
+from scipy.sparse import csr_matrix
 
 # Resize and returns the matrices if their shapes are different.
 def __resizeMatrices(mite1, mite2):
@@ -45,31 +35,33 @@ def __resizeMatrices(mite1, mite2):
     return mite1, mite2
 
 # Returns an ion intensity map in CSR format given a CSV file
-def constructIonMap(infile):
-    df = pd.read_csv(infile, index_col=0, na_filter=False)
+def constructIonMap(filepath):
+    df = pd.read_csv(filepath, index_col=0, na_filter=False)
     mite = csr_matrix(df.to_numpy(dtype=bool))
     return mite
 
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
-    mite1, mite2 = __convertToCSR(mite1, mite2)
     mite1, mite2 = __resizeMatrices(mite1, mite2)
-    intersection = mite1.multiply(mite2)
-    return intersection
+    intersec = mite1.multiply(mite2)
+    return intersec
 
 # Returns the symmetric difference of two ion intensity maps
 def ionMapSymmetricDiff(mite1, mite2):
-    mite1, mite2 = __convertToCSR(mite1, mite2)
     mite1, mite2 = __resizeMatrices(mite1, mite2)
-    symmetric_diff = (mite1 - mite2) + (mite2 - mite1)
-    return symmetric_diff
+    sym_diff = (mite1 - mite2) + (mite2 - mite1)
+    return sym_diff
 
 # Returns a distance matrix given a list of mites
 def calculateDistMatrix(mites):
-    dist_matrix = np.zeros([len(mites), len(mites)])
+    mites_inter = []
+    for m in mites:
+        inter = ionMapIntersection(m[0], m[1])
+        mites_inter.append(inter)
+    dist_matrix = np.zeros([len(mites_inter), len(mites_inter)])
     np.fill_diagonal(dist_matrix, 0)
-    for i in range(len(mites)):
-        for j in range(i + 1, len(mites)):
-            symmetric_diff = ionMapSymmetricDiff(mites[i], mites[j])
-            dist_matrix[i][j] = symmetric_diff.count_nonzero()
+    for i in range(len(mites_inter)):
+        for j in range(i + 1, len(mites_inter)):
+            sym_diff = ionMapSymmetricDiff(mites_inter[i], mites_inter[j])
+            dist_matrix[i][j] = sym_diff.count_nonzero()
     return dist_matrix
