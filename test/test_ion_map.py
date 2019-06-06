@@ -7,7 +7,6 @@ sys.path.insert(0, dir_path + '/../src/')
 import ion_map          as im
 import matplotlib.pylab as plt
 import pytest
-from scipy.sparse            import isspmatrix_coo, isspmatrix_csr
 from scipy.spatial.distance  import squareform
 from scipy.cluster.hierarchy import dendrogram, linkage
 

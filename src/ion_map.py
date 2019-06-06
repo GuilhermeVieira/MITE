@@ -36,7 +36,10 @@ def __resizeMatrices(mite1, mite2):
 
 # Returns an ion intensity map in CSR format given a CSV file
 def constructIonMap(filepath):
-    df = pd.read_csv(filepath, index_col=0, na_filter=False)
+    df = pd.read_csv(filepath,
+                     index_col=0,
+                     na_filter=False,
+                     compression='bz2')
     mite = csr_matrix(df.to_numpy(dtype=bool))
     return mite
 
