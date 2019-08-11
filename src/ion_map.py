@@ -73,14 +73,14 @@ def constructIonMap(filepath):
 
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
-    mite1, mite2 = __resizeMatrices(mite1, mite2)
-    intersec = mite1.multiply(mite2)
+    m1, m2 = __resizeMatrices(mite1.copy(), mite2.copy())
+    intersec = m1.multiply(m2)
     return intersec
 
 # Returns the symmetric difference of two ion intensity maps
 def ionMapSymmetricDiff(mite1, mite2):
-    mite1, mite2 = __resizeMatrices(mite1, mite2)
-    sym_diff = (mite1 - mite2) + (mite2 - mite1)
+    m1, m2 = __resizeMatrices(mite1.copy(), mite2.copy())
+    sym_diff = (m1 - m2) + (m2 - m1)
     return sym_diff
 
 # Returns a distance matrix given a list of mites
