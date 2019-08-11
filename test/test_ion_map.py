@@ -10,7 +10,7 @@ import pytest
 from scipy.spatial.distance  import squareform
 from scipy.cluster.hierarchy import dendrogram, linkage
 
-input_path = dir_path + '/../input/ion_map/1/'
+input_path = dir_path + '/../input/ion_map/xml/'
 files = []
 mites = []
 
@@ -47,6 +47,9 @@ def test_symmetricDiff():
                     'Symmetric difference (count = ' + str(count) + ')'])
 
 def test_distMatrix():
+    mites_ = []
+    for m in mites:
+        mites_.append(m[0])
     dist_matrix = im.calculateDistMatrix(mites)
     Z = linkage(squareform(dist_matrix, checks=False),
                 'average',

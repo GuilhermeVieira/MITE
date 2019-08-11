@@ -21,9 +21,11 @@
 ##                                                                              ##
 ##################################################################################
 
+import decimal
 import numpy as np
-import pandas as pd
-from scipy.sparse import csr_matrix
+import os
+import xml.etree.ElementTree as ET
+from scipy.sparse import coo_matrix, csr_matrix
 
 # Resize and returns the matrices if their shapes are different.
 def __resizeMatrices(mite1, mite2):
@@ -34,14 +36,40 @@ def __resizeMatrices(mite1, mite2):
         mite2.resize((s0, s1))
     return mite1, mite2
 
-# Returns an ion intensity map in CSR format given a CSV file
+# Returns an ion intensity map in COO format given a XML file
 def constructIonMap(filepath):
-    df = pd.read_csv(filepath,
-                     index_col=0,
-                     na_filter=False,
-                     compression='bz2')
-    mite = csr_matrix(df.to_numpy(dtype=bool))
-    return mite
+    basename, ext = os.path.splitext(filepath)
+
+    if (ext == '.xml'):
+        tree = ET.parse(filepath)
+        root = tree.getroot()
+        features_count = int(root.find('LC_MS_RUN').get('number_of_features'))
+        row = np.empty(features_count)
+        col = np.empty(features_count)
+        data = np.ones(features_count, dtype=bool)
+        tr_round = np.empty(features_count)
+        mz_round = np.empty(features_count)
+        index = 0
+
+        for feature in root.iter('MS1_FEATURE'):
+            tr = feature.get('Tr')
+            mz = feature.get('m_z')
+            row[index] = tr
+            col[index] = mz
+            tr_round[index] = abs(decimal.Decimal(tr).as_tuple().exponent)
+            mz_round[index] = abs(decimal.Decimal(mz).as_tuple().exponent)
+            index += 1
+
+        row *= 10 ** np.amax(mz_round)
+        col *= 10 ** np.amax(tr_round)
+        row = np.trunc(row)
+        col = np.trunc(col)
+        shape = (int(np.amax(row) + 1), int(np.amax(col) + 1))
+        mite = coo_matrix((data, (row, col)), shape)
+
+        return mite
+
+    return None
 
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
