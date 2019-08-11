@@ -27,14 +27,13 @@ import os
 import xml.etree.ElementTree as ET
 from scipy.sparse import coo_matrix, csr_matrix
 
-# Resize and returns the matrices if their shapes are different.
+# Resize the matrices if their shapes are different.
 def __resizeMatrices(mite1, mite2):
     if (mite1.shape != mite2.shape):
         s0 = max(mite1.shape[0], mite2.shape[0])
         s1 = max(mite1.shape[1], mite2.shape[1])
         mite1.resize((s0, s1))
         mite2.resize((s0, s1))
-    return mite1, mite2
 
 # Returns an ion intensity map in COO format given a XML file
 def constructIonMap(filepath):
@@ -73,13 +72,15 @@ def constructIonMap(filepath):
 
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
-    m1, m2 = __resizeMatrices(mite1.copy(), mite2.copy())
+    m1, m2 = mite1.copy(), mite2.copy()
+    __resizeMatrices(m1, m2)
     intersec = m1.multiply(m2)
     return intersec
 
 # Returns the symmetric difference of two ion intensity maps
 def ionMapSymmetricDiff(mite1, mite2):
-    m1, m2 = __resizeMatrices(mite1.copy(), mite2.copy())
+    m1, m2 = mite1.copy(), mite2.copy()
+    __resizeMatrices(m1, m2)
     sym_diff = (m1 - m2) + (m2 - m1)
     return sym_diff
 
