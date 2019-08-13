@@ -32,6 +32,13 @@ def test_construction():
         files.append((files_aux[i], files_aux[i+1]))
     __plotExamples([mites[0][0]], [files[0][0]])
 
+def test_reduction():
+    niter, w, h, f = 1, 2, 2, 0.5
+    reduced = im.reduce_dim(mites[0][0], niter, w=w, h=h, f=f)
+    __plotExamples([mites[0][0], reduced], [files[0][0],
+        'Reduced matrix (niter=' + str(niter) + ', w=' + str(w) +
+        ', h=' + str(h) + ', f=' + str(f) + ')'])
+
 def test_intersection():
     intersec = im.ionMapIntersection(mites[0][0], mites[0][1])
     count = intersec.count_nonzero()

@@ -22,24 +22,34 @@
 ##################################################################################
 
 import decimal
+import math
 import numpy as np
 import os
 import xml.etree.ElementTree as ET
-from scipy.sparse import coo_matrix, csr_matrix
+from scipy.sparse import coo_matrix, csr_matrix, lil_matrix
 
 # Resize the matrices if their shapes are different.
 def __resizeMatrices(mite1, mite2):
-    if (mite1.shape != mite2.shape):
+    if mite1.shape != mite2.shape:
         s0 = max(mite1.shape[0], mite2.shape[0])
         s1 = max(mite1.shape[1], mite2.shape[1])
         mite1.resize((s0, s1))
         mite2.resize((s0, s1))
 
+# Returns the window (and its position) to which a matrix element belongs and
+# the position of this element in the window
+def get_window(mite, pos, w, h):
+    new_i, win_i = divmod(pos[0], h)
+    new_j, win_j = divmod(pos[1], w)
+    i = pos[0] - pos[0] % h
+    j = pos[1] - pos[1] % w
+    return mite[i:i+h, j:j+w], (new_i, new_j), (win_i, win_j)
+
 # Returns an ion intensity map in COO format given a XML file
 def constructIonMap(filepath):
     basename, ext = os.path.splitext(filepath)
 
-    if (ext == '.xml'):
+    if ext == '.xml':
         tree = ET.parse(filepath)
         root = tree.getroot()
         features_count = int(root.find('LC_MS_RUN').get('number_of_features'))
@@ -69,6 +79,28 @@ def constructIonMap(filepath):
         return mite
 
     return None
+
+# Returns a new mite with reduced dimensionality
+def reduce_dim(mite, niter, w=2, h=2, f=0.5):
+    if w >= mite.shape[0] or h >= mite.shape[1]:
+        return None
+
+    old = mite.tocsr(copy=True)
+
+    for x in range(0, niter):
+        s0 = math.ceil(old.shape[0] / w)
+        s1 = math.ceil(old.shape[1] / h)
+        new = lil_matrix((s0, s1), dtype=bool)
+        iarray, jarray = old.nonzero()
+
+        for i, j in np.nditer([iarray, jarray]):
+            win, new_pos, win_pos = get_window(old, (i, j), w, h)
+            if win.nnz / (win.shape[0] * win.shape[0]) >= f:
+                new[new_pos] = True
+
+        old = new.tocsr(copy=True)
+
+    return new
 
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
