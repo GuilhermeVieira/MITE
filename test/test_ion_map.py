@@ -19,8 +19,8 @@ def __plotExamples(matrices, files):
         plt.subplot(1, len(matrices), index + 1)
         plt.spy(m, markersize=0.1, aspect='auto', color='black')
         plt.title(f)
-        plt.xlabel('retention time')
-        plt.ylabel('m/z')
+        plt.xlabel('m/z')
+        plt.ylabel('retention time')
     plt.show()
 
 def test_construction():
@@ -33,7 +33,7 @@ def test_construction():
     __plotExamples([mites[0][0]], [files[0][0]])
 
 def test_reduction():
-    niter, w, h, f = 1, 2, 2, 0.5
+    niter, w, h, f = 7, 2, 2, 0.2
     reduced = im.reduce_dim(mites[0][0], niter, w=w, h=h, f=f)
     __plotExamples([mites[0][0], reduced], [files[0][0],
         'Reduced matrix (niter=' + str(niter) + ', w=' + str(w) +

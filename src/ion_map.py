@@ -21,6 +21,7 @@
 ##                                                                              ##
 ##################################################################################
 
+
 import decimal
 import math
 import numpy as np
@@ -28,17 +29,10 @@ import os
 import xml.etree.ElementTree as ET
 from scipy.sparse import coo_matrix, csr_matrix, lil_matrix
 
-# Resize the matrices if their shapes are different.
-def __resizeMatrices(mite1, mite2):
-    if mite1.shape != mite2.shape:
-        s0 = max(mite1.shape[0], mite2.shape[0])
-        s1 = max(mite1.shape[1], mite2.shape[1])
-        mite1.resize((s0, s1))
-        mite2.resize((s0, s1))
 
 # Returns the window (and its position) to which a matrix element belongs and
 # the position of this element in the window
-def get_window(mite, pos, w, h):
+def __get_window(mite, pos, w, h):
     new_i, win_i = divmod(pos[0], h)
     new_j, win_j = divmod(pos[1], w)
     i = pos[0] - pos[0] % h
@@ -52,7 +46,12 @@ def constructIonMap(filepath):
     if ext == '.xml':
         tree = ET.parse(filepath)
         root = tree.getroot()
-        features_count = int(root.find('LC_MS_RUN').get('number_of_features'))
+        run_header = root.find('LC_MS_RUN')
+        features_count = int(run_header.get('number_of_features'))
+        tr_range = (float(run_header.get('tr_min')),
+                float(run_header.get('tr_max')))
+        mz_range = (float(run_header.get('m_z_min')),
+                float(run_header.get('m_z_max')))
         row = np.empty(features_count)
         col = np.empty(features_count)
         data = np.ones(features_count, dtype=bool)
@@ -63,17 +62,20 @@ def constructIonMap(filepath):
         for feature in root.iter('MS1_FEATURE'):
             tr = feature.get('Tr')
             mz = feature.get('m_z')
-            row[index] = tr
-            col[index] = mz
             tr_round[index] = abs(decimal.Decimal(tr).as_tuple().exponent)
             mz_round[index] = abs(decimal.Decimal(mz).as_tuple().exponent)
+            tr = float(tr) - tr_range[0]
+            mz = float(mz) - mz_range[0]
+            row[index] = tr
+            col[index] = mz
             index += 1
 
-        row *= 10 ** np.amax(mz_round)
-        col *= 10 ** np.amax(tr_round)
+        row *= 10 ** np.amax(tr_round)
+        col *= 10 ** np.amax(mz_round)
         row = np.trunc(row)
         col = np.trunc(col)
-        shape = (int(np.amax(row) + 1), int(np.amax(col) + 1))
+        shape = (int((tr_range[1] - tr_range[0]) * 10 ** np.amax(tr_round)),
+                int((mz_range[1] - mz_range[0]) * 10 ** np.amax(mz_round)))
         mite = coo_matrix((data, (row, col)), shape)
 
         return mite
@@ -94,7 +96,7 @@ def reduce_dim(mite, niter, w=2, h=2, f=0.5):
         iarray, jarray = old.nonzero()
 
         for i, j in np.nditer([iarray, jarray]):
-            win, new_pos, win_pos = get_window(old, (i, j), w, h)
+            win, new_pos, win_pos = __get_window(old, (i, j), w, h)
             if win.nnz / (win.shape[0] * win.shape[0]) >= f:
                 new[new_pos] = True
 
@@ -105,14 +107,12 @@ def reduce_dim(mite, niter, w=2, h=2, f=0.5):
 # Returns the intersection of two ion intensity maps
 def ionMapIntersection(mite1, mite2):
     m1, m2 = mite1.tocsr(copy=True), mite2.tocsr(copy=True)
-    __resizeMatrices(m1, m2)
     intersec = m1.multiply(m2)
     return intersec
 
 # Returns the symmetric difference of two ion intensity maps
 def ionMapSymmetricDiff(mite1, mite2):
     m1, m2 = mite1.tocsr(copy=True), mite2.tocsr(copy=True)
-    __resizeMatrices(m1, m2)
     sym_diff = (m1 - m2) + (m2 - m1)
     return sym_diff
 
