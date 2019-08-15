@@ -4,11 +4,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 import sys
 sys.path.insert(0, dir_path + '/../src/')
 
-import ion_map          as im
 import matplotlib.pylab as plt
 import pytest
-from scipy.spatial.distance  import squareform
-from scipy.cluster.hierarchy import dendrogram, linkage
+from mite import Mite
 
 input_path = dir_path + '/../input/ion_map/xml/'
 files = []
@@ -26,41 +24,29 @@ def __plotExamples(matrices, files):
 def test_construction():
     files_aux = sorted(os.listdir(input_path))
     for i in range(0, len(files_aux), 2):
-        mite1 = im.constructIonMap(input_path + files_aux[i])
-        mite2 = im.constructIonMap(input_path + files_aux[i+1])
+        mite1 = Mite(input_path + files_aux[i])
+        mite2 = Mite(input_path + files_aux[i+1])
         mites.append((mite1, mite2))
         files.append((files_aux[i], files_aux[i+1]))
-    __plotExamples([mites[0][0]], [files[0][0]])
+    __plotExamples([mites[0][0].matrix], [files[0][0]])
 
 def test_reduction():
-    niter, w, h, f = 7, 2, 2, 0.2
-    reduced = im.reduce_dim(mites[0][0], niter, w=w, h=h, f=f)
-    __plotExamples([mites[0][0], reduced], [files[0][0],
+    niter, w, h, f = 6, 2, 2, 0.2
+    reduced = mites[0][0].reduce_dim(niter, w=w, h=h, f=f)
+    __plotExamples([mites[0][0].matrix, reduced], [files[0][0],
         'Reduced matrix (niter=' + str(niter) + ', w=' + str(w) +
         ', h=' + str(h) + ', f=' + str(f) + ')'])
 
 def test_intersection():
-    intersec = im.ionMapIntersection(mites[0][0], mites[0][1])
-    count = intersec.count_nonzero()
-    __plotExamples([mites[0][0], mites[0][1], intersec],
+    intersection = mites[0][0].intersect(mites[0][1])
+    count = intersection.count_nonzero()
+    __plotExamples([mites[0][0].matrix, mites[0][1].matrix, intersection],
                    [files[0][0], files[0][1],
                     'Intersection (count = ' + str(count) + ')'])
 
-def test_symmetricDiff():
-    sym_diff = im.ionMapSymmetricDiff(mites[0][0], mites[0][1])
-    count = sym_diff.count_nonzero()
-    __plotExamples([mites[0][0], mites[0][1], sym_diff],
+def test_symmetric_diff():
+    symmdiff = mites[0][0].calculate_symmdiff(mites[0][1])
+    count = symmdiff.count_nonzero()
+    __plotExamples([mites[0][0].matrix, mites[0][1].matrix, symmdiff],
                    [files[0][0], files[0][1],
                     'Symmetric difference (count = ' + str(count) + ')'])
-
-def test_distMatrix():
-    mites_ = []
-    for m in mites:
-        mites_.append(m[0])
-    dist_matrix = im.calculateDistMatrix(mites)
-    Z = linkage(squareform(dist_matrix, checks=False),
-                'average',
-                optimal_ordering=True)
-    fig = plt.figure(figsize=(25, 10))
-    dn = dendrogram(Z)
-    plt.show()
