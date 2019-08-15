@@ -19,19 +19,22 @@ def __plotExamples(matrices, files):
         plt.title(f)
         plt.xlabel('m/z')
         plt.ylabel('retention time')
+
     plt.show()
 
 def test_construction():
     files_aux = sorted(os.listdir(input_path))
+
     for i in range(0, len(files_aux), 2):
         mite1 = Mite(input_path + files_aux[i])
         mite2 = Mite(input_path + files_aux[i+1])
         mites.append((mite1, mite2))
         files.append((files_aux[i], files_aux[i+1]))
+
     __plotExamples([mites[0][0].matrix], [files[0][0]])
 
 def test_reduction():
-    niter, w, h, f = 6, 2, 2, 0.2
+    niter, w, h, f = 8, 2, 2, 0.2
     reduced = mites[0][0].reduce_dim(niter, w=w, h=h, f=f)
     __plotExamples([mites[0][0].matrix, reduced], [files[0][0],
         'Reduced matrix (niter=' + str(niter) + ', w=' + str(w) +

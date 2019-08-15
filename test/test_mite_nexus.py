@@ -28,7 +28,7 @@ def test_mite2nex():
         print('Processing file ' + files_aux[i])
         basename, extension = os.path.splitext(files_aux[i])
         m = Mite(input_path + files_aux[i])
-        r = m.reduce_dim(niter=20, f=0.2)
+        r = m.reduce_dim(niter=12, f=0.2)
         nw.add(basename, 'ion_maps', 'Standard',
                 __array2string(r.toarray().flatten()))
 
