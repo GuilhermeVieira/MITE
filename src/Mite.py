@@ -100,10 +100,11 @@ class Mite:
             new = lil_matrix((s0, s1), dtype=bool)
             iarray, jarray = old.nonzero()
 
-            for i, j in np.nditer([iarray, jarray]):
-                win, new_pos, win_pos = self.__get_window(old, (i, j), w, h)
-                if win.nnz / (win.shape[0] * win.shape[0]) >= f:
-                    new[new_pos] = True
+            if len(iarray) != 0:
+                for i, j in np.nditer([iarray, jarray]):
+                    win, new_pos, win_pos = self.__get_window(old, (i, j), w, h)
+                    if win.nnz / (win.shape[0] * win.shape[0]) >= f:
+                        new[new_pos] = True
 
             old = new.tocsr(copy=True)
 
