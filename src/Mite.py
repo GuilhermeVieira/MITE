@@ -86,7 +86,7 @@ class Mite:
         return matrix[i:i+h, j:j+w], (new_i, new_j), (win_i, win_j)
 
     # Returns a new mite with reduced dimensionality
-    def reduce_dim(self, niter, w=2, h=2, f=0.5):
+    def reduce_dim(self, niter, w=2, h=2, f=0.25):
         if w >= self.matrix.shape[0]:
             raise ValueError('w is too big!')
         if h >= self.matrix.shape[1]:
