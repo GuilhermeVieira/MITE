@@ -38,51 +38,76 @@ class MiteToNexusWriter:
         self.input_path = input_path
         self.output_path = output_path
         self.files_aux = sorted(os.listdir(self.input_path))
+        self.max_token_length = 99990
 
-    # Reduces a 2d matrix into a string
-    def __matrix2string(self, matrix, mode, f=0.25):
-        if mode == 'mz':
-            matrix = matrix.tocsc()
-
+    # Reduces an 1d array to a string
+    def __array2string(self, array):
         s = ''
-        dimdict = {
-            'tr': 0,
-            'mz': 1
-        }
-        funcdict = {
-            'tr': matrix.getrow,
-            'mz': matrix.getcol
-        }
 
-        for i in range(0, matrix.shape[dimdict[mode]]):
-            ratio = funcdict[mode](i).count_nonzero()
-            ratio /= matrix.shape[dimdict[mode]]
-
-            if ratio >= f:
-                s += '1'
-            else:
-                s += '0'
+        for i in range(0, len(array)):
+            s += str(array[i])
 
         return s
 
-    # Writes the nexus file
-    def write_nexus(self, niter, f, mode='tr', all=False):
-        step = 2
-        dirname = 'mode-' + mode
-        dirname += '_f-' + str(f)
-        dirname += '_niter-' + str(niter)
-        nw = NexusWriter()
+    # Reduces a 2d matrix to a string
+    def __matrix2array(self, matrix, append_by_row):
+        array = np.empty(0, dtype=bool)
+        dim = 1
 
-        if all:
+        if not append_by_row:
+            matrix = matrix.tocsc()
+        else:
+            matrix = matrix.tocsr()
+            dim = 0
+
+        funcdict = {
+            True: matrix.getrow,
+            False: matrix.getcol
+        }
+
+        for i in range(0, matrix.shape[dim]):
+            a = funcdict[append_by_row](i).toarray().astype(int).flatten()
+            array = np.concatenate((array, a))
+
+        return array
+
+    # Deletes all matrix columns that all values are the same
+    def __remove_equal_columns(self, matrix):
+        index = np.argwhere(np.all(matrix == matrix[0, :], axis=0))
+        matrix = np.delete(matrix, index, axis=1)
+        return matrix
+
+    # Writes the nexus file
+    def write_nexus(self, f, w, h, min_niter, append_by_row=False,
+                    all_runs=False):
+        step = 2
+        dirname = 'f=' + str(f) + '_w=' + str(w) + '_h=' + str(h)
+        dirname += '_min-niter=' + str(min_niter)
+        nw = NexusWriter()
+        run_name = []
+        flattened_mites = []
+
+        if append_by_row:
+            dirname += '_append-by-row'
+
+        if all_runs:
             step = 1
-            dirname += '_all'
+            dirname += '_all-runs'
 
         for i in range(0, len(self.files_aux), step):
             basename, extension = os.path.splitext(self.files_aux[i])
+            run_name.append(basename);
             m = Mite(self.input_path + self.files_aux[i])
-            r = m.reduce_dim(niter=niter, f=f)
-            nw.add(basename, 'ion_maps', 'Standard',
-                   self.__matrix2string(r, mode, f=f))
+            r = m.reduce_dim(f, w, h, min_niter=min_niter,
+                             max_size=self.max_token_length)
+            flattened_mites.append(self.__matrix2array(r, append_by_row))
+
+        flattened_mites = np.array(flattened_mites, dtype=int)
+        flattened_mites = self.__remove_equal_columns(flattened_mites);
+
+        for i in range(0, flattened_mites.shape[0]):
+            s = self.__array2string(flattened_mites[i])
+            nw.add(run_name[i], 'ion_maps', 'Standard', s)
 
         if not os.path.exists(self.output_path + dirname):
             os.makedirs(self.output_path + dirname)

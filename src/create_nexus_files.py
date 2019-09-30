@@ -33,45 +33,49 @@ import argparse
 import numpy as np
 from MiteToNexusWriter import MiteToNexusWriter
 
-def __write_nexus(niter, f, mode, all):
-    print('Creating nexus file... (niter=' + str(niter) +
-          ', f=' + str(f) + ')')
+def __write_nexus(f, w, h, min_niter, append_by_row, all_runs):
+    print('Creating nexus file... (f=' + str(f) + ', w=' + str(w) +
+          ', h=' + str(h) + ', min_niter=' + str(min_niter) +
+          ', append_by_row=' + str(append_by_row) +
+          ', all_runs=' + str(all_runs), end = '')
 
-    if mode == 'both':
-        print('    mode=tr')
-        mtnw.write_nexus(niter, f, mode='tr', all=all)
-        print('    mode=mz')
-        mtnw.write_nexus(niter, f, mode='mz', all=all)
-    else:
-        print('    mode=' + mode)
-        mtnw.write_nexus(niter, f, mode=mode, all=all)
+    print(')')
+    mtnw.write_nexus(f, w, h, min_niter, append_by_row=append_by_row,
+                     all_runs=all_runs)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("niter_start", type=int,
-                    help="number of iterations for the first nexus creation")
-parser.add_argument("niter_end", type=int,
-                    help="number of iterations for the last nexus creation")
 parser.add_argument("f_start", type=float,
-                    help="f value for the first nexus creation")
+                    help="start value for the frequency of 1's necessary to "
+                         "get 1 in the new window")
 parser.add_argument("f_end", type=float,
-                    help="f value for the last nexus creation")
+                    help="start value for the frequency of 1's necessary to "
+                         "get 1 in the new window")
 parser.add_argument("df", type=float,
-                    help="f value step between two consecutive nexus creation")
-parser.add_argument("-a", "--all", action="store_true",
+                    help="step between the f value of two consecutive nexus "
+                         "file creation")
+parser.add_argument("window_width", type=int,
+                    help="the width of the window used to reduce the mites")
+parser.add_argument("window_height", type=int,
+                    help="the height of the window used to reduce the mites")
+parser.add_argument("--min_niter_start", type=int, default=1,
+                    help="start value for the minimum number of iterations")
+parser.add_argument("--min_niter_end", type=int, default=1,
+                    help="end value for the minimum number of iterations")
+parser.add_argument("--all_runs", action="store_true",
                     help="use all LC-MS runs")
-parser.add_argument("-m", "--mode", choices=['tr', 'mz', 'both'],
-                    default='both',
-                    help="define the way that the reduced matrix will be"
-                         " further reduced into a string")
+parser.add_argument("--append_by_row", action="store_true",
+                    help="append all the mite's rows to form the final string")
 args = parser.parse_args()
 
 input_path = dir_path + '/../input/ion_map/xml/'
 output_path = dir_path + '/../output/nexus/'
 mtnw = MiteToNexusWriter(input_path, output_path)
 
-for niter in range(args.niter_start, args.niter_end + 1):
+for min_niter in range(args.min_niter_start, args.min_niter_end + 1):
     if args.df > 0:
         for f in np.arange(args.f_start, args.f_end + args.df, args.df):
-            __write_nexus(niter, f, args.mode, args.all)
+            __write_nexus(f, args.window_width, args.window_height, min_niter,
+                          args.append_by_row, args.all_runs)
     else:
-        __write_nexus(niter, args.f_start, args.mode, args.all)
+        __write_nexus(args.f_start, args.window_width, args.window_height,
+                      min_niter, args.append_by_row, args.all_runs)

@@ -6,7 +6,7 @@ sys.path.insert(0, dir_path + '/../src/')
 
 import matplotlib.pylab as plt
 import pytest
-from mite import Mite
+from Mite import Mite
 
 input_path = dir_path + '/../input/ion_map/xml/'
 files = []

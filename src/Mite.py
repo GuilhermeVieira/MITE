@@ -85,30 +85,37 @@ class Mite:
         j = pos[1] - pos[1] % w
         return matrix[i:i+h, j:j+w], (new_i, new_j), (win_i, win_j)
 
-    # Returns a new mite with reduced dimensionality
-    def reduce_dim(self, niter, w=2, h=2, f=0.25):
+    # Returns a new matrix with reduced dimensionality
+    def __reduce_dim(self, old, f, w, h):
+        s0 = math.ceil(old.shape[0] / w)
+        s1 = math.ceil(old.shape[1] / h)
+        new = lil_matrix((s0, s1), dtype=bool)
+        iarray, jarray = old.nonzero()
+
+        if len(iarray) != 0:
+            for i, j in np.nditer([iarray, jarray]):
+                win, new_pos, win_pos = self.__get_window(old, (i, j), w, h)
+                if win.nnz / (win.shape[0] * win.shape[0]) >= f:
+                    new[new_pos] = True
+
+        return new.tocsr(copy=True)
+
+
+    # Returns a new matrix with reduced dimensionality
+    def reduce_dim(self, f, w, h, min_niter=1, max_size=math.inf):
         if w >= self.matrix.shape[0]:
             raise ValueError('w is too big!')
         if h >= self.matrix.shape[1]:
             raise ValueError('h is too big!')
 
-        old = self.matrix.tocsr(copy=True)
+        reduced = self.matrix.tocsr(copy=True)
+        x = 0
 
-        for x in range(0, niter):
-            s0 = math.ceil(old.shape[0] / w)
-            s1 = math.ceil(old.shape[1] / h)
-            new = lil_matrix((s0, s1), dtype=bool)
-            iarray, jarray = old.nonzero()
+        while x < min_niter or reduced.shape[0] * reduced.shape[1] > max_size:
+            reduced = self.__reduce_dim(reduced, f, w, h)
+            x += 1
 
-            if len(iarray) != 0:
-                for i, j in np.nditer([iarray, jarray]):
-                    win, new_pos, win_pos = self.__get_window(old, (i, j), w, h)
-                    if win.nnz / (win.shape[0] * win.shape[0]) >= f:
-                        new[new_pos] = True
-
-            old = new.tocsr(copy=True)
-
-        return new
+        return reduced 
 
     # Returns the intersection with another mite
     def intersect(self, mite):
