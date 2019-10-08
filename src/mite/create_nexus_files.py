@@ -2,7 +2,7 @@
 
 ##################################################################################
 ##                                                                              ##
-##   Module that creates a number of different nexus files based on a           ##
+##   Module that creates a number of different NEXUS files based on a           ##
 ##   combination of different arguments.                                        ##
 ##                                                                              ##
 ##   This file is part of the featsel program                                   ##
@@ -33,15 +33,14 @@ import argparse
 import numpy as np
 from MiteToNexusWriter import MiteToNexusWriter
 
-def __write_nexus(f, w, h, min_niter, append_by_row, all_runs):
-    print('Creating nexus file... (f=' + str(f) + ', w=' + str(w) +
+def __write_nexus(f, w, h, min_niter, append_by_row, binary):
+    print('Creating NEXUS file... (f=' + str(f) + ', w=' + str(w) +
           ', h=' + str(h) + ', min_niter=' + str(min_niter) +
           ', append_by_row=' + str(append_by_row) +
-          ', all_runs=' + str(all_runs), end = '')
+          ', binary=' + str(binary), end = '')
 
     print(')')
-    mtnw.write_nexus(f, w, h, min_niter, append_by_row=append_by_row,
-                     all_runs=all_runs)
+    mtnw.write_nexus(f, w, h, min_niter, append_by_row=append_by_row, binary=binary)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("f_start", type=float,
@@ -51,23 +50,23 @@ parser.add_argument("f_end", type=float,
                     help="start value for the frequency of 1's necessary to "
                          "get 1 in the new window")
 parser.add_argument("df", type=float,
-                    help="step between the f value of two consecutive nexus "
+                    help="step between the f value of two consecutive NEXUS "
                          "file creation")
 parser.add_argument("window_width", type=int,
-                    help="the width of the window used to reduce the mites")
+                    help="the width of the window used to reduce the MITEs")
 parser.add_argument("window_height", type=int,
-                    help="the height of the window used to reduce the mites")
+                    help="the height of the window used to reduce the MITEs")
 parser.add_argument("--min_niter_start", type=int, default=1,
                     help="start value for the minimum number of iterations")
 parser.add_argument("--min_niter_end", type=int, default=1,
                     help="end value for the minimum number of iterations")
-parser.add_argument("--all_runs", action="store_true",
-                    help="use all LC-MS runs")
 parser.add_argument("--append_by_row", action="store_true",
-                    help="append all the mite's rows to form the final string")
+                    help="append all the MITE's rows to form the final string")
+parser.add_argument("--binary", action="store_true",
+                    help="use binary MITEs to create the NEXUS files")
 args = parser.parse_args()
 
-input_path = dir_path + '/../input/ion_map/xml/'
+input_path = dir_path + '/../input/ion_map/xml/aligned/'
 output_path = dir_path + '/../output/nexus/'
 mtnw = MiteToNexusWriter(input_path, output_path)
 
@@ -75,7 +74,7 @@ for min_niter in range(args.min_niter_start, args.min_niter_end + 1):
     if args.df > 0:
         for f in np.arange(args.f_start, args.f_end + args.df, args.df):
             __write_nexus(f, args.window_width, args.window_height, min_niter,
-                          args.append_by_row, args.all_runs)
+                          args.append_by_row, args.binary)
     else:
         __write_nexus(args.f_start, args.window_width, args.window_height,
-                      min_niter, args.append_by_row, args.all_runs)
+                      min_niter, args.append_by_row, args.binary)

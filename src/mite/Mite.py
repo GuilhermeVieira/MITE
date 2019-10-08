@@ -32,7 +32,7 @@ from scipy.sparse import coo_matrix, csr_matrix, lil_matrix
 
 class Mite:
 
-    def __init__(self, filepath):
+    def __init__(self, filepath, binary=False):
         self.filepath = filepath
         basename, extension = os.path.splitext(self.filepath)
 
@@ -40,6 +40,7 @@ class Mite:
             tree = ET.parse(self.filepath)
             root = tree.getroot()
             run_header = root.find('LC_MS_RUN')
+            features = run_header.find('LC_MS_FEATURES')
 
             self.features_count = int(run_header.get('number_of_features'))
             self.tr_min = float(run_header.get('tr_min'))
@@ -49,12 +50,18 @@ class Mite:
 
             row = np.empty(self.features_count)
             col = np.empty(self.features_count)
-            data = np.ones(self.features_count, dtype=bool)
             tr_round = np.empty(self.features_count)
             mz_round = np.empty(self.features_count)
+
+            if binary:
+                data = np.ones(self.features_count, dtype=bool)
+            else:
+                data = np.empty(self.features_count, dtype=int)
+                # calcular quartis
+
             index = 0
 
-            for feature in root.iter('MS1_FEATURE'):
+            for feature in features.findall('MS1_FEATURE'):
                 tr = feature.get('Tr')
                 mz = feature.get('m_z')
                 tr_round[index] = abs(decimal.Decimal(tr).as_tuple().exponent)
@@ -63,6 +70,10 @@ class Mite:
                 mz = float(mz) - self.mz_min
                 row[index] = tr
                 col[index] = mz
+
+                if not binary:
+                    #data[index] = 
+
                 index += 1
 
             row *= 10 ** np.amax(tr_round)

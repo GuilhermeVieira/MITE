@@ -78,9 +78,7 @@ class MiteToNexusWriter:
         return matrix
 
     # Writes the nexus file
-    def write_nexus(self, f, w, h, min_niter, append_by_row=False,
-                    all_runs=False):
-        step = 2
+    def write_nexus(self, f, w, h, min_niter, append_by_row=False, binary=False):
         dirname = 'f=' + str(f) + '_w=' + str(w) + '_h=' + str(h)
         dirname += '_min-niter=' + str(min_niter)
         nw = NexusWriter()
@@ -90,14 +88,13 @@ class MiteToNexusWriter:
         if append_by_row:
             dirname += '_append-by-row'
 
-        if all_runs:
-            step = 1
-            dirname += '_all-runs'
+        if binary:
+            dirname += '_binary'
 
-        for i in range(0, len(self.files_aux), step):
+        for i in range(0, len(self.files_aux)):
             basename, extension = os.path.splitext(self.files_aux[i])
             run_name.append(basename);
-            m = Mite(self.input_path + self.files_aux[i])
+            m = Mite(self.input_path + self.files_aux[i], binary=binary)
             r = m.reduce_dim(f, w, h, min_niter=min_niter,
                              max_size=self.max_token_length)
             flattened_mites.append(self.__matrix2array(r, append_by_row))
