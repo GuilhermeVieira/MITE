@@ -1,6 +1,6 @@
 ##################################################################################
 ##                                                                              ##
-##   Module that manipulates the ion intensity maps (or matrix of intensity by  ##
+##   Class that implements the ion intensity maps (or matrix of intensity by    ##
 ##   time of elution) extracted from mass spectrometry raw files.               ##
 ##                                                                              ##
 ##   This file is part of the featsel program                                   ##
@@ -26,66 +26,26 @@ import decimal
 import math
 import numpy as np
 import os
-import xml.etree.ElementTree as ET
 from scipy.sparse import coo_matrix, csr_matrix, lil_matrix
+
+from MiteXMLReader import MiteXMLReader
 
 
 class Mite:
 
+    # Class constructor
     def __init__(self, filepath, binary=False):
-        self.filepath = filepath
-        basename, extension = os.path.splitext(self.filepath)
+        xml_reader = MiteXMLReader(filepath)
 
-        if extension == '.xml':
-            tree = ET.parse(self.filepath)
-            root = tree.getroot()
-            run_header = root.find('LC_MS_RUN')
-            features = run_header.find('LC_MS_FEATURES')
+        self.tr_min = xml_reader.get_tr_min()
+        self.tr_max = xml_reader.get_tr_max()
+        self.mz_min = xml_reader.get_mz_min()
+        self.mz_max = xml_reader.get_mz_max()
 
-            self.features_count = int(run_header.get('number_of_features'))
-            self.tr_min = float(run_header.get('tr_min'))
-            self.tr_max = float(run_header.get('tr_max'))
-            self.mz_min = float(run_header.get('m_z_min'))
-            self.mz_max = float(run_header.get('m_z_max'))
-
-            row = np.empty(self.features_count)
-            col = np.empty(self.features_count)
-            tr_round = np.empty(self.features_count)
-            mz_round = np.empty(self.features_count)
-
-            if binary:
-                data = np.ones(self.features_count, dtype=bool)
-            else:
-                data = np.empty(self.features_count, dtype=int)
-                # calcular quartis
-
-            index = 0
-
-            for feature in features.findall('MS1_FEATURE'):
-                tr = feature.get('Tr')
-                mz = feature.get('m_z')
-                tr_round[index] = abs(decimal.Decimal(tr).as_tuple().exponent)
-                mz_round[index] = abs(decimal.Decimal(mz).as_tuple().exponent)
-                tr = float(tr) - self.tr_min
-                mz = float(mz) - self.mz_min
-                row[index] = tr
-                col[index] = mz
-
-                if not binary:
-                    #data[index] = 
-
-                index += 1
-
-            row *= 10 ** np.amax(tr_round)
-            col *= 10 ** np.amax(mz_round)
-            row = np.trunc(row)
-            col = np.trunc(col)
-            shape = (int((self.tr_max - self.tr_min) * 10 ** np.amax(tr_round)),
-                    int((self.mz_max - self.mz_min) * 10 ** np.amax(mz_round)))
-            self.matrix = coo_matrix((data, (row, col)), shape)
-
-        else:
-            raise ValueError(filepath + ' is not a XML file!')
+        data, row, col, tr_round, mz_round = xml_reader.construct_ionmap(binary=binary)
+        shape = (int((self.tr_max - self.tr_min) * 10 ** tr_round),
+                int((self.mz_max - self.mz_min) * 10 ** mz_round))
+        self.matrix = coo_matrix((data, (row, col)), shape)
 
     # Returns the window (and its position) to which a matrix element belongs
     # and the position of this element in the window

@@ -23,15 +23,13 @@
 ##                                                                              ##
 ##################################################################################
 
-import os
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
-import sys
-sys.path.insert(0, dir_path + '/../src/')
 
 import argparse
 import numpy as np
+import os
+
 from MiteToNexusWriter import MiteToNexusWriter
+
 
 def __write_nexus(f, w, h, min_niter, append_by_row, binary):
     print('Creating NEXUS file... (f=' + str(f) + ', w=' + str(w) +
@@ -66,8 +64,9 @@ parser.add_argument("--binary", action="store_true",
                     help="use binary MITEs to create the NEXUS files")
 args = parser.parse_args()
 
-input_path = dir_path + '/../input/ion_map/xml/aligned/'
-output_path = dir_path + '/../output/nexus/'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+input_path = dir_path + '/../../input/ion_map/xml/aligned/'
+output_path = dir_path + '/../../output/nexus/'
 mtnw = MiteToNexusWriter(input_path, output_path)
 
 for min_niter in range(args.min_niter_start, args.min_niter_end + 1):

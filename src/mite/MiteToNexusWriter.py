@@ -21,13 +21,13 @@
 ##################################################################################
 
 
-import os
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
-import sys
-sys.path.insert(0, dir_path + '/../src/')
-
 import numpy as np
+import os
+import sys
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.insert(0, dir_path + '/../../src/')
+
 from Mite import Mite
 from nexus import NexusWriter
 
