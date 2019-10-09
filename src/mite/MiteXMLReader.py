@@ -31,57 +31,63 @@ class MiteXMLReader:
 
     # Class constructor
     def __init__(self, path):
-        if os.path.isfile(path):
-            self.filepath = path
-            basename, extension = os.path.splitext(self.filepath)
+        self.filepath = path
+        basename, extension = os.path.splitext(self.filepath)
 
-            if extension == '.xml':
-                self.tree = ET.parse(self.filepath)
-                self.root = self.tree.getroot()
-                self.run_header = self.root.find("LC_MS_RUN")
-                self.features = self.run_header.find("LC_MS_FEATURES")
-            else:
-                raise ValueError(path + ' is not a XML file!')
-
-        #elif os.path.isdir(path):
-
+        if extension == '.xml':
+            tree = ET.parse(self.filepath)
+            root = tree.getroot()
+            self.header = root.find("LC_MS_RUN")
+            self.features_obj = self.header.find("LC_MS_FEATURES")
+            self.features_count = int(self.header.get("number_of_features"))
         else:
-            raise ValueError(path + " is not a file or directory!")
+            raise ValueError(path + ' is not a XML file!')
 
-    # Returns the three quartiles of intensity values
+    # Returns the three local quartiles of intensity values
     def __get_local_quartiles(self):
-        intensities = np.empty(self.get_features_count(), dtype=float)
+        intensities = []
 
-        i = 0
-        for feature in self.features.findall("MS1_FEATURE"):
-            intensities[i] = float(feature.find("LC_INFO").get("AREA"))
-            i += 1
+        for feature in self.features_obj.findall("MS1_FEATURE"):
+            intensities.append(float(feature.find("LC_INFO").get("AREA")))
 
         return np.quantile(intensities, [0.25, 0.50, 0.75])
 
-    # Returns the number of features
-    def get_features_count(self):
-        return int(self.run_header.get("number_of_features"))
+    # Returns the three global quartiles of intensity values
+    def __get_global_quartiles(self):
+        dirpath = os.path.dirname(self.filepath)
+        files = sorted(os.listdir(dirpath))
+        intensities = []
+
+        for file in files:
+            tree = ET.parse(dirpath + "/" + file)
+            root = tree.getroot()
+            header = root.find("LC_MS_RUN")
+            features_obj = header.find("LC_MS_FEATURES")
+
+            for feature in features_obj.findall("MS1_FEATURE"):
+                intensities.append(float(feature.find("LC_INFO").get("AREA")))
+
+        return np.quantile(intensities, [0.25, 0.50, 0.75])
 
     # Returns the minimum retention time value
     def get_tr_min(self):
-        return float(self.run_header.get("tr_min"))
+        return float(self.header.get("tr_min"))
 
     # Returns the maximum retention time value
     def get_tr_max(self):
-        return float(self.run_header.get("tr_max"))
+        return float(self.header.get("tr_max"))
 
     # Returns the minimum mass to charge value
     def get_mz_min(self):
-        return float(self.run_header.get("m_z_min"))
+        return float(self.header.get("m_z_min"))
 
     # Returns the maximum mass to charge value
     def get_mz_max(self):
-        return float(self.run_header.get("m_z_max"))
+        return float(self.header.get("m_z_max"))
 
     # Constructs and returns the ion map base
     def construct_ionmap(self, binary=False):
-        array_size = self.get_features_count()
+        array_size = self.features_count
         row = np.empty(array_size)
         col = np.empty(array_size)
         tr_round = np.empty(array_size)
@@ -93,10 +99,10 @@ class MiteXMLReader:
             data = np.ones(array_size, dtype=bool)
         else:
             data = np.empty(array_size, dtype=int)
-            quartiles = self.__get_local_quartiles()
+            quartiles = self.__get_global_quartiles()
 
         index = 0
-        for feature in self.features.findall("MS1_FEATURE"):
+        for feature in self.features_obj.findall("MS1_FEATURE"):
             tr = feature.get('Tr')
             mz = feature.get('m_z')
             tr_round[index] = abs(decimal.Decimal(tr).as_tuple().exponent)

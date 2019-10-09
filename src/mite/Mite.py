@@ -80,7 +80,7 @@ class Mite:
 
 
     # Returns a new matrix with reduced dimensionality
-    def reduce_dim(self, f, w, h, min_niter=1, max_size=math.inf):
+    def reduce_dim(self, w, h, min_niter=1, max_size=math.inf, f=0.0):
         if w >= self.matrix.shape[0]:
             raise ValueError('w is too big!')
         if h >= self.matrix.shape[1]:
