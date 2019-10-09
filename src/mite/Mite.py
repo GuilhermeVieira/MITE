@@ -37,6 +37,7 @@ class Mite:
     def __init__(self, filepath, binary=False):
         xml_reader = MiteXMLReader(filepath)
 
+        self.binary = binary
         self.tr_min = xml_reader.get_tr_min()
         self.tr_max = xml_reader.get_tr_max()
         self.mz_min = xml_reader.get_mz_min()
@@ -60,14 +61,20 @@ class Mite:
     def __reduce_dim(self, old, f, w, h):
         s0 = math.ceil(old.shape[0] / w)
         s1 = math.ceil(old.shape[1] / h)
-        new = lil_matrix((s0, s1), dtype=bool)
+        new = lil_matrix((s0, s1))
         iarray, jarray = old.nonzero()
 
         if len(iarray) != 0:
             for i, j in np.nditer([iarray, jarray]):
                 win, new_pos, win_pos = self.__get_window(old, (i, j), w, h)
-                if win.nnz / (win.shape[0] * win.shape[0]) >= f:
-                    new[new_pos] = True
+                if not self.binary:
+                    if win.nnz != 0:
+                        new[new_pos] = int(round(np.sum(win) / win.nnz))
+                    else:
+                        new[new_pos] = 0
+                else:
+                    if win.nnz / (win.shape[0] * win.shape[0]) >= f:
+                        new[new_pos] = True
 
         return new.tocsr(copy=True)
 

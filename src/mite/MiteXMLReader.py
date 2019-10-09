@@ -29,6 +29,7 @@ import xml.etree.ElementTree as ET
 
 class MiteXMLReader:
 
+    # Class constructor
     def __init__(self, path):
         if os.path.isfile(path):
             self.filepath = path
@@ -47,33 +48,52 @@ class MiteXMLReader:
         else:
             raise ValueError(path + " is not a file or directory!")
 
+    # Returns the three quartiles of intensity values
+    def __get_local_quartiles(self):
+        intensities = np.empty(self.get_features_count(), dtype=float)
+
+        i = 0
+        for feature in self.features.findall("MS1_FEATURE"):
+            intensities[i] = float(feature.find("LC_INFO").get("AREA"))
+            i += 1
+
+        return np.quantile(intensities, [0.25, 0.50, 0.75])
+
+    # Returns the number of features
     def get_features_count(self):
         return int(self.run_header.get("number_of_features"))
 
+    # Returns the minimum retention time value
     def get_tr_min(self):
         return float(self.run_header.get("tr_min"))
 
+    # Returns the maximum retention time value
     def get_tr_max(self):
         return float(self.run_header.get("tr_max"))
 
+    # Returns the minimum mass to charge value
     def get_mz_min(self):
         return float(self.run_header.get("m_z_min"))
 
+    # Returns the maximum mass to charge value
     def get_mz_max(self):
         return float(self.run_header.get("m_z_max"))
 
+    # Constructs and returns the ion map base
     def construct_ionmap(self, binary=False):
         array_size = self.get_features_count()
         row = np.empty(array_size)
         col = np.empty(array_size)
         tr_round = np.empty(array_size)
         mz_round = np.empty(array_size)
+        data = None
+        quartiles = None
 
         if binary:
             data = np.ones(array_size, dtype=bool)
         else:
             data = np.empty(array_size, dtype=int)
-            # calcular quartis
+            quartiles = self.__get_local_quartiles()
 
         index = 0
         for feature in self.features.findall("MS1_FEATURE"):
@@ -86,8 +106,17 @@ class MiteXMLReader:
             row[index] = tr
             col[index] = mz
 
-            #if not binary:
-                #data[index] = 
+            if not binary:
+                intensity = float(feature.find("LC_INFO").get("AREA"))
+
+                if intensity < quartiles[0]:
+                    data[index] = 1
+                elif intensity < quartiles[1]:
+                    data[index] = 2
+                elif intensity < quartiles[2]:
+                    data[index] = 3
+                else:
+                    data[index] = 4
 
             index += 1
 

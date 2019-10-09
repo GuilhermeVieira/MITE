@@ -51,7 +51,7 @@ class MiteToNexusWriter:
 
     # Reduces a 2d matrix to a string
     def __matrix2array(self, matrix, append_by_row):
-        array = np.empty(0, dtype=bool)
+        array = np.empty(0)
         dim = 1
 
         if not append_by_row:
