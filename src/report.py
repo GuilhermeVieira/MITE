@@ -28,7 +28,7 @@ directory = os.fsencode(dirname)
 
 gen = dirname + 'genomic/genomic.nex.con.tre'
 
-dont = ['genomic', 'extras', 'de_novo', 'de_novo_HC']
+dont = ['genomic', 'extras', 'de_novo', 'de_novo_HC', 'ion_map']
 
 # Compare with others 
 
