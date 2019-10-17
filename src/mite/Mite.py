@@ -24,6 +24,7 @@
 
 import decimal
 import math
+import matplotlib.pylab as plt
 import numpy as np
 import os
 from scipy.sparse import coo_matrix, csr_matrix, lil_matrix
@@ -37,6 +38,7 @@ class Mite:
     def __init__(self, filepath, binary=False):
         xml_reader = MiteXMLReader(filepath)
 
+        self.filepath = filepath
         self.binary = binary
         self.tr_min = xml_reader.get_tr_min()
         self.tr_max = xml_reader.get_tr_max()
@@ -94,6 +96,14 @@ class Mite:
             x += 1
 
         return reduced 
+
+    # Plots the mite
+    def plot(self):
+        plt.spy(self.matrix, markersize=0.1, aspect='auto', color='black')
+        plt.title(self.filepath)
+        plt.xlabel('m/z')
+        plt.ylabel('retention time')
+        plt.show()
 
     # Returns the intersection with another mite
     def intersect(self, mite):
