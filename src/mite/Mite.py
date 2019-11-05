@@ -80,7 +80,6 @@ class Mite:
 
         return new.tocsr(copy=True)
 
-
     # Returns a new matrix with reduced dimensionality
     def reduce_dim(self, w, h, min_niter=1, max_size=math.inf, f=0.0):
         if w >= self.matrix.shape[0]:
