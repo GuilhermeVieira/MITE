@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-for dir in ../output/nexus/*/; do
+for dir in ../../output/nexus/*; do
     mb "$dir/mite.nex"
 done
