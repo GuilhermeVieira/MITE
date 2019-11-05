@@ -28,7 +28,7 @@ directory = os.fsencode(dirname)
 
 gen = dirname + 'genomic/genomic.nex.con.tre'
 
-dont = ['genomic', 'extras', 'de_novo', 'de_novo_HC', 'ion_map']
+dont = ['genomic', 'extras', 'de_novo', 'de_novo_HC', 'ion_map', 'pep_test']
 
 # Compare with others 
 
@@ -40,7 +40,7 @@ for d in os.listdir(directory):
         continue
     print('Target: ' + dname)
     tree = '{0}{1}/{1}.nex.con.tre'.format(dirname, dname)
-    CADM(gen, tree, '-t')
+    print(str(CADM(gen, tree, '-t')))
 
     print(30*("-"))
     

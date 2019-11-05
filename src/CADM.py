@@ -52,7 +52,8 @@ def CADM (t1, t2, v='-p'):
         res.global <- CADM.global(M, 2, Ntip(a))
     '''.format(t1, t2, topo))
     res = robjects.globalenv['res.global']
-    print(res)
+
+    return res
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
