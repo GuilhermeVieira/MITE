@@ -39,8 +39,22 @@ class MiteToNexusWriter:
         self.output_path = output_path
         self.files_aux = sorted(os.listdir(self.input_path))
         self.max_token_length = 99990
+        self.mites = self.__load_mites()
 
-    # Reduces an 1d array to a string
+    # Loads all the mites
+    def __load_mites(self):
+        mites = []
+
+        for i in range(0, len(self.files_aux)):
+            basename, extension = os.path.splitext(self.files_aux[i])
+            run_name.append(basename);
+            mites.append(
+                Mite(self.input_path + self.files_aux[i], binary=binary)
+            )
+
+        return mites
+
+    # Transforms an 1d array in a string
     def __array2string(self, array):
         s = ''
 
@@ -77,13 +91,10 @@ class MiteToNexusWriter:
         matrix = np.delete(matrix, index, axis=1)
         return matrix
 
-    # Writes the nexus file
-    def write_nexus(self, w, h, min_niter, append_by_row=False, binary=False, f=0.0):
+    # Sets the dir name to write the nexus file
+    def __set_dirname(self, w, h, min_niter, append_by_row, binary, f):
         dirname = 'w=' + str(w) + '__h=' + str(h)
         dirname += '__min-niter=' + str(min_niter)
-        nw = NexusWriter()
-        run_name = []
-        flattened_mites = []
 
         if append_by_row:
             dirname += '__append-by-row'
@@ -91,16 +102,29 @@ class MiteToNexusWriter:
         if binary:
             dirname += '__binary' + '__f=' + str(f)
 
-        for i in range(0, len(self.files_aux)):
-            basename, extension = os.path.splitext(self.files_aux[i])
-            run_name.append(basename);
-            m = Mite(self.input_path + self.files_aux[i], binary=binary)
-            r = m.reduce_dim(w, h, min_niter=min_niter,
-                             max_size=self.max_token_length, f=f)
+        return dirname
+
+    # Flattens the mites
+    def __flatten_mites(self):
+        flattened_mites = []
+
+        for m in self.mites:
+            r = m.reduce_dim(
+                w, h, min_niter=min_niter, max_size=self.max_token_length, f=f
+            )
             flattened_mites.append(self.__matrix2array(r, append_by_row))
 
         flattened_mites = np.array(flattened_mites, dtype=int)
         flattened_mites = self.__remove_equal_columns(flattened_mites);
+
+        return flattened_mites
+
+    # Writes the nexus file
+    def write_nexus(self, w, h, min_niter, append_by_row=False, binary=False, f=0.0):
+        nw = NexusWriter()
+        run_name = []
+        dirname = self.__set_dirname(w, h, min_niter, append_by_row, binary, f)
+        flattened_mites = self.__flatten_mites()
 
         for i in range(0, flattened_mites.shape[0]):
             s = self.__array2string(flattened_mites[i])
