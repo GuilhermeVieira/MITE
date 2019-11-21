@@ -2,8 +2,8 @@
 
 ##################################################################################
 ##                                                                              ##
-##   Module that creates a number of different NEXUS files based on a           ##
-##   combination of different arguments.                                        ##
+##   Module that creates a NEXUS file based on arguments passed on command      ##
+##   line.                                                                      ##
 ##                                                                              ##
 ##   This file is part of the featsel program                                   ##
 ##   Copyright (C) 2018 Victor Wichmann Raposo                                  ##
