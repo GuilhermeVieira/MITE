@@ -24,6 +24,8 @@ begin mrbayes;
 
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
         prset applyto=(all) ratepr=variable;
+        set usebeagle=yes beagledevice=gpu;
+        set beagleprecision=single beaglescaling=dynamic;
         mcmc ngen=2000000 samplefreq=100;
         sumt;
 

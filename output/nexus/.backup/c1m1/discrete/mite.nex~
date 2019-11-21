@@ -15,8 +15,8 @@ Begin data;
     ;
 End;
 begin mrbayes;
-        set usebeagle=yes beagledevice=cpu beagleprecision=double;
-        set beaglescaling=dynamic beaglesse=yes;
+        set usebeagle=yes beagledevice=gpu;
+        set beagleprecision=single beaglescaling=dynamic;
     	charset ion_maps = 1-21187;
 	partition part = 1: ion_maps;
 
@@ -26,8 +26,6 @@ begin mrbayes;
 
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
         prset applyto=(all) ratepr=variable;
-        set usebeagle=yes beagledevice=gpu;
-        set beagleprecision=single beaglescaling=dynamic;
         mcmc ngen=2000000 samplefreq=100;
         sumt;
 
