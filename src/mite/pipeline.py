@@ -52,8 +52,8 @@ def run(mtnw, w, h, binary, f):
     create_nexus_files(
         mtnw, args.window_width, args.window_height, args.binary, args.f
     )
-    run_mb(args.nproc)
-    run_cadm()
+    #run_mb(args.nproc)
+    #run_cadm()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -89,6 +89,6 @@ if __name__ == '__main__':
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     input_path = dir_path + '/../../input/ion_map/xml/'
-    output_path = dir_path + '/test/'
+    output_path = dir_path + '/../../output/nexus/'
     mtnw = MiteToNexusWriter(input_path, output_path, args.binary)
     run(mtnw, args.window_width, args.window_height, args.binary, args.f)

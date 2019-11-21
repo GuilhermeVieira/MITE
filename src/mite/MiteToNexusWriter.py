@@ -20,7 +20,6 @@
 ##                                                                              ##
 ##################################################################################
 
-
 import numpy as np
 import os
 import sys
@@ -28,9 +27,9 @@ import sys
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, dir_path + '/../../src/')
 
+import multiresolution as mr
 from Mite import Mite
 from nexus import NexusWriter
-
 
 class MiteToNexusWriter:
 
@@ -101,7 +100,9 @@ class MiteToNexusWriter:
         flattened_mites = []
 
         for m in self.mites:
-            r = m.reduce_dim(w, h, max_size=self.max_token_length, f=f)
+            r = mr.reduce_dim(
+                m.matrix, w, h, m.binary, max_size=self.max_token_length, f=f
+            )
             flattened_mites.append(self.__matrix2array(r))
 
         flattened_mites = np.array(flattened_mites, dtype=int)
