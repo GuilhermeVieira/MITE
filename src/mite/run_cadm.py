@@ -36,19 +36,23 @@ def __print(output, string):
     print(string)
     output.write(string)
 
-with open('../../reports/report_mite.txt', 'w') as report:
-    __print(report,
-        "Report comparing topology using the CADM test of the resulting"
-        "trees with the tree obtained with the genomic data.\n")
-    __print(report, 30*("-") + "\n")
-
-    for d in os.listdir(nexus_directory):
-        dname = os.fsdecode(d)
-
-        if (not os.path.isdir(nexus_dirname + dname) or dname.startswith('.')):
-            continue
-
-        __print(report, "Target: " + dname + "\n")
-        tree = '{0}{1}/mite.nex.con.tre'.format(nexus_dirname, dname)
-        __print(report, str(CADM(gen, tree, '-t')) + "\n")
+def run():
+    with open('../../reports/report_mite.txt', 'w') as report:
+        __print(report,
+            "\nReport comparing topology using the CADM test of the resulting"
+            "trees with the tree obtained with the genomic data.\n")
         __print(report, 30*("-") + "\n")
+
+        for d in os.listdir(nexus_directory):
+            dname = os.fsdecode(d)
+
+            if (not os.path.isdir(nexus_dirname + dname) or dname.startswith('.')):
+                continue
+
+            __print(report, "Target: " + dname + "\n")
+            tree = '{0}{1}/mite.nex.con.tre'.format(nexus_dirname, dname)
+            __print(report, str(CADM(gen, tree, '-t')) + "\n")
+            __print(report, 30*("-") + "\n")
+
+if __name__ == '__main__':
+    run()

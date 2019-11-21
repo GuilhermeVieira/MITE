@@ -25,48 +25,61 @@
 ##                                                                              ##
 ##################################################################################
 
+import argparse
 import numpy as np
 import os
 import subprocess
-import sys
-sys.path.append("..")
 
-from CADM import CADM
 from MiteToNexusWriter import MiteToNexusWriter
-
-nexus_dirname = '../../output/nexus/'
-nexus_directory = os.fsencode(nexus_dirname)
-
-gen = '../../input/genomic/genomic.nex.con.tre'
+import create_nexus_files as nexus
+import run_cadm as cadm
 
 def __print(output, string):
     print(string)
     output.write(string)
 
-def create_NEXUS_files():
-    return
+def create_nexus_files(w, h, binary, f):
+    print("Creating the NEXUS files...")
+    nexus.run(w, h, binary, f)
 
-def run_MB():
-    process = subprocess.call("./run_mrbayes.sh", shell=True)
+def run_mb(nproc):
+    process = subprocess.call(["./run_mrbayes.sh", str(nproc)])
 
-def run_CADM():
-    with open('../../reports/report_mite.txt', 'w') as report:
-        __print(report,
-            "Report comparing topology using the CADM test of the resulting"
-            "trees with the tree obtained with the genomic data.\n")
-        __print(report, 30*("-") + "\n")
+def run_cadm():
+    cadm.run()
 
-        for d in os.listdir(nexus_directory):
-            dname = os.fsdecode(d)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
 
-            if (not os.path.isdir(nexus_dirname + dname)):
-                continue
+    parser.add_argument(
+        "--nproc", type=int, help="number of processors that will be used in "
+        "MrBayes analysis", required=True
+    )
+    parser.add_argument(
+        "--window_width", type=int, help="the width of the window used to "
+        "reduce the MITEs", required=True
+    )
+    parser.add_argument(
+        "--window_height", type=int, help="the height of the window used to "
+        "reduce the MITEs", required=True
+    )
+    parser.add_argument(
+        "--binary", action="store_true", help="use binary MITEs to create the "
+        "NEXUS files"
+    )
+    parser.add_argument(
+        "--f", type=float, help="value for the frequency of 1's necessary to "
+        "get 1 in the new window"
+    )
 
-            __print(report, "Target: " + dname + "\n")
-            tree = '{0}{1}/mite.nex.con.tre'.format(nexus_dirname, dname)
-            __print(report, str(CADM(gen, tree, '-t')) + "\n")
-            __print(report, 30*("-") + "\n")
+    args = parser.parse_args()
 
-create_NEXUS_files()
-run_MB()
-run_CADM()
+    if (args.binary and args.f is None):
+        parser.error("The --binary argument requires --f to be set")
+
+    if (not args.binary and args.f is not None):
+        parser.error("The argument --f requires the --binary flag to be set")
+
+    create_nexus_files(args.window_width, args.window_height, args.binary, args.f)
+    run_mb(args.nproc)
+    run_cadm()

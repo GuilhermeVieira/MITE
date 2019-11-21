@@ -59,13 +59,14 @@ class MiteXMLReader:
         intensities = []
 
         for file in files:
-            tree = ET.parse(dirpath + "/" + file)
-            root = tree.getroot()
-            header = root.find("LC_MS_RUN")
-            features_obj = header.find("LC_MS_FEATURES")
+            if not file.startswith('.'):
+                tree = ET.parse(dirpath + "/" + file)
+                root = tree.getroot()
+                header = root.find("LC_MS_RUN")
+                features_obj = header.find("LC_MS_FEATURES")
 
-            for feature in features_obj.findall("MS1_FEATURE"):
-                intensities.append(float(feature.find("LC_INFO").get("AREA")))
+                for feature in features_obj.findall("MS1_FEATURE"):
+                    intensities.append(float(feature.find("LC_INFO").get("AREA")))
 
         return np.quantile(intensities, [0.25, 0.50, 0.75])
 

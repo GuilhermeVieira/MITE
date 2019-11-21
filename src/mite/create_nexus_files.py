@@ -23,43 +23,43 @@
 ##                                                                              ##
 ##################################################################################
 
-
 import argparse
 import numpy as np
 import os
 
 from MiteToNexusWriter import MiteToNexusWriter
 
+def run(w, h, binary, f):
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    input_path = dir_path + '/../../input/ion_map/xml/'
+    output_path = dir_path + '/../../output/nexus/'
+    mtnw = MiteToNexusWriter(input_path, output_path, binary)
 
-def __write_nexus(w, h, binary, f):
     print('Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
           ', binary=' + str(binary) + ', f=' + str(f), end = '')
     print(')')
 
-    mtnw.write_nexus(w, h, binary=binary, f=f)
+    mtnw.write_nexus(w, h, f=f)
 
-parser = argparse.ArgumentParser()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
 
-parser.add_argument("window_width", type=int,
-                    help="the width of the window used to reduce the MITEs")
-parser.add_argument("window_height", type=int,
-                    help="the height of the window used to reduce the MITEs")
-parser.add_argument("--binary", action="store_true",
-                    help="use binary MITEs to create the NEXUS files")
-parser.add_argument("--f", type=float,
-                    help="value for the frequency of 1's necessary to get 1 "
-                         "in the new window")
+    parser.add_argument("window_width", type=int,
+                        help="the width of the window used to reduce the MITEs")
+    parser.add_argument("window_height", type=int,
+                        help="the height of the window used to reduce the MITEs")
+    parser.add_argument("--binary", action="store_true",
+                        help="use binary MITEs to create the NEXUS files")
+    parser.add_argument("--f", type=float,
+                        help="value for the frequency of 1's necessary to get 1 "
+                             "in the new window")
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-if (args.binary and args.f is None):
-    parser.error("The --binary argument requires --f to be set")
+    if (args.binary and args.f is None):
+        parser.error("The --binary argument requires --f to be set")
 
-if (not args.binary and args.f is not None:
-    parser.error("The argument --f requires the --binary flag to be set")
+    if (not args.binary and args.f is not None):
+        parser.error("The argument --f requires the --binary flag to be set")
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-input_path = dir_path + '/../../input/ion_map/xml/'
-output_path = dir_path + '/../../output/nexus/'
-mtnw = MiteToNexusWriter(input_path, output_path)
-__write_nexus(args.window_width, args.window_height, args.binary, args.f)
+    run(args.window_width, args.window_height, args.binary, args.f)

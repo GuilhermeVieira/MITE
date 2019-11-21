@@ -34,25 +34,31 @@ from nexus import NexusWriter
 
 class MiteToNexusWriter:
 
-    def __init__(self, input_path, output_path):
+    def __init__(self, input_path, output_path, binary):
         self.input_path = input_path
         self.output_path = output_path
+        self.binary = binary
         self.files_aux = sorted(os.listdir(self.input_path))
         self.max_token_length = 99990
-        self.mites = self.__load_mites()
+        self.mites, self.run_name = self.__load_mites()
 
     # Loads all the mites
     def __load_mites(self):
+        print("Loading ion maps...")
+
         mites = []
+        run_name = []
 
         for i in range(0, len(self.files_aux)):
             basename, extension = os.path.splitext(self.files_aux[i])
-            run_name.append(basename);
-            mites.append(
-                Mite(self.input_path + self.files_aux[i], binary=binary)
-            )
 
-        return mites
+            if not basename.startswith('.'):
+                run_name.append(basename);
+                mites.append(
+                    Mite(self.input_path + self.files_aux[i], binary=self.binary)
+                )
+
+        return mites, run_name
 
     # Transforms an 1d array in a string
     def __array2string(self, array):
@@ -82,16 +88,16 @@ class MiteToNexusWriter:
         return matrix
 
     # Sets the dir name to write the nexus file
-    def __set_dirname(self, w, h, binary, f):
+    def __set_dirname(self, w, h, f):
         dirname = 'w=' + str(w) + '__h=' + str(h)
 
-        if binary:
+        if self.binary:
             dirname += '__binary' + '__f=' + str(f)
 
         return dirname
 
     # Flattens the mites
-    def __flatten_mites(self):
+    def __flatten_mites(self, w, h, f):
         flattened_mites = []
 
         for m in self.mites:
@@ -104,15 +110,14 @@ class MiteToNexusWriter:
         return flattened_mites
 
     # Writes the nexus file
-    def write_nexus(self, w, h, binary=False, f=0.0):
+    def write_nexus(self, w, h, f=0.0):
         nw = NexusWriter()
-        run_name = []
-        dirname = self.__set_dirname(w, h, binary, f)
-        flattened_mites = self.__flatten_mites()
+        dirname = self.__set_dirname(w, h, f)
+        flattened_mites = self.__flatten_mites(w, h, f)
 
         for i in range(0, flattened_mites.shape[0]):
             s = self.__array2string(flattened_mites[i])
-            nw.add(run_name[i], 'ion_maps', 'Standard', s)
+            nw.add(self.run_name[i], 'ion_maps', 'Standard', s)
 
         if not os.path.exists(self.output_path + dirname):
             os.makedirs(self.output_path + dirname)
