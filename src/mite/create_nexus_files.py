@@ -32,7 +32,7 @@ from MiteToNexusWriter import MiteToNexusWriter
 def run(mtnw, w, h, binary, f):
     print(
         'Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
-        ', binary=' + str(binary) + ', f=' + str(f), end = ')'
+        ', binary=' + str(binary) + ', f=' + str(f) + ')'
     )
 
     mtnw.write_nexus(w, h, f=f)
