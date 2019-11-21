@@ -103,15 +103,3 @@ class Mite:
         plt.xlabel('m/z')
         plt.ylabel('retention time')
         plt.show()
-
-    # Returns the intersection with another mite
-    def intersect(self, mite):
-        m1, m2 = self.matrix.tocsr(copy=True), mite.matrix.tocsr(copy=True)
-        intersection = m1.multiply(m2)
-        return intersection
-
-    # Returns the symmetric difference with another mite
-    def calculate_symmdiff(self, mite):
-        m1, m2 = self.matrix.tocsr(copy=True), mite.matrix.tocsr(copy=True)
-        symmdiff = (m1 - m2) + (m2 - m1)
-        return symmdiff
