@@ -6,7 +6,7 @@
 ##   line.                                                                      ##
 ##                                                                              ##
 ##   This file is part of the featsel program                                   ##
-##   Copyright (C) 2018 Victor Wichmann Raposo                                  ##
+##   Copyright (C) 2019 Gustavo Mendes Maciel                                   ##
 ##                                                                              ##
 ##   This program is free software: you can redistribute it and/or modify       ##
 ##   it under the terms of the GNU General Public License as published by       ##
