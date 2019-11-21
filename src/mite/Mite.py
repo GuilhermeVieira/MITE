@@ -81,7 +81,7 @@ class Mite:
         return new.tocsr(copy=True)
 
     # Returns a new matrix with reduced dimensionality
-    def reduce_dim(self, w, h, min_niter=1, max_size=math.inf, f=0.0):
+    def reduce_dim(self, w, h, max_size=math.inf, f=0.0):
         if w >= self.matrix.shape[0]:
             raise ValueError('w is too big!')
         if h >= self.matrix.shape[1]:
@@ -90,7 +90,7 @@ class Mite:
         reduced = self.matrix.tocsr(copy=True)
         x = 0
 
-        while x < min_niter or reduced.shape[0] * reduced.shape[1] > max_size:
+        while reduced.shape[0] * reduced.shape[1] > max_size:
             reduced = self.__reduce_dim(reduced, f, w, h)
             x += 1
 

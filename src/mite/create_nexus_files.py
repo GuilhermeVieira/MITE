@@ -31,14 +31,12 @@ import os
 from MiteToNexusWriter import MiteToNexusWriter
 
 
-def __write_nexus(w, h, min_niter, append_by_row, binary, f):
+def __write_nexus(w, h, binary, f):
     print('Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
-          ', min_niter=' + str(min_niter) +
-          ', append_by_row=' + str(append_by_row) +
           ', binary=' + str(binary) + ', f=' + str(f), end = '')
     print(')')
 
-    mtnw.write_nexus(w, h, min_niter, append_by_row=append_by_row, binary=binary, f=f)
+    mtnw.write_nexus(w, h, binary=binary, f=f)
 
 parser = argparse.ArgumentParser()
 
@@ -46,46 +44,22 @@ parser.add_argument("window_width", type=int,
                     help="the width of the window used to reduce the MITEs")
 parser.add_argument("window_height", type=int,
                     help="the height of the window used to reduce the MITEs")
-parser.add_argument("--min_niter_start", type=int, default=1,
-                    help="start value for the minimum number of iterations")
-parser.add_argument("--min_niter_end", type=int, default=1,
-                    help="end value for the minimum number of iterations")
-parser.add_argument("--append_by_row", action="store_true",
-                    help="append all the MITE's rows to form the final string")
 parser.add_argument("--binary", action="store_true",
                     help="use binary MITEs to create the NEXUS files")
-parser.add_argument("--f_start", type=float,
-                    help="start value for the frequency of 1's necessary to "
-                         "get 1 in the new window")
-parser.add_argument("--f_end", type=float,
-                    help="start value for the frequency of 1's necessary to "
-                         "get 1 in the new window")
-parser.add_argument("--df", type=float,
-                    help="step between the f value of two consecutive NEXUS "
-                         "file creation")
+parser.add_argument("--f", type=float,
+                    help="value for the frequency of 1's necessary to get 1 "
+                         "in the new window")
 
 args = parser.parse_args()
 
-if (args.binary and
-    (args.f_start is None or args.f_end is None or args.df is None)):
-    parser.error("The --binary argument requires --f_start, --f_end and --df "
-                 "arguments")
+if (args.binary and args.f is None):
+    parser.error("The --binary argument requires --f to be set")
 
-if (not args.binary and
-    (args.f_start is not None or args.f_end is not None or args.df is not None)):
-    parser.error("The arguments --f_start, --f_end and --df requires the "
-                 "--binary argument")
+if (not args.binary and args.f is not None:
+    parser.error("The argument --f requires the --binary flag to be set")
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-input_path = dir_path + '/../../input/ion_map/xml/aligned/'
+input_path = dir_path + '/../../input/ion_map/xml/'
 output_path = dir_path + '/../../output/nexus/'
 mtnw = MiteToNexusWriter(input_path, output_path)
-
-for min_niter in range(args.min_niter_start, args.min_niter_end + 1):
-    if args.binary and args.df > 0:
-        for f in np.arange(args.f_start, args.f_end + args.df, args.df):
-            __write_nexus(args.window_width, args.window_height, min_niter,
-                          args.append_by_row, args.binary, f)
-    else:
-        __write_nexus(args.window_width, args.window_height, min_niter,
-                      args.append_by_row, args.binary, args.f_start)
+__write_nexus(args.window_width, args.window_height, args.binary, args.f)
