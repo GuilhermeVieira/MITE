@@ -1,0 +1,26 @@
+#NEXUS
+[ID: 8066314375]
+begin taxa;
+	dimensions ntax=7;
+	taxlabels
+		cotiara
+		erythromelas
+		insularis
+		jararaca
+		jararacussu
+		moojeni
+		neuwiedi
+		;
+end;
+begin trees;
+	translate
+		1	cotiara,
+		2	erythromelas,
+		3	insularis,
+		4	jararaca,
+		5	jararacussu,
+		6	moojeni,
+		7	neuwiedi
+		;
+   tree con_50_majrule = [&U] (1[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:2.371652e-01[&length_mean=2.37438024e-01,length_median=2.37165200e-01,length_95%HPD={1.59268600e-01,3.03641800e-01}],(3[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.274450e-01[&length_mean=1.27787441e-01,length_median=1.27445000e-01,length_95%HPD={8.37553900e-02,1.62701800e-01}],4[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:8.094179e-02[&length_mean=8.01855173e-02,length_median=8.09417900e-02,length_95%HPD={5.29977600e-02,1.03667400e-01}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:5.403573e-02[&length_mean=5.46717037e-02,length_median=5.40357300e-02,length_95%HPD={3.51896300e-02,7.32089700e-02}],(2[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.983344e-01[&length_mean=2.00009321e-01,length_median=1.98334400e-01,length_95%HPD={1.31459900e-01,2.53673100e-01}],((5[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:3.137919e-01[&length_mean=3.12456101e-01,length_median=3.13791900e-01,length_95%HPD={2.06870300e-01,4.05115000e-01}],7[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:1.666517e-01[&length_mean=1.67167341e-01,length_median=1.66651700e-01,length_95%HPD={1.09038900e-01,2.12377600e-01}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:2.425886e-02[&length_mean=2.43160687e-02,length_median=2.42588600e-02,length_95%HPD={1.07321300e-02,3.34495600e-02}],6[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:2.770368e-01[&length_mean=2.78762085e-01,length_median=2.77036800e-01,length_95%HPD={1.84736800e-01,3.50104800e-01}])[&prob=1.00000000e+00,prob_stddev=0.00000000e+00,prob_range={1.00000000e+00,1.00000000e+00},prob(percent)="100",prob+-sd="100+-0"]:2.040668e-02[&length_mean=2.03653903e-02,length_median=2.04066800e-02,length_95%HPD={1.08199000e-02,2.85468600e-02}])[&prob=9.20731707e-01,prob_stddev=8.62325343e-03,prob_range={9.14634146e-01,9.26829268e-01},prob(percent)="92",prob+-sd="92+-1"]:7.871211e-03[&length_mean=7.93978387e-03,length_median=7.87121100e-03,length_95%HPD={1.79893300e-03,1.42393600e-02}]);
+end;
