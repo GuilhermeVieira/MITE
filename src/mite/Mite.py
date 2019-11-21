@@ -22,12 +22,10 @@
 ##################################################################################
 
 
-import decimal
 import math
 import matplotlib.pylab as plt
 import numpy as np
-import os
-from scipy.sparse import coo_matrix, csr_matrix, lil_matrix
+from scipy.sparse import coo_matrix, lil_matrix
 
 from MiteXMLReader import MiteXMLReader
 
