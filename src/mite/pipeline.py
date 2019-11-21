@@ -38,15 +38,22 @@ def __print(output, string):
     print(string)
     output.write(string)
 
-def create_nexus_files(w, h, binary, f):
+def create_nexus_files(mtnw, w, h, binary, f):
     print("Creating the NEXUS files...")
-    nexus.run(w, h, binary, f)
+    nexus.run(mtnw, w, h, binary, f)
 
 def run_mb(nproc):
     process = subprocess.call(["./run_mrbayes.sh", str(nproc)])
 
 def run_cadm():
     cadm.run()
+
+def run(mtnw, w, h, binary, f):
+    create_nexus_files(
+        mtnw, args.window_width, args.window_height, args.binary, args.f
+    )
+    run_mb(args.nproc)
+    run_cadm()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -80,6 +87,8 @@ if __name__ == '__main__':
     if (not args.binary and args.f is not None):
         parser.error("The argument --f requires the --binary flag to be set")
 
-    create_nexus_files(args.window_width, args.window_height, args.binary, args.f)
-    run_mb(args.nproc)
-    run_cadm()
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    input_path = dir_path + '/../../input/ion_map/xml/'
+    output_path = dir_path + '/test/'
+    mtnw = MiteToNexusWriter(input_path, output_path, args.binary)
+    run(mtnw, args.window_width, args.window_height, args.binary, args.f)

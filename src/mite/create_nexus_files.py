@@ -29,15 +29,11 @@ import os
 
 from MiteToNexusWriter import MiteToNexusWriter
 
-def run(w, h, binary, f):
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    input_path = dir_path + '/../../input/ion_map/xml/'
-    output_path = dir_path + '/../../output/nexus/'
-    mtnw = MiteToNexusWriter(input_path, output_path, binary)
-
-    print('Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
-          ', binary=' + str(binary) + ', f=' + str(f), end = '')
-    print(')')
+def run(mtnw, w, h, binary, f):
+    print(
+        'Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
+        ', binary=' + str(binary) + ', f=' + str(f), end = ')'
+    )
 
     mtnw.write_nexus(w, h, f=f)
 
@@ -62,4 +58,8 @@ if __name__ == '__main__':
     if (not args.binary and args.f is not None):
         parser.error("The argument --f requires the --binary flag to be set")
 
-    run(args.window_width, args.window_height, args.binary, args.f)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    input_path = dir_path + '/../../input/ion_map/xml/'
+    output_path = dir_path + '/../../output/nexus/'
+    mtnw = MiteToNexusWriter(input_path, output_path, args.binary)
+    run(mtnw, args.window_width, args.window_height, args.binary, args.f)
