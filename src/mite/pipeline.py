@@ -52,8 +52,8 @@ def run(mtnw, w, h, binary, f):
     create_nexus_files(
         mtnw, args.window_width, args.window_height, args.binary, args.f
     )
-    #run_mb(args.nproc)
-    #run_cadm()
+    run_mb(args.nproc)
+    run_cadm()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
