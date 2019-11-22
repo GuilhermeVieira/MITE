@@ -22,37 +22,30 @@
 ##                                                                              ##
 ##################################################################################
 
+import ntpath
 import os
 import sys
 sys.path.append("..")
 
 from CADM import CADM
 
-nexus_dirname = '../../output/nexus/'
-nexus_directory = os.fsencode(nexus_dirname)
-gen = '../../input/genomic/genomic.nex.con.tre'
-
 def __print(output, string):
-    print(string)
+    #print(string)
     output.write(string)
 
-def run():
-    with open('../../reports/report_mite.txt', 'w') as report:
+def run(nexus_path, reports_path):
+    gen = '../../input/genomic/genomic.nex.con.tre'
+    basename = ntpath.basename(nexus_path)
+
+    with open(reports_path, 'w') as report:
         __print(report,
             "\nReport comparing topology using the CADM test of the resulting"
             "trees with the tree obtained with the genomic data.\n")
         __print(report, 30*("-") + "\n")
-
-        for d in os.listdir(nexus_directory):
-            dname = os.fsdecode(d)
-
-            if (not os.path.isdir(nexus_dirname + dname) or dname.startswith('.')):
-                continue
-
-            __print(report, "Target: " + dname + "\n")
-            tree = '{0}{1}/mite.nex.con.tre'.format(nexus_dirname, dname)
-            __print(report, str(CADM(gen, tree, '-t')) + "\n")
-            __print(report, 30*("-") + "\n")
+        __print(report, "Target: MITE\n")
+        tree = '{0}/mite.nex.con.tre'.format(nexus_path)
+        __print(report, str(CADM(gen, tree, '-t')) + "\n")
+        __print(report, 30*("-") + "\n")
 
 if __name__ == '__main__':
     run()
