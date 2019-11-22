@@ -38,9 +38,9 @@ def __print(output, string):
     print(string)
     output.write(string)
 
-def create_nexus_files(mtnw, w, h, binary, f):
+def create_nexus_files(mtnw, w, h, binary, f, partition):
     print("Creating the NEXUS files...")
-    nexus.run(mtnw, w, h, binary, f)
+    nexus.run(mtnw, w, h, binary, f, partition)
 
 def run_mb(nproc):
     process = subprocess.call(["./run_mrbayes.sh", str(nproc)])
@@ -48,11 +48,9 @@ def run_mb(nproc):
 def run_cadm():
     cadm.run()
 
-def run(mtnw, w, h, binary, f):
-    create_nexus_files(
-        mtnw, args.window_width, args.window_height, args.binary, args.f
-    )
-    run_mb(args.nproc)
+def run(mtnw, w, h, binary, f, partition, nproc):
+    create_nexus_files(mtnw, w, h, binary, f, partition)
+    run_mb(nproc)
     run_cadm()
 
 if __name__ == '__main__':
@@ -91,4 +89,10 @@ if __name__ == '__main__':
     input_path = dir_path + '/../../input/ion_map/xml/'
     output_path = dir_path + '/../../output/nexus/'
     mtnw = MiteToNexusWriter(input_path, output_path, args.binary)
-    run(mtnw, args.window_width, args.window_height, args.binary, args.f)
+    m = mtnw.mites[0].matrix.shape[0]
+    n = mtnw.mites[0].matrix.shape[1]
+    partition = [(slice(0, m), slice(0, n))]
+    run(
+        mtnw, args.window_width, args.window_height, args.binary, args.f,
+        partition, args.nproc
+    )
