@@ -44,8 +44,11 @@ def run(nexus_path, reports_path):
         __print(report, 30*("-") + "\n")
         __print(report, "Target: MITE\n")
         tree = '{0}/mite.nex.con.tre'.format(nexus_path)
-        __print(report, str(CADM(gen, tree, '-t')) + "\n")
+        res, W = CADM(gen, tree, '-t')
+        __print(report, str(res) + "\n")
         __print(report, 30*("-") + "\n")
+
+    return W
 
 if __name__ == '__main__':
     run()

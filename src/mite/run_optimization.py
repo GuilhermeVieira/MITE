@@ -88,10 +88,7 @@ def run_mrbayes(nexus_path, run_num):
 # Runs the CADM test, comparing the constructed tree with the mtDNA tree.
 def run_cadm(nexus_path):
     logging.info('Starting to run CADM test')
-    cadm.run(nexus_path, reports_path)
-
-# Assesses the results from the CADM test.
-def assess_results():
+    W = cadm.run(nexus_path, reports_path)
     logging.info('Checking results')
 
 # Run optimization procedure
@@ -104,7 +101,6 @@ def run_basic_optimization(args):
         nexus_complete_path = construct_nexus(mtnw, args, partition)
         run_mrbayes(nexus_complete_path, i)
         run_cadm(args.nexus_path)
-        assess_results()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

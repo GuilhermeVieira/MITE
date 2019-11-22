@@ -50,10 +50,12 @@ def CADM (t1, t2, v='-p'):
         B <- B[x, x]
         M <- rbind(A, B)
         res.global <- CADM.global(M, 2, Ntip(a))
+        W <- res.global[[1]][[1]]
     '''.format(t1, t2, topo))
     res = robjects.globalenv['res.global']
+    W = robjects.globalenv['W']
 
-    return res
+    return res, W
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
