@@ -135,4 +135,7 @@ class MiteToNexusWriter:
             os.makedirs(self.output_path + dirname)
 
         dirname += '/'
-        nw.writeFile(self.output_path + dirname + 'mite.nex')
+        complete_path = self.output_path + dirname
+        nw.writeFile(complete_path + 'mite.nex')
+
+        return complete_path

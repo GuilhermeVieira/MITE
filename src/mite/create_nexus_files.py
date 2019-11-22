@@ -35,7 +35,7 @@ def run(mtnw, w, h, binary, f, partition):
         ', binary=' + str(binary) + ', f=' + str(f) + ')'
     )
 
-    mtnw.write_nexus(w, h, partition, f=f)
+    return mtnw.write_nexus(w, h, partition, f=f)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
