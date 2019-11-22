@@ -20,6 +20,7 @@
 ##                                                                              ##
 ##################################################################################
 
+import logging
 import numpy as np
 import os
 import sys
@@ -43,7 +44,7 @@ class MiteToNexusWriter:
 
     # Loads all the mites
     def __load_mites(self):
-        print("Loading ion maps...")
+        logging.info("Loading ion maps...")
 
         mites = []
         run_names = []

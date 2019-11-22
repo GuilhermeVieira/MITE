@@ -24,9 +24,11 @@
 ##################################################################################
 
 import argparse
+import logging
 import math
 import os
 import subprocess
+from datetime import datetime
 
 from MiteToNexusWriter import MiteToNexusWriter
 import create_nexus_files as nexus
@@ -34,12 +36,21 @@ import create_nexus_files as nexus
 
 dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
 log_path = dir_path + '../../log/'
+reports_path = dir_path + '../../reports/report_mite.txt'
 
 max_pcount_row = 20 
 max_pcount_col = 20
 
+# Returns the time elapsed
+def elapsed(start, end):
+    return str(end - start)
+
 # Returns a uniform partition that will be used in all ion maps.
 def generate_uniform_partition(shape, pcount_row, pcount_col):
+    logging.info(
+        'Generating an uniform partition (' + str(pcount_row) + 'x' +
+        str(pcount_col) + ' parts)'
+    )
     partition = []
     step_row = int(math.ceil(shape[0] / pcount_row))
     step_col = int(math.ceil(shape[1] / pcount_col))
@@ -54,28 +65,34 @@ def generate_uniform_partition(shape, pcount_row, pcount_col):
 
 # Constructs the NEXUS file from the partitioned ion maps.
 def construct_nexus(mtnw, args, partition):
-    nexus.run(
+    start = datetime.now()
+    return nexus.run(
         mtnw, args.window_width, args.window_height, args.binary,
         args.f, partition
     )
-
-    return
+    end = datetime.now()
+    logging.info('NEXUS creation elapsed time: ' + elapsed(start, end))
 
 # Runs MrBayes with the NEXUS file as input.
 def run_mrbayes(nexus_path, run_num):
+    outfile = open(log_path + 'mb/mb_log' + str(run_num) + '.txt', "w")
+    logging.info('Starting to run MrBayes')
+    start = datetime.now()
     subprocess.call(
-        ['mb', dir_path + nexus_path + '/mite.nex', '>',
-         log_path + 'mb/mb_log' + run_num + '.txt']
+        ['mb', dir_path + nexus_path + '/mite.nex'],
+        stdout=outfile
     )
-    return
+    end = datetime.now()
+    logging.info('MrBayes elapsed time: ' + elapsed(start, end))
 
 # Runs the CADM test, comparing the constructed tree with the mtDNA tree.
-def run_cadm():
-    return
+def run_cadm(nexus_path):
+    logging.info('Starting to run CADM test')
+    cadm.run(nexus_path, reports_path)
 
 # Assesses the results from the CADM test.
 def assess_results():
-    return
+    logging.info('Checking results')
 
 # Run optimization procedure
 def run_basic_optimization(args):
@@ -84,9 +101,9 @@ def run_basic_optimization(args):
 
     for i, j in zip(range(1, max_pcount_row + 1), range(1, max_pcount_col + 1)):
         partition = generate_uniform_partition(shape, i, j)
-        construct_nexus(mtnw, args, partition)
-        run_mrbayes(args.nexus_path, i)
-        run_cadm()
+        nexus_complete_path = construct_nexus(mtnw, args, partition)
+        run_mrbayes(nexus_complete_path, i)
+        run_cadm(args.nexus_path)
         assess_results()
 
 if __name__ == '__main__':
@@ -126,4 +143,15 @@ if __name__ == '__main__':
     if (not args.binary and args.f is not None):
         parser.error("The argument --f requires the --binary flag to be set")
 
+    now = datetime.now()
+    dt_string = now.strftime("%d%m%Y_%H:%M:%S")
+    logging.basicConfig(
+        filename=(log_path + dt_string + '.txt'),
+        level=logging.INFO,
+        filemode="w",
+        format='%(asctime)s %(levelname)s:%(message)s'
+    )
+    start = datetime.now()
     run_basic_optimization(args)
+    end = datetime.now()
+    logging.info('Total elapsed time: ' + elapsed(start, end))

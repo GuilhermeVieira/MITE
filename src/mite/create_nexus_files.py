@@ -24,13 +24,14 @@
 ##################################################################################
 
 import argparse
+import logging
 import numpy as np
 import os
 
 from MiteToNexusWriter import MiteToNexusWriter
 
 def run(mtnw, w, h, binary, f, partition):
-    print(
+    logging.info(
         'Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
         ', binary=' + str(binary) + ', f=' + str(f) + ')'
     )
