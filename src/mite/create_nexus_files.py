@@ -29,13 +29,13 @@ import os
 
 from MiteToNexusWriter import MiteToNexusWriter
 
-def run(mtnw, w, h, binary, f):
+def run(mtnw, w, h, binary, f, partition):
     print(
         'Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
         ', binary=' + str(binary) + ', f=' + str(f) + ')'
     )
 
-    mtnw.write_nexus(w, h, f=f)
+    mtnw.write_nexus(w, h, partition, f=f)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -62,4 +62,10 @@ if __name__ == '__main__':
     input_path = dir_path + '/../../input/ion_map/xml/'
     output_path = dir_path + '/../../output/nexus/'
     mtnw = MiteToNexusWriter(input_path, output_path, args.binary)
-    run(mtnw, args.window_width, args.window_height, args.binary, args.f)
+    m = mtnw.mites[0].matrix.shape[0]
+    n = mtnw.mites[0].matrix.shape[1]
+    partition = [(slice(0, m), slice(0, n))]
+    run(
+        mtnw, args.window_width, args.window_height, args.binary, args.f,
+        partition
+    )

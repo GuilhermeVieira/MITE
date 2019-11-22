@@ -22,7 +22,7 @@
 ##################################################################################
 
 import matplotlib.pylab as plt
-from scipy.sparse import coo_matrix
+from scipy.sparse import coo_matrix, csr_matrix
 
 from MiteXMLReader import MiteXMLReader
 
@@ -43,6 +43,7 @@ class Mite:
         shape = (int((self.tr_max - self.tr_min) * 10 ** tr_round),
                 int((self.mz_max - self.mz_min) * 10 ** mz_round))
         self.matrix = coo_matrix((data, (row, col)), shape)
+        self.matrix = csr_matrix(self.matrix)
 
     # Plots the mite
     def plot(self):

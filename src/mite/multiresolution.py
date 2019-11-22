@@ -24,7 +24,7 @@
 
 import math
 import numpy as np
-from scipy.sparse import csr_matrix, lil_matrix
+from scipy.sparse import lil_matrix
 
 # Returns the window (and its position) to which a matrix element belongs
 # and the position of this element in the window
@@ -57,14 +57,14 @@ def __reduce_dim(old, f, w, h, binary):
 
     return new.tocsr(copy=True)
 
-# Returns a new matrix with reduced dimensionality
+# Returns a new matrix with reduced dimensionality (wrapper)
 def reduce_dim(matrix, w, h, binary, max_size=math.inf, f=0.0):
     if w >= matrix.shape[0]:
         raise ValueError('w is too big!')
     if h >= matrix.shape[1]:
         raise ValueError('h is too big!')
 
-    reduced = matrix.tocsr(copy=True)
+    reduced = matrix.copy()
     x = 0
 
     while reduced.shape[0] * reduced.shape[1] > max_size:
@@ -72,3 +72,12 @@ def reduce_dim(matrix, w, h, binary, max_size=math.inf, f=0.0):
         x += 1
 
     return reduced 
+
+# Returns the parts of the partition applied to the matrix
+def get_parts(matrix, partition):
+    parts = []
+
+    for p in partition:
+        parts.append(matrix[p[0], p[1]])
+
+    return parts
