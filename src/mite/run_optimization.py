@@ -41,6 +41,11 @@ reports_path = dir_path + '../../reports/report_mite.txt'
 max_pcount_row = 20 
 max_pcount_col = 20
 
+global_best = tuple()
+best_history = []
+
+iterations_count = 0
+
 # Returns the time elapsed
 def elapsed(start, end):
     return str(end - start)
@@ -89,7 +94,17 @@ def run_mrbayes(nexus_path, run_num):
 def run_cadm(nexus_path):
     logging.info('Starting to run CADM test')
     W = cadm.run(nexus_path, reports_path)
-    logging.info('Checking results')
+    logging.info("Kendall's W = " + str(W))
+    
+    return W
+
+# Assesses the results
+def assess_results(W, partition, nexus_path):
+    if W > global_best[0]:
+        logging.info('W=' + str(W) + ' is the new global best')
+        global_best = (W, partition)
+        best_history.append((W, partition))
+        os.rename(nexus_path + '/mite.nex.con.tre', nexus_path + '/best.nex.con.tre')
 
 # Run optimization procedure
 def run_basic_optimization(args):
@@ -100,7 +115,9 @@ def run_basic_optimization(args):
         partition = generate_uniform_partition(shape, i, j)
         nexus_complete_path = construct_nexus(mtnw, args, partition)
         run_mrbayes(nexus_complete_path, i)
-        run_cadm(args.nexus_path)
+        W = run_cadm(args.nexus_path)
+        assess_results(W, partition, nexus_complete_path)
+        iterations_count += 1
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -151,3 +168,6 @@ if __name__ == '__main__':
     run_basic_optimization(args)
     end = datetime.now()
     logging.info('Total elapsed time: ' + elapsed(start, end))
+    logging.info('Number of iterations: ' + str(iterations_count))
+    logging.info('Global best: ' + str(global_best))
+    logging.info('Best history: ' + str(best_history))
