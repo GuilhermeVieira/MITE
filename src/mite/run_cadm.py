@@ -22,7 +22,6 @@
 ##                                                                              ##
 ##################################################################################
 
-import ntpath
 import os
 import sys
 sys.path.append("..")
@@ -35,7 +34,6 @@ def __print(output, string):
 
 def run(nexus_path, reports_path):
     gen = '../../input/genomic/genomic.nex.con.tre'
-    basename = ntpath.basename(nexus_path)
 
     with open(reports_path, 'w') as report:
         __print(report,
@@ -51,4 +49,4 @@ def run(nexus_path, reports_path):
     return W
 
 if __name__ == '__main__':
-    run()
+    run('../../output/nexus/discrete', '../../reports/report_mite.txt')
