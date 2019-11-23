@@ -104,7 +104,7 @@ class MiteToNexusWriter:
             for p in parts: 
                 r = mr.reduce_dim(
                     p, w, h, self.mites[0].binary,
-                    max_size=self.max_token_length, f=f
+                    max_size=self.max_token_length/len(parts), f=f
                 )
                 flattened_mite = np.concatenate(
                     (flattened_mite, self.__matrix2array(r))
