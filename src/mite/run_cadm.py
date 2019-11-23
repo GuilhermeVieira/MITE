@@ -42,11 +42,11 @@ def run(nexus_path, reports_path):
         __print(report, 30*("-") + "\n")
         __print(report, "Target: MITE\n")
         tree = '{0}/mite.nex.con.tre'.format(nexus_path)
-        res, W = CADM(gen, tree, '-t')
+        res, stats = CADM(gen, tree, '-t')
         __print(report, str(res) + "\n")
         __print(report, 30*("-") + "\n")
 
-    return W
+    return stats
 
 if __name__ == '__main__':
     run('../../output/nexus/discrete', '../../reports/report_mite.txt')
