@@ -38,10 +38,10 @@ dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
 log_path = dir_path + '../../log/'
 reports_path = dir_path + '../../reports/report_mite.txt'
 
-max_pcount_row = 20 
-max_pcount_col = 20
+max_pcount_row = 156
+max_pcount_col = 156
 
-global_best = (0,)
+global_best = ([0], [])
 best_history = []
 
 iterations_count = 0
@@ -90,10 +90,16 @@ def run_mrbayes(nexus_path, run_num):
     outfile = open(mblog_path + 'mb_log' + str(run_num) + '.txt', "w")
     logging.info('Starting to run MrBayes')
     start = datetime.now()
-    subprocess.call(
-        ['mb', nexus_path + '/mite.nex'],
-        stdout=outfile
-    )
+
+    try:
+        subprocess.check_call(
+            ['mb', nexus_path + '/mite.nex'],
+            stdout=outfile,
+            stderr=subprocess.STDOUT
+        )
+    except subprocess.CalledProcessError as e:
+        logging.exception(e.returncode, e.output)
+
     end = datetime.now()
     logging.info('MrBayes elapsed time: ' + elapsed(start, end))
 
@@ -110,7 +116,7 @@ def assess_results(stats, partition, nexus_path):
     global global_best
     global best_history
 
-    if stats[0] > global_best[0]:
+    if stats[0] > global_best[0][0]:
         logging.info('W = ' + str(stats[0]) + ' is the new global best')
         global_best = (stats, partition)
         best_history.append((stats, partition))
@@ -183,6 +189,10 @@ if __name__ == '__main__':
         filemode="w",
         format='%(asctime)s %(levelname)s:%(message)s',
         datefmt='%d/%m/%Y %H:%M:%S'
+    )
+    logging.info(
+        'Starting optimization routine. Partitioning ion maps up to '
+        + str(max_pcount_row) + 'x' + str(max_pcount_col) + ' parts'
     )
     start = datetime.now()
     run_basic_optimization(args)
