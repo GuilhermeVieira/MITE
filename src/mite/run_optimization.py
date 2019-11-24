@@ -38,6 +38,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
 log_path = dir_path + '../../log/'
 reports_path = dir_path + '../../reports/report_mite.txt'
 
+min_pcount_row = 83
+min_pcount_col = 83
 max_pcount_row = 156
 max_pcount_col = 156
 
@@ -129,7 +131,7 @@ def run_basic_optimization(args):
     shape = mtnw.mites[0].matrix.shape
     global iterations_count
 
-    for i, j in zip(range(1, max_pcount_row + 1), range(1, max_pcount_col + 1)):
+    for i, j in zip(range(min_pcount_row, max_pcount_row + 1), range(min_pcount_col, max_pcount_col + 1)):
         logging.info('Starting iteration ' + str(i))
         start = datetime.now()
         partition = generate_uniform_partition(shape, i, j)
