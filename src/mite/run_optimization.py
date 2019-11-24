@@ -121,6 +121,7 @@ def assess_results(stats, partition, nexus_path):
         global_best = (stats, partition)
         best_history.append((stats, partition))
         os.rename(nexus_path + '/mite.nex.con.tre', nexus_path + '/best.nex.con.tre')
+        os.rename(nexus_path + '/mite.nex', nexus_path + '/best.nex')
 
 # Run optimization procedure
 def run_basic_optimization(args):
