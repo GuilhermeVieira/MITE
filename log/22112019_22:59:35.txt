@@ -1,0 +1,4 @@
+22/11/2019 22:59:35 INFO:Loading ion maps...
+22/11/2019 22:59:38 INFO:Starting iteration 1
+22/11/2019 22:59:38 INFO:Starting to run CADM test
+22/11/2019 22:59:38 INFO:Kendall's W = 0.446404793608522

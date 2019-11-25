@@ -1,0 +1,7 @@
+24/11/2019 15:50:30 INFO:Starting optimization routine. Partitioning ion maps up to 156x156 parts
+24/11/2019 15:50:30 INFO:Loading ion maps...
+24/11/2019 15:50:33 INFO:Starting iteration 83
+24/11/2019 15:50:33 INFO:Generating an uniform partition (83x83 parts)
+24/11/2019 15:50:33 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 15:56:23 INFO:NEXUS creation elapsed time: 0:05:50.415135
+24/11/2019 15:56:23 INFO:Starting to run MrBayes

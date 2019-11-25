@@ -1,0 +1,46 @@
+23/11/2019 10:33:44 INFO:Loading ion maps...
+23/11/2019 10:33:46 INFO:Starting iteration 1
+23/11/2019 10:33:46 INFO:Generating an uniform partition (1x1 parts)
+23/11/2019 10:33:46 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 10:35:59 INFO:NEXUS creation elapsed time: 0:02:12.479103
+23/11/2019 10:35:59 INFO:Starting to run MrBayes
+23/11/2019 10:50:11 INFO:MrBayes elapsed time: 0:14:12.437954
+23/11/2019 10:50:11 INFO:Starting to run CADM test
+23/11/2019 10:50:12 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6600000
+
+23/11/2019 10:50:12 INFO:W = 0.446404793608522 is the new global best
+23/11/2019 10:50:12 INFO:Iteration 1 elapsed time: 0:16:25.190957
+23/11/2019 10:50:12 INFO:Starting iteration 2
+23/11/2019 10:50:12 INFO:Generating an uniform partition (2x2 parts)
+23/11/2019 10:50:12 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 10:52:24 INFO:NEXUS creation elapsed time: 0:02:12.437503
+23/11/2019 10:52:24 INFO:Starting to run MrBayes
+23/11/2019 11:06:43 INFO:MrBayes elapsed time: 0:14:18.999425
+23/11/2019 11:06:43 INFO:Starting to run CADM test
+23/11/2019 11:06:43 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6700000
+
+23/11/2019 11:06:43 INFO:Iteration 2 elapsed time: 0:16:31.573851
+23/11/2019 11:06:43 INFO:Starting iteration 3
+23/11/2019 11:06:43 INFO:Generating an uniform partition (3x3 parts)
+23/11/2019 11:06:43 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 11:08:56 INFO:NEXUS creation elapsed time: 0:02:12.598234
+23/11/2019 11:08:56 INFO:Starting to run MrBayes
+23/11/2019 11:24:50 INFO:MrBayes elapsed time: 0:15:53.481777
+23/11/2019 11:24:50 INFO:Starting to run CADM test
+23/11/2019 11:24:50 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7400000
+
+23/11/2019 11:24:50 INFO:Iteration 3 elapsed time: 0:18:06.392968
+23/11/2019 11:24:50 INFO:Starting iteration 4
+23/11/2019 11:24:50 INFO:Generating an uniform partition (4x4 parts)
+23/11/2019 11:24:50 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 11:27:02 INFO:NEXUS creation elapsed time: 0:02:12.574774
+23/11/2019 11:27:02 INFO:Starting to run MrBayes

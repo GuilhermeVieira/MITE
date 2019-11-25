@@ -1,0 +1,1075 @@
+23/11/2019 11:40:33 INFO:Starting optimization routine. Partitioning ion maps up to 156x156 parts
+23/11/2019 11:40:33 INFO:Loading ion maps...
+23/11/2019 11:40:35 INFO:Starting iteration 1
+23/11/2019 11:40:35 INFO:Generating an uniform partition (1x1 parts)
+23/11/2019 11:40:35 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 11:42:44 INFO:NEXUS creation elapsed time: 0:02:08.222298
+23/11/2019 11:42:44 INFO:Starting to run MrBayes
+23/11/2019 11:56:56 INFO:MrBayes elapsed time: 0:14:12.336664
+23/11/2019 11:56:56 INFO:Starting to run CADM test
+23/11/2019 11:56:56 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5900000
+
+23/11/2019 11:56:56 INFO:W = 0.446404793608522 is the new global best
+23/11/2019 11:56:56 INFO:Iteration 1 elapsed time: 0:16:20.889772
+23/11/2019 11:56:56 INFO:Starting iteration 2
+23/11/2019 11:56:56 INFO:Generating an uniform partition (2x2 parts)
+23/11/2019 11:56:56 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 11:59:05 INFO:NEXUS creation elapsed time: 0:02:08.823606
+23/11/2019 11:59:07 INFO:Starting to run MrBayes
+23/11/2019 12:14:05 INFO:MrBayes elapsed time: 0:14:58.771437
+23/11/2019 12:14:05 INFO:Starting to run CADM test
+23/11/2019 12:14:06 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6000000
+
+23/11/2019 12:14:06 INFO:Iteration 2 elapsed time: 0:17:09.228794
+23/11/2019 12:14:06 INFO:Starting iteration 3
+23/11/2019 12:14:06 INFO:Generating an uniform partition (3x3 parts)
+23/11/2019 12:14:06 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 12:16:15 INFO:NEXUS creation elapsed time: 0:02:09.522331
+23/11/2019 12:16:15 INFO:Starting to run MrBayes
+23/11/2019 12:31:12 INFO:MrBayes elapsed time: 0:14:56.490038
+23/11/2019 12:31:12 INFO:Starting to run CADM test
+23/11/2019 12:31:12 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7400000
+
+23/11/2019 12:31:12 INFO:Iteration 3 elapsed time: 0:17:06.181165
+23/11/2019 12:31:12 INFO:Starting iteration 4
+23/11/2019 12:31:12 INFO:Generating an uniform partition (4x4 parts)
+23/11/2019 12:31:12 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 12:33:21 INFO:NEXUS creation elapsed time: 0:02:09.138640
+23/11/2019 12:33:21 INFO:Starting to run MrBayes
+23/11/2019 12:48:10 INFO:MrBayes elapsed time: 0:14:48.738413
+23/11/2019 12:48:10 INFO:Starting to run CADM test
+23/11/2019 12:48:10 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.7000000
+
+23/11/2019 12:48:10 INFO:Iteration 4 elapsed time: 0:16:58.026534
+23/11/2019 12:48:10 INFO:Starting iteration 5
+23/11/2019 12:48:10 INFO:Generating an uniform partition (5x5 parts)
+23/11/2019 12:48:10 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 12:50:20 INFO:NEXUS creation elapsed time: 0:02:10.023672
+23/11/2019 12:50:20 INFO:Starting to run MrBayes
+23/11/2019 13:05:27 INFO:MrBayes elapsed time: 0:15:07.299568
+23/11/2019 13:05:27 INFO:Starting to run CADM test
+23/11/2019 13:05:27 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6500000
+
+23/11/2019 13:05:27 INFO:Iteration 5 elapsed time: 0:17:17.479168
+23/11/2019 13:05:27 INFO:Starting iteration 6
+23/11/2019 13:05:27 INFO:Generating an uniform partition (6x6 parts)
+23/11/2019 13:05:27 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 13:07:37 INFO:NEXUS creation elapsed time: 0:02:09.704133
+23/11/2019 13:07:37 INFO:Starting to run MrBayes
+23/11/2019 13:21:49 INFO:MrBayes elapsed time: 0:14:12.304792
+23/11/2019 13:21:49 INFO:Starting to run CADM test
+23/11/2019 13:21:49 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6500000
+
+23/11/2019 13:21:49 INFO:Iteration 6 elapsed time: 0:16:22.142435
+23/11/2019 13:21:49 INFO:Starting iteration 7
+23/11/2019 13:21:49 INFO:Generating an uniform partition (7x7 parts)
+23/11/2019 13:21:49 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 13:24:00 INFO:NEXUS creation elapsed time: 0:02:10.852426
+23/11/2019 13:24:00 INFO:Starting to run MrBayes
+23/11/2019 13:38:37 INFO:MrBayes elapsed time: 0:14:37.163010
+23/11/2019 13:38:37 INFO:Starting to run CADM test
+23/11/2019 13:38:37 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6400000
+
+23/11/2019 13:38:37 INFO:Iteration 7 elapsed time: 0:16:48.138041
+23/11/2019 13:38:37 INFO:Starting iteration 8
+23/11/2019 13:38:37 INFO:Generating an uniform partition (8x8 parts)
+23/11/2019 13:38:37 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 13:40:49 INFO:NEXUS creation elapsed time: 0:02:11.390749
+23/11/2019 13:40:49 INFO:Starting to run MrBayes
+23/11/2019 13:55:41 INFO:MrBayes elapsed time: 0:14:52.040054
+23/11/2019 13:55:41 INFO:Starting to run CADM test
+23/11/2019 13:55:41 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.7100000
+
+23/11/2019 13:55:41 INFO:Iteration 8 elapsed time: 0:17:03.535801
+23/11/2019 13:55:41 INFO:Starting iteration 9
+23/11/2019 13:55:41 INFO:Generating an uniform partition (9x9 parts)
+23/11/2019 13:55:41 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 13:57:53 INFO:NEXUS creation elapsed time: 0:02:11.912660
+23/11/2019 13:57:53 INFO:Starting to run MrBayes
+23/11/2019 14:13:02 INFO:MrBayes elapsed time: 0:15:09.041120
+23/11/2019 14:13:02 INFO:Starting to run CADM test
+23/11/2019 14:13:02 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6000000
+
+23/11/2019 14:13:02 INFO:Iteration 9 elapsed time: 0:17:21.059172
+23/11/2019 14:13:02 INFO:Starting iteration 10
+23/11/2019 14:13:02 INFO:Generating an uniform partition (10x10 parts)
+23/11/2019 14:13:02 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 14:15:15 INFO:NEXUS creation elapsed time: 0:02:12.493042
+23/11/2019 14:15:15 INFO:Starting to run MrBayes
+23/11/2019 14:30:43 INFO:MrBayes elapsed time: 0:15:28.064382
+23/11/2019 14:30:43 INFO:Starting to run CADM test
+23/11/2019 14:30:43 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6400000
+
+23/11/2019 14:30:43 INFO:Iteration 10 elapsed time: 0:17:40.695747
+23/11/2019 14:30:43 INFO:Starting iteration 11
+23/11/2019 14:30:43 INFO:Generating an uniform partition (11x11 parts)
+23/11/2019 14:30:43 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 14:32:56 INFO:NEXUS creation elapsed time: 0:02:13.590439
+23/11/2019 14:32:56 INFO:Starting to run MrBayes
+23/11/2019 14:48:39 INFO:MrBayes elapsed time: 0:15:42.450353
+23/11/2019 14:48:39 INFO:Starting to run CADM test
+23/11/2019 14:48:39 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6000000
+
+23/11/2019 14:48:39 INFO:Iteration 11 elapsed time: 0:17:56.184140
+23/11/2019 14:48:39 INFO:Starting iteration 12
+23/11/2019 14:48:39 INFO:Generating an uniform partition (12x12 parts)
+23/11/2019 14:48:39 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 14:50:53 INFO:NEXUS creation elapsed time: 0:02:13.660038
+23/11/2019 14:50:53 INFO:Starting to run MrBayes
+23/11/2019 15:06:54 INFO:MrBayes elapsed time: 0:16:01.534348
+23/11/2019 15:06:54 INFO:Starting to run CADM test
+23/11/2019 15:06:54 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5700000
+
+23/11/2019 15:06:54 INFO:Iteration 12 elapsed time: 0:18:15.327629
+23/11/2019 15:06:54 INFO:Starting iteration 13
+23/11/2019 15:06:54 INFO:Generating an uniform partition (13x13 parts)
+23/11/2019 15:06:54 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 15:09:09 INFO:NEXUS creation elapsed time: 0:02:14.357008
+23/11/2019 15:09:09 INFO:Starting to run MrBayes
+23/11/2019 15:25:17 INFO:MrBayes elapsed time: 0:16:08.695736
+23/11/2019 15:25:17 INFO:Starting to run CADM test
+23/11/2019 15:25:18 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6400000
+
+23/11/2019 15:25:18 INFO:Iteration 13 elapsed time: 0:18:23.209163
+23/11/2019 15:25:18 INFO:Starting iteration 14
+23/11/2019 15:25:18 INFO:Generating an uniform partition (14x14 parts)
+23/11/2019 15:25:18 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 15:27:41 INFO:NEXUS creation elapsed time: 0:02:23.552085
+23/11/2019 15:27:41 INFO:Starting to run MrBayes
+23/11/2019 15:43:14 INFO:MrBayes elapsed time: 0:15:33.410792
+23/11/2019 15:43:14 INFO:Starting to run CADM test
+23/11/2019 15:43:15 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.8100000
+
+23/11/2019 15:43:15 INFO:Iteration 14 elapsed time: 0:17:57.106793
+23/11/2019 15:43:15 INFO:Starting iteration 15
+23/11/2019 15:43:15 INFO:Generating an uniform partition (15x15 parts)
+23/11/2019 15:43:15 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 15:45:39 INFO:NEXUS creation elapsed time: 0:02:24.013170
+23/11/2019 15:45:39 INFO:Starting to run MrBayes
+23/11/2019 16:01:25 INFO:MrBayes elapsed time: 0:15:46.418580
+23/11/2019 16:01:25 INFO:Starting to run CADM test
+23/11/2019 16:01:25 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7200000
+
+23/11/2019 16:01:25 INFO:Iteration 15 elapsed time: 0:18:10.528948
+23/11/2019 16:01:25 INFO:Starting iteration 16
+23/11/2019 16:01:25 INFO:Generating an uniform partition (16x16 parts)
+23/11/2019 16:01:25 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 16:03:50 INFO:NEXUS creation elapsed time: 0:02:24.521202
+23/11/2019 16:03:50 INFO:Starting to run MrBayes
+23/11/2019 16:19:10 INFO:MrBayes elapsed time: 0:15:19.933704
+23/11/2019 16:19:10 INFO:Starting to run CADM test
+23/11/2019 16:19:10 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5500000
+
+23/11/2019 16:19:10 INFO:Iteration 16 elapsed time: 0:17:44.597423
+23/11/2019 16:19:10 INFO:Starting iteration 17
+23/11/2019 16:19:10 INFO:Generating an uniform partition (17x17 parts)
+23/11/2019 16:19:10 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 16:21:35 INFO:NEXUS creation elapsed time: 0:02:25.688822
+23/11/2019 16:21:35 INFO:Starting to run MrBayes
+23/11/2019 16:37:06 INFO:MrBayes elapsed time: 0:15:30.925566
+23/11/2019 16:37:06 INFO:Starting to run CADM test
+23/11/2019 16:37:07 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6100000
+
+23/11/2019 16:37:07 INFO:Iteration 17 elapsed time: 0:17:56.770206
+23/11/2019 16:37:07 INFO:Starting iteration 18
+23/11/2019 16:37:07 INFO:Generating an uniform partition (18x18 parts)
+23/11/2019 16:37:07 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 16:39:33 INFO:NEXUS creation elapsed time: 0:02:26.831667
+23/11/2019 16:39:33 INFO:Starting to run MrBayes
+23/11/2019 16:55:18 INFO:MrBayes elapsed time: 0:15:44.361683
+23/11/2019 16:55:18 INFO:Starting to run CADM test
+23/11/2019 16:55:18 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6800000
+
+23/11/2019 16:55:18 INFO:Iteration 18 elapsed time: 0:18:11.327242
+23/11/2019 16:55:18 INFO:Starting iteration 19
+23/11/2019 16:55:18 INFO:Generating an uniform partition (19x19 parts)
+23/11/2019 16:55:18 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 16:57:46 INFO:NEXUS creation elapsed time: 0:02:27.950161
+23/11/2019 16:57:46 INFO:Starting to run MrBayes
+23/11/2019 17:13:51 INFO:MrBayes elapsed time: 0:16:05.593019
+23/11/2019 17:13:51 INFO:Starting to run CADM test
+23/11/2019 17:13:52 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6900000
+
+23/11/2019 17:13:52 INFO:Iteration 19 elapsed time: 0:18:33.678344
+23/11/2019 17:13:52 INFO:Starting iteration 20
+23/11/2019 17:13:52 INFO:Generating an uniform partition (20x20 parts)
+23/11/2019 17:13:52 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 17:16:21 INFO:NEXUS creation elapsed time: 0:02:29.185607
+23/11/2019 17:16:21 INFO:Starting to run MrBayes
+23/11/2019 17:32:30 INFO:MrBayes elapsed time: 0:16:09.037145
+23/11/2019 17:32:30 INFO:Starting to run CADM test
+23/11/2019 17:32:30 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6300000
+
+23/11/2019 17:32:30 INFO:Iteration 20 elapsed time: 0:18:38.360408
+23/11/2019 17:32:30 INFO:Starting iteration 21
+23/11/2019 17:32:30 INFO:Generating an uniform partition (21x21 parts)
+23/11/2019 17:32:30 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 17:35:00 INFO:NEXUS creation elapsed time: 0:02:30.349712
+23/11/2019 17:35:00 INFO:Starting to run MrBayes
+23/11/2019 17:51:25 INFO:MrBayes elapsed time: 0:16:24.884751
+23/11/2019 17:51:25 INFO:Starting to run CADM test
+23/11/2019 17:51:25 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6000000
+
+23/11/2019 17:51:25 INFO:Iteration 21 elapsed time: 0:18:55.353663
+23/11/2019 17:51:25 INFO:Starting iteration 22
+23/11/2019 17:51:25 INFO:Generating an uniform partition (22x22 parts)
+23/11/2019 17:51:25 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 17:53:57 INFO:NEXUS creation elapsed time: 0:02:31.402529
+23/11/2019 17:53:57 INFO:Starting to run MrBayes
+23/11/2019 18:10:19 INFO:MrBayes elapsed time: 0:16:22.726116
+23/11/2019 18:10:19 INFO:Starting to run CADM test
+23/11/2019 18:10:19 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5100000
+
+23/11/2019 18:10:19 INFO:Iteration 22 elapsed time: 0:18:54.250988
+23/11/2019 18:10:19 INFO:Starting iteration 23
+23/11/2019 18:10:19 INFO:Generating an uniform partition (23x23 parts)
+23/11/2019 18:10:19 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 18:12:51 INFO:NEXUS creation elapsed time: 0:02:31.802352
+23/11/2019 18:12:51 INFO:Starting to run MrBayes
+23/11/2019 18:29:22 INFO:MrBayes elapsed time: 0:16:31.026527
+23/11/2019 18:29:22 INFO:Starting to run CADM test
+23/11/2019 18:29:22 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6000000
+
+23/11/2019 18:29:22 INFO:Iteration 23 elapsed time: 0:19:02.940902
+23/11/2019 18:29:22 INFO:Starting iteration 24
+23/11/2019 18:29:22 INFO:Generating an uniform partition (24x24 parts)
+23/11/2019 18:29:22 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 18:31:56 INFO:NEXUS creation elapsed time: 0:02:33.206468
+23/11/2019 18:31:56 INFO:Starting to run MrBayes
+23/11/2019 18:48:36 INFO:MrBayes elapsed time: 0:16:40.411571
+23/11/2019 18:48:36 INFO:Starting to run CADM test
+23/11/2019 18:48:36 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.7700000
+
+23/11/2019 18:48:36 INFO:Iteration 24 elapsed time: 0:19:13.766186
+23/11/2019 18:48:36 INFO:Starting iteration 25
+23/11/2019 18:48:36 INFO:Generating an uniform partition (25x25 parts)
+23/11/2019 18:48:36 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 18:51:11 INFO:NEXUS creation elapsed time: 0:02:34.554982
+23/11/2019 18:51:11 INFO:Starting to run MrBayes
+23/11/2019 19:08:06 INFO:MrBayes elapsed time: 0:16:55.156833
+23/11/2019 19:08:06 INFO:Starting to run CADM test
+23/11/2019 19:08:06 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5900000
+
+23/11/2019 19:08:06 INFO:Iteration 25 elapsed time: 0:19:29.855514
+23/11/2019 19:08:06 INFO:Starting iteration 26
+23/11/2019 19:08:06 INFO:Generating an uniform partition (26x26 parts)
+23/11/2019 19:08:06 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 19:10:42 INFO:NEXUS creation elapsed time: 0:02:35.700587
+23/11/2019 19:10:42 INFO:Starting to run MrBayes
+23/11/2019 19:27:35 INFO:MrBayes elapsed time: 0:16:53.581051
+23/11/2019 19:27:35 INFO:Starting to run CADM test
+23/11/2019 19:27:35 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6800000
+
+23/11/2019 19:27:35 INFO:Iteration 26 elapsed time: 0:19:29.419259
+23/11/2019 19:27:35 INFO:Starting iteration 27
+23/11/2019 19:27:35 INFO:Generating an uniform partition (27x27 parts)
+23/11/2019 19:27:35 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 19:30:13 INFO:NEXUS creation elapsed time: 0:02:37.280076
+23/11/2019 19:30:13 INFO:Starting to run MrBayes
+23/11/2019 19:47:21 INFO:MrBayes elapsed time: 0:17:07.760376
+23/11/2019 19:47:21 INFO:Starting to run CADM test
+23/11/2019 19:47:21 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.7200000
+
+23/11/2019 19:47:21 INFO:Iteration 27 elapsed time: 0:19:45.175904
+23/11/2019 19:47:21 INFO:Starting iteration 28
+23/11/2019 19:47:21 INFO:Generating an uniform partition (28x28 parts)
+23/11/2019 19:47:21 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 19:50:09 INFO:NEXUS creation elapsed time: 0:02:48.358175
+23/11/2019 19:50:09 INFO:Starting to run MrBayes
+23/11/2019 20:06:00 INFO:MrBayes elapsed time: 0:15:51.087283
+23/11/2019 20:06:00 INFO:Starting to run CADM test
+23/11/2019 20:06:00 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7600000
+
+23/11/2019 20:06:00 INFO:Iteration 28 elapsed time: 0:18:39.543260
+23/11/2019 20:06:00 INFO:Starting iteration 29
+23/11/2019 20:06:00 INFO:Generating an uniform partition (29x29 parts)
+23/11/2019 20:06:00 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 20:08:51 INFO:NEXUS creation elapsed time: 0:02:51.205993
+23/11/2019 20:08:51 INFO:Starting to run MrBayes
+23/11/2019 20:24:30 INFO:MrBayes elapsed time: 0:15:38.612803
+23/11/2019 20:24:30 INFO:Starting to run CADM test
+23/11/2019 20:24:30 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6200000
+
+23/11/2019 20:24:30 INFO:Iteration 29 elapsed time: 0:18:29.959199
+23/11/2019 20:24:30 INFO:Starting iteration 30
+23/11/2019 20:24:30 INFO:Generating an uniform partition (30x30 parts)
+23/11/2019 20:24:30 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 20:27:22 INFO:NEXUS creation elapsed time: 0:02:52.348834
+23/11/2019 20:27:23 INFO:Starting to run MrBayes
+23/11/2019 20:43:21 INFO:MrBayes elapsed time: 0:15:58.533976
+23/11/2019 20:43:21 INFO:Starting to run CADM test
+23/11/2019 20:43:21 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7900000
+
+23/11/2019 20:43:21 INFO:Iteration 30 elapsed time: 0:18:51.025062
+23/11/2019 20:43:21 INFO:Starting iteration 31
+23/11/2019 20:43:21 INFO:Generating an uniform partition (31x31 parts)
+23/11/2019 20:43:21 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 20:46:15 INFO:NEXUS creation elapsed time: 0:02:54.150828
+23/11/2019 20:46:15 INFO:Starting to run MrBayes
+23/11/2019 21:02:22 INFO:MrBayes elapsed time: 0:16:06.937955
+23/11/2019 21:02:22 INFO:Starting to run CADM test
+23/11/2019 21:02:22 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7600000
+
+23/11/2019 21:02:22 INFO:Iteration 31 elapsed time: 0:19:01.228114
+23/11/2019 21:02:22 INFO:Starting iteration 32
+23/11/2019 21:02:22 INFO:Generating an uniform partition (32x32 parts)
+23/11/2019 21:02:22 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 21:05:19 INFO:NEXUS creation elapsed time: 0:02:56.208836
+23/11/2019 21:05:19 INFO:Starting to run MrBayes
+23/11/2019 21:21:33 INFO:MrBayes elapsed time: 0:16:14.221879
+23/11/2019 21:21:33 INFO:Starting to run CADM test
+23/11/2019 21:21:33 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6800000
+
+23/11/2019 21:21:33 INFO:Iteration 32 elapsed time: 0:19:10.584295
+23/11/2019 21:21:33 INFO:Starting iteration 33
+23/11/2019 21:21:33 INFO:Generating an uniform partition (33x33 parts)
+23/11/2019 21:21:33 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 21:24:31 INFO:NEXUS creation elapsed time: 0:02:57.869881
+23/11/2019 21:24:31 INFO:Starting to run MrBayes
+23/11/2019 21:40:52 INFO:MrBayes elapsed time: 0:16:20.790989
+23/11/2019 21:40:52 INFO:Starting to run CADM test
+23/11/2019 21:40:52 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7700000
+
+23/11/2019 21:40:52 INFO:Iteration 33 elapsed time: 0:19:18.757008
+23/11/2019 21:40:52 INFO:Starting iteration 34
+23/11/2019 21:40:52 INFO:Generating an uniform partition (34x34 parts)
+23/11/2019 21:40:52 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 21:43:52 INFO:NEXUS creation elapsed time: 0:03:00.733180
+23/11/2019 21:43:52 INFO:Starting to run MrBayes
+23/11/2019 22:00:05 INFO:MrBayes elapsed time: 0:16:12.700731
+23/11/2019 22:00:05 INFO:Starting to run CADM test
+23/11/2019 22:00:05 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7300000
+
+23/11/2019 22:00:05 INFO:Iteration 34 elapsed time: 0:19:13.587647
+23/11/2019 22:00:05 INFO:Starting iteration 35
+23/11/2019 22:00:05 INFO:Generating an uniform partition (35x35 parts)
+23/11/2019 22:00:05 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 22:03:07 INFO:NEXUS creation elapsed time: 0:03:01.725573
+23/11/2019 22:03:07 INFO:Starting to run MrBayes
+23/11/2019 22:19:44 INFO:MrBayes elapsed time: 0:16:37.013544
+23/11/2019 22:19:44 INFO:Starting to run CADM test
+23/11/2019 22:19:44 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7700000
+
+23/11/2019 22:19:44 INFO:Iteration 35 elapsed time: 0:19:38.872756
+23/11/2019 22:19:44 INFO:Starting iteration 36
+23/11/2019 22:19:44 INFO:Generating an uniform partition (36x36 parts)
+23/11/2019 22:19:44 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 22:22:48 INFO:NEXUS creation elapsed time: 0:03:03.647923
+23/11/2019 22:22:48 INFO:Starting to run MrBayes
+23/11/2019 22:39:19 INFO:MrBayes elapsed time: 0:16:31.271669
+23/11/2019 22:39:19 INFO:Starting to run CADM test
+23/11/2019 22:39:19 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7500000
+
+23/11/2019 22:39:19 INFO:Iteration 36 elapsed time: 0:19:35.061752
+23/11/2019 22:39:19 INFO:Starting iteration 37
+23/11/2019 22:39:19 INFO:Generating an uniform partition (37x37 parts)
+23/11/2019 22:39:19 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 22:42:26 INFO:NEXUS creation elapsed time: 0:03:06.427167
+23/11/2019 22:42:26 INFO:Starting to run MrBayes
+23/11/2019 22:58:57 INFO:MrBayes elapsed time: 0:16:31.327188
+23/11/2019 22:58:57 INFO:Starting to run CADM test
+23/11/2019 22:58:57 INFO:CADM results:           Statistics
+W          0.4222939
+Chi2      16.8917543
+Prob.perm  0.7900000
+
+23/11/2019 22:58:57 INFO:Iteration 37 elapsed time: 0:19:37.894136
+23/11/2019 22:58:57 INFO:Starting iteration 38
+23/11/2019 22:58:57 INFO:Generating an uniform partition (38x38 parts)
+23/11/2019 22:58:57 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 23:02:05 INFO:NEXUS creation elapsed time: 0:03:07.869681
+23/11/2019 23:02:05 INFO:Starting to run MrBayes
+23/11/2019 23:18:57 INFO:MrBayes elapsed time: 0:16:52.390198
+23/11/2019 23:18:57 INFO:Starting to run CADM test
+23/11/2019 23:18:58 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.8100000
+
+23/11/2019 23:18:58 INFO:Iteration 38 elapsed time: 0:20:00.410100
+23/11/2019 23:18:58 INFO:Starting iteration 39
+23/11/2019 23:18:58 INFO:Generating an uniform partition (39x39 parts)
+23/11/2019 23:18:58 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 23:22:08 INFO:NEXUS creation elapsed time: 0:03:10.154128
+23/11/2019 23:22:08 INFO:Starting to run MrBayes
+23/11/2019 23:39:01 INFO:MrBayes elapsed time: 0:16:53.743198
+23/11/2019 23:39:01 INFO:Starting to run CADM test
+23/11/2019 23:39:02 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.280000
+
+23/11/2019 23:39:02 INFO:W = 0.5542609853528628 is the new global best
+23/11/2019 23:39:02 INFO:Iteration 39 elapsed time: 0:20:04.043220
+23/11/2019 23:39:02 INFO:Starting iteration 40
+23/11/2019 23:39:02 INFO:Generating an uniform partition (40x40 parts)
+23/11/2019 23:39:02 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+23/11/2019 23:42:14 INFO:NEXUS creation elapsed time: 0:03:11.987367
+23/11/2019 23:42:14 INFO:Starting to run MrBayes
+23/11/2019 23:58:59 INFO:MrBayes elapsed time: 0:16:44.961835
+23/11/2019 23:58:59 INFO:Starting to run CADM test
+23/11/2019 23:58:59 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5400000
+
+23/11/2019 23:58:59 INFO:Iteration 40 elapsed time: 0:19:57.111352
+23/11/2019 23:58:59 INFO:Starting iteration 41
+23/11/2019 23:58:59 INFO:Generating an uniform partition (41x41 parts)
+23/11/2019 23:58:59 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 00:02:13 INFO:NEXUS creation elapsed time: 0:03:14.144739
+24/11/2019 00:02:13 INFO:Starting to run MrBayes
+24/11/2019 00:19:10 INFO:MrBayes elapsed time: 0:16:57.223381
+24/11/2019 00:19:10 INFO:Starting to run CADM test
+24/11/2019 00:19:10 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7400000
+
+24/11/2019 00:19:10 INFO:Iteration 41 elapsed time: 0:20:11.504345
+24/11/2019 00:19:10 INFO:Starting iteration 42
+24/11/2019 00:19:10 INFO:Generating an uniform partition (42x42 parts)
+24/11/2019 00:19:10 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 00:22:27 INFO:NEXUS creation elapsed time: 0:03:16.740092
+24/11/2019 00:22:27 INFO:Starting to run MrBayes
+24/11/2019 00:39:43 INFO:MrBayes elapsed time: 0:17:15.708464
+24/11/2019 00:39:43 INFO:Starting to run CADM test
+24/11/2019 00:39:43 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7400000
+
+24/11/2019 00:39:43 INFO:Iteration 42 elapsed time: 0:20:32.595350
+24/11/2019 00:39:43 INFO:Starting iteration 43
+24/11/2019 00:39:43 INFO:Generating an uniform partition (43x43 parts)
+24/11/2019 00:39:43 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 00:43:03 INFO:NEXUS creation elapsed time: 0:03:19.767041
+24/11/2019 00:43:03 INFO:Starting to run MrBayes
+24/11/2019 01:00:33 INFO:MrBayes elapsed time: 0:17:30.072797
+24/11/2019 01:00:33 INFO:Starting to run CADM test
+24/11/2019 01:00:33 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7200000
+
+24/11/2019 01:00:33 INFO:Iteration 43 elapsed time: 0:20:49.969133
+24/11/2019 01:00:33 INFO:Starting iteration 44
+24/11/2019 01:00:33 INFO:Generating an uniform partition (44x44 parts)
+24/11/2019 01:00:33 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 01:03:54 INFO:NEXUS creation elapsed time: 0:03:20.836016
+24/11/2019 01:03:54 INFO:Starting to run MrBayes
+24/11/2019 01:21:10 INFO:MrBayes elapsed time: 0:17:16.082834
+24/11/2019 01:21:10 INFO:Starting to run CADM test
+24/11/2019 01:21:10 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7100000
+
+24/11/2019 01:21:10 INFO:Iteration 44 elapsed time: 0:20:37.065957
+24/11/2019 01:21:10 INFO:Starting iteration 45
+24/11/2019 01:21:10 INFO:Generating an uniform partition (45x45 parts)
+24/11/2019 01:21:10 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 01:24:33 INFO:NEXUS creation elapsed time: 0:03:22.965805
+24/11/2019 01:24:33 INFO:Starting to run MrBayes
+24/11/2019 01:41:54 INFO:MrBayes elapsed time: 0:17:21.123183
+24/11/2019 01:41:54 INFO:Starting to run CADM test
+24/11/2019 01:41:54 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.8100000
+
+24/11/2019 01:41:54 INFO:Iteration 45 elapsed time: 0:20:44.227888
+24/11/2019 01:41:54 INFO:Starting iteration 46
+24/11/2019 01:41:54 INFO:Generating an uniform partition (46x46 parts)
+24/11/2019 01:41:54 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 01:45:20 INFO:NEXUS creation elapsed time: 0:03:25.574890
+24/11/2019 01:45:20 INFO:Starting to run MrBayes
+24/11/2019 02:02:58 INFO:MrBayes elapsed time: 0:17:38.375743
+24/11/2019 02:02:58 INFO:Starting to run CADM test
+24/11/2019 02:02:58 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7000000
+
+24/11/2019 02:02:58 INFO:Iteration 46 elapsed time: 0:21:04.059907
+24/11/2019 02:02:58 INFO:Starting iteration 47
+24/11/2019 02:02:58 INFO:Generating an uniform partition (47x47 parts)
+24/11/2019 02:02:58 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 02:06:27 INFO:NEXUS creation elapsed time: 0:03:28.402551
+24/11/2019 02:06:27 INFO:Starting to run MrBayes
+24/11/2019 02:24:00 INFO:MrBayes elapsed time: 0:17:33.379003
+24/11/2019 02:24:00 INFO:Starting to run CADM test
+24/11/2019 02:24:00 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7700000
+
+24/11/2019 02:24:00 INFO:Iteration 47 elapsed time: 0:21:01.910136
+24/11/2019 02:24:00 INFO:Starting iteration 48
+24/11/2019 02:24:00 INFO:Generating an uniform partition (48x48 parts)
+24/11/2019 02:24:00 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 02:27:31 INFO:NEXUS creation elapsed time: 0:03:31.128538
+24/11/2019 02:27:31 INFO:Starting to run MrBayes
+24/11/2019 02:45:20 INFO:MrBayes elapsed time: 0:17:49.139396
+24/11/2019 02:45:20 INFO:Starting to run CADM test
+24/11/2019 02:45:20 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7000000
+
+24/11/2019 02:45:20 INFO:Iteration 48 elapsed time: 0:21:20.370465
+24/11/2019 02:45:20 INFO:Starting iteration 49
+24/11/2019 02:45:20 INFO:Generating an uniform partition (49x49 parts)
+24/11/2019 02:45:20 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 02:48:54 INFO:NEXUS creation elapsed time: 0:03:33.472864
+24/11/2019 02:48:54 INFO:Starting to run MrBayes
+24/11/2019 03:06:52 INFO:MrBayes elapsed time: 0:17:57.877789
+24/11/2019 03:06:52 INFO:Starting to run CADM test
+24/11/2019 03:06:52 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6700000
+
+24/11/2019 03:06:52 INFO:Iteration 49 elapsed time: 0:21:31.515085
+24/11/2019 03:06:52 INFO:Starting iteration 50
+24/11/2019 03:06:52 INFO:Generating an uniform partition (50x50 parts)
+24/11/2019 03:06:52 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 03:10:28 INFO:NEXUS creation elapsed time: 0:03:36.314721
+24/11/2019 03:10:28 INFO:Starting to run MrBayes
+24/11/2019 03:28:17 INFO:MrBayes elapsed time: 0:17:48.501783
+24/11/2019 03:28:17 INFO:Starting to run CADM test
+24/11/2019 03:28:17 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.200000
+
+24/11/2019 03:28:17 INFO:Iteration 50 elapsed time: 0:21:24.955775
+24/11/2019 03:28:17 INFO:Starting iteration 51
+24/11/2019 03:28:17 INFO:Generating an uniform partition (51x51 parts)
+24/11/2019 03:28:17 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 03:31:57 INFO:NEXUS creation elapsed time: 0:03:40.122532
+24/11/2019 03:31:57 INFO:Starting to run MrBayes
+24/11/2019 03:49:25 INFO:MrBayes elapsed time: 0:17:28.302257
+24/11/2019 03:49:25 INFO:Starting to run CADM test
+24/11/2019 03:49:25 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6800000
+
+24/11/2019 03:49:25 INFO:Iteration 51 elapsed time: 0:21:08.556276
+24/11/2019 03:49:25 INFO:Starting iteration 52
+24/11/2019 03:49:25 INFO:Generating an uniform partition (52x52 parts)
+24/11/2019 03:49:25 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 03:53:07 INFO:NEXUS creation elapsed time: 0:03:41.877795
+24/11/2019 03:53:07 INFO:Starting to run MrBayes
+24/11/2019 04:10:45 INFO:MrBayes elapsed time: 0:17:37.545855
+24/11/2019 04:10:45 INFO:Starting to run CADM test
+24/11/2019 04:10:45 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5900000
+
+24/11/2019 04:10:45 INFO:Iteration 52 elapsed time: 0:21:19.558586
+24/11/2019 04:10:45 INFO:Starting iteration 53
+24/11/2019 04:10:45 INFO:Generating an uniform partition (53x53 parts)
+24/11/2019 04:10:45 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 04:14:31 INFO:NEXUS creation elapsed time: 0:03:45.546313
+24/11/2019 04:14:31 INFO:Starting to run MrBayes
+24/11/2019 04:32:10 INFO:MrBayes elapsed time: 0:17:39.840172
+24/11/2019 04:32:10 INFO:Starting to run CADM test
+24/11/2019 04:32:11 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6600000
+
+24/11/2019 04:32:11 INFO:Iteration 53 elapsed time: 0:21:25.491335
+24/11/2019 04:32:11 INFO:Starting iteration 54
+24/11/2019 04:32:11 INFO:Generating an uniform partition (54x54 parts)
+24/11/2019 04:32:11 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 04:35:58 INFO:NEXUS creation elapsed time: 0:03:47.479010
+24/11/2019 04:35:58 INFO:Starting to run MrBayes
+24/11/2019 04:54:11 INFO:MrBayes elapsed time: 0:18:12.809764
+24/11/2019 04:54:11 INFO:Starting to run CADM test
+24/11/2019 04:54:11 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6800000
+
+24/11/2019 04:54:11 INFO:Iteration 54 elapsed time: 0:22:00.432751
+24/11/2019 04:54:11 INFO:Starting iteration 55
+24/11/2019 04:54:11 INFO:Generating an uniform partition (55x55 parts)
+24/11/2019 04:54:11 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 04:58:15 INFO:NEXUS creation elapsed time: 0:04:03.788159
+24/11/2019 04:58:15 INFO:Starting to run MrBayes
+24/11/2019 05:14:24 INFO:MrBayes elapsed time: 0:16:09.114215
+24/11/2019 05:14:24 INFO:Starting to run CADM test
+24/11/2019 05:14:24 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7700000
+
+24/11/2019 05:14:24 INFO:Iteration 55 elapsed time: 0:20:13.162200
+24/11/2019 05:14:24 INFO:Starting iteration 56
+24/11/2019 05:14:24 INFO:Generating an uniform partition (56x56 parts)
+24/11/2019 05:14:24 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 05:18:31 INFO:NEXUS creation elapsed time: 0:04:07.176238
+24/11/2019 05:18:31 INFO:Starting to run MrBayes
+24/11/2019 05:36:16 INFO:MrBayes elapsed time: 0:17:44.954044
+24/11/2019 05:36:16 INFO:Starting to run CADM test
+24/11/2019 05:36:16 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7600000
+
+24/11/2019 05:36:16 INFO:Iteration 56 elapsed time: 0:21:52.268457
+24/11/2019 05:36:16 INFO:Starting iteration 57
+24/11/2019 05:36:16 INFO:Generating an uniform partition (57x57 parts)
+24/11/2019 05:36:16 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 05:40:27 INFO:NEXUS creation elapsed time: 0:04:10.736029
+24/11/2019 05:40:27 INFO:Starting to run MrBayes
+24/11/2019 05:57:55 INFO:MrBayes elapsed time: 0:17:28.053562
+24/11/2019 05:57:55 INFO:Starting to run CADM test
+24/11/2019 05:57:55 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.240000
+
+24/11/2019 05:57:55 INFO:Iteration 57 elapsed time: 0:21:38.938082
+24/11/2019 05:57:55 INFO:Starting iteration 58
+24/11/2019 05:57:55 INFO:Generating an uniform partition (58x58 parts)
+24/11/2019 05:57:55 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 06:02:09 INFO:NEXUS creation elapsed time: 0:04:14.000155
+24/11/2019 06:02:09 INFO:Starting to run MrBayes
+24/11/2019 06:19:57 INFO:MrBayes elapsed time: 0:17:47.483348
+24/11/2019 06:19:57 INFO:Starting to run CADM test
+24/11/2019 06:19:57 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6700000
+
+24/11/2019 06:19:57 INFO:Iteration 58 elapsed time: 0:22:01.631580
+24/11/2019 06:19:57 INFO:Starting iteration 59
+24/11/2019 06:19:57 INFO:Generating an uniform partition (59x59 parts)
+24/11/2019 06:19:57 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 06:24:14 INFO:NEXUS creation elapsed time: 0:04:16.955901
+24/11/2019 06:24:14 INFO:Starting to run MrBayes
+24/11/2019 06:41:42 INFO:MrBayes elapsed time: 0:17:27.677295
+24/11/2019 06:41:42 INFO:Starting to run CADM test
+24/11/2019 06:41:42 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.8000000
+
+24/11/2019 06:41:42 INFO:Iteration 59 elapsed time: 0:21:44.836772
+24/11/2019 06:41:42 INFO:Starting iteration 60
+24/11/2019 06:41:42 INFO:Generating an uniform partition (60x60 parts)
+24/11/2019 06:41:42 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 06:46:02 INFO:NEXUS creation elapsed time: 0:04:20.674695
+24/11/2019 06:46:02 INFO:Starting to run MrBayes
+24/11/2019 07:04:27 INFO:MrBayes elapsed time: 0:18:24.735899
+24/11/2019 07:04:27 INFO:Starting to run CADM test
+24/11/2019 07:04:27 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6700000
+
+24/11/2019 07:04:27 INFO:Iteration 60 elapsed time: 0:22:45.523291
+24/11/2019 07:04:27 INFO:Starting iteration 61
+24/11/2019 07:04:27 INFO:Generating an uniform partition (61x61 parts)
+24/11/2019 07:04:27 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 07:08:53 INFO:NEXUS creation elapsed time: 0:04:25.789858
+24/11/2019 07:08:53 INFO:Starting to run MrBayes
+24/11/2019 07:26:09 INFO:MrBayes elapsed time: 0:17:16.080852
+24/11/2019 07:26:09 INFO:Starting to run CADM test
+24/11/2019 07:26:09 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7400000
+
+24/11/2019 07:26:09 INFO:Iteration 61 elapsed time: 0:21:42.092457
+24/11/2019 07:26:09 INFO:Starting iteration 62
+24/11/2019 07:26:09 INFO:Generating an uniform partition (62x62 parts)
+24/11/2019 07:26:09 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 07:30:37 INFO:NEXUS creation elapsed time: 0:04:27.361246
+24/11/2019 07:30:37 INFO:Starting to run MrBayes
+24/11/2019 07:48:23 INFO:MrBayes elapsed time: 0:17:46.585330
+24/11/2019 07:48:23 INFO:Starting to run CADM test
+24/11/2019 07:48:24 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.260000
+
+24/11/2019 07:48:24 INFO:Iteration 62 elapsed time: 0:22:14.180021
+24/11/2019 07:48:24 INFO:Starting iteration 63
+24/11/2019 07:48:24 INFO:Generating an uniform partition (63x63 parts)
+24/11/2019 07:48:24 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 07:52:54 INFO:NEXUS creation elapsed time: 0:04:30.078255
+24/11/2019 07:52:54 INFO:Starting to run MrBayes
+24/11/2019 08:10:45 INFO:MrBayes elapsed time: 0:17:50.912898
+24/11/2019 08:10:45 INFO:Starting to run CADM test
+24/11/2019 08:10:45 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.250000
+
+24/11/2019 08:10:45 INFO:Iteration 63 elapsed time: 0:22:21.171744
+24/11/2019 08:10:45 INFO:Starting iteration 64
+24/11/2019 08:10:45 INFO:Generating an uniform partition (64x64 parts)
+24/11/2019 08:10:45 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 08:16:02 INFO:NEXUS creation elapsed time: 0:05:17.493891
+24/11/2019 08:16:03 INFO:Starting to run MrBayes
+24/11/2019 08:34:08 INFO:MrBayes elapsed time: 0:18:05.279329
+24/11/2019 08:34:08 INFO:Starting to run CADM test
+24/11/2019 08:34:08 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.330000
+
+24/11/2019 08:34:08 INFO:Iteration 64 elapsed time: 0:23:23.200437
+24/11/2019 08:34:08 INFO:Starting iteration 65
+24/11/2019 08:34:08 INFO:Generating an uniform partition (65x65 parts)
+24/11/2019 08:34:08 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 08:38:47 INFO:NEXUS creation elapsed time: 0:04:39.450451
+24/11/2019 08:38:47 INFO:Starting to run MrBayes
+24/11/2019 08:55:32 INFO:MrBayes elapsed time: 0:16:44.376685
+24/11/2019 08:55:32 INFO:Starting to run CADM test
+24/11/2019 08:55:32 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7200000
+
+24/11/2019 08:55:32 INFO:Iteration 65 elapsed time: 0:21:23.945914
+24/11/2019 08:55:32 INFO:Starting iteration 66
+24/11/2019 08:55:32 INFO:Generating an uniform partition (66x66 parts)
+24/11/2019 08:55:32 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 09:00:12 INFO:NEXUS creation elapsed time: 0:04:40.569534
+24/11/2019 09:00:12 INFO:Starting to run MrBayes
+24/11/2019 09:17:04 INFO:MrBayes elapsed time: 0:16:51.483584
+24/11/2019 09:17:04 INFO:Starting to run CADM test
+24/11/2019 09:17:04 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7200000
+
+24/11/2019 09:17:04 INFO:Iteration 66 elapsed time: 0:21:32.178034
+24/11/2019 09:17:04 INFO:Starting iteration 67
+24/11/2019 09:17:04 INFO:Generating an uniform partition (67x67 parts)
+24/11/2019 09:17:04 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 09:21:47 INFO:NEXUS creation elapsed time: 0:04:43.144493
+24/11/2019 09:21:47 INFO:Starting to run MrBayes
+24/11/2019 09:42:07 INFO:MrBayes elapsed time: 0:20:20.013730
+24/11/2019 09:42:07 INFO:Starting to run CADM test
+24/11/2019 09:42:07 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7400000
+
+24/11/2019 09:42:07 INFO:Iteration 67 elapsed time: 0:25:03.289138
+24/11/2019 09:42:07 INFO:Starting iteration 68
+24/11/2019 09:42:07 INFO:Generating an uniform partition (68x68 parts)
+24/11/2019 09:42:07 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 09:47:09 INFO:NEXUS creation elapsed time: 0:05:01.898185
+24/11/2019 09:47:09 INFO:Starting to run MrBayes
+24/11/2019 10:04:24 INFO:MrBayes elapsed time: 0:17:15.159109
+24/11/2019 10:04:24 INFO:Starting to run CADM test
+24/11/2019 10:04:25 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.200000
+
+24/11/2019 10:04:25 INFO:Iteration 68 elapsed time: 0:22:17.193865
+24/11/2019 10:04:25 INFO:Starting iteration 69
+24/11/2019 10:04:25 INFO:Generating an uniform partition (69x69 parts)
+24/11/2019 10:04:25 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 10:09:16 INFO:NEXUS creation elapsed time: 0:04:51.770680
+24/11/2019 10:09:16 INFO:Starting to run MrBayes
+24/11/2019 10:28:02 INFO:MrBayes elapsed time: 0:18:45.757147
+24/11/2019 10:28:02 INFO:Starting to run CADM test
+24/11/2019 10:28:02 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6700000
+
+24/11/2019 10:28:02 INFO:Iteration 69 elapsed time: 0:23:37.630007
+24/11/2019 10:28:02 INFO:Starting iteration 70
+24/11/2019 10:28:02 INFO:Generating an uniform partition (70x70 parts)
+24/11/2019 10:28:02 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 10:32:58 INFO:NEXUS creation elapsed time: 0:04:55.611327
+24/11/2019 10:32:58 INFO:Starting to run MrBayes
+24/11/2019 10:50:02 INFO:MrBayes elapsed time: 0:17:04.140677
+24/11/2019 10:50:02 INFO:Starting to run CADM test
+24/11/2019 10:50:02 INFO:CADM results:           Statistics
+W          0.4281046
+Chi2      17.1241830
+Prob.perm  0.6900000
+
+24/11/2019 10:50:02 INFO:Iteration 70 elapsed time: 0:21:59.878060
+24/11/2019 10:50:02 INFO:Starting iteration 71
+24/11/2019 10:50:02 INFO:Generating an uniform partition (71x71 parts)
+24/11/2019 10:50:02 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 10:55:02 INFO:NEXUS creation elapsed time: 0:04:59.456710
+24/11/2019 10:55:02 INFO:Starting to run MrBayes
+24/11/2019 11:12:58 INFO:MrBayes elapsed time: 0:17:56.120162
+24/11/2019 11:12:58 INFO:Starting to run CADM test
+24/11/2019 11:12:58 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.330000
+
+24/11/2019 11:12:58 INFO:Iteration 71 elapsed time: 0:22:55.708841
+24/11/2019 11:12:58 INFO:Starting iteration 72
+24/11/2019 11:12:58 INFO:Generating an uniform partition (72x72 parts)
+24/11/2019 11:12:58 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 11:18:01 INFO:NEXUS creation elapsed time: 0:05:02.967388
+24/11/2019 11:18:01 INFO:Starting to run MrBayes
+24/11/2019 11:36:08 INFO:MrBayes elapsed time: 0:18:07.339975
+24/11/2019 11:36:08 INFO:Starting to run CADM test
+24/11/2019 11:36:08 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7700000
+
+24/11/2019 11:36:08 INFO:Iteration 72 elapsed time: 0:23:10.449065
+24/11/2019 11:36:08 INFO:Starting iteration 73
+24/11/2019 11:36:08 INFO:Generating an uniform partition (73x73 parts)
+24/11/2019 11:36:08 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 11:41:18 INFO:NEXUS creation elapsed time: 0:05:09.342780
+24/11/2019 11:41:18 INFO:Starting to run MrBayes
+24/11/2019 12:06:51 INFO:MrBayes elapsed time: 0:25:32.977445
+24/11/2019 12:06:51 INFO:Starting to run CADM test
+24/11/2019 12:06:51 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.300000
+
+24/11/2019 12:06:51 INFO:Iteration 73 elapsed time: 0:30:42.463439
+24/11/2019 12:06:51 INFO:Starting iteration 74
+24/11/2019 12:06:51 INFO:Generating an uniform partition (74x74 parts)
+24/11/2019 12:06:51 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 12:12:00 INFO:NEXUS creation elapsed time: 0:05:09.637065
+24/11/2019 12:12:00 INFO:Starting to run MrBayes
+24/11/2019 12:29:37 INFO:MrBayes elapsed time: 0:17:36.918495
+24/11/2019 12:29:37 INFO:Starting to run CADM test
+24/11/2019 12:29:37 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.240000
+
+24/11/2019 12:29:37 INFO:Iteration 74 elapsed time: 0:22:46.685417
+24/11/2019 12:29:37 INFO:Starting iteration 75
+24/11/2019 12:29:37 INFO:Generating an uniform partition (75x75 parts)
+24/11/2019 12:29:37 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 12:34:54 INFO:NEXUS creation elapsed time: 0:05:16.172962
+24/11/2019 12:34:54 INFO:Starting to run MrBayes
+24/11/2019 12:54:29 INFO:MrBayes elapsed time: 0:19:35.397769
+24/11/2019 12:54:29 INFO:Starting to run CADM test
+24/11/2019 12:54:29 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7700000
+
+24/11/2019 12:54:29 INFO:Iteration 75 elapsed time: 0:24:51.714701
+24/11/2019 12:54:29 INFO:Starting iteration 76
+24/11/2019 12:54:29 INFO:Generating an uniform partition (76x76 parts)
+24/11/2019 12:54:29 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 12:59:47 INFO:NEXUS creation elapsed time: 0:05:18.251778
+24/11/2019 12:59:47 INFO:Starting to run MrBayes
+24/11/2019 13:17:17 INFO:MrBayes elapsed time: 0:17:29.364900
+24/11/2019 13:17:17 INFO:Starting to run CADM test
+24/11/2019 13:17:17 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.230000
+
+24/11/2019 13:17:17 INFO:Iteration 76 elapsed time: 0:22:47.766267
+24/11/2019 13:17:17 INFO:Starting iteration 77
+24/11/2019 13:17:17 INFO:Generating an uniform partition (77x77 parts)
+24/11/2019 13:17:17 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 13:22:38 INFO:NEXUS creation elapsed time: 0:05:21.614186
+24/11/2019 13:22:38 INFO:Starting to run MrBayes
+24/11/2019 13:40:08 INFO:MrBayes elapsed time: 0:17:29.366704
+24/11/2019 13:40:08 INFO:Starting to run CADM test
+24/11/2019 13:40:08 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.7800000
+
+24/11/2019 13:40:08 INFO:Iteration 77 elapsed time: 0:22:51.121463
+24/11/2019 13:40:08 INFO:Starting iteration 78
+24/11/2019 13:40:08 INFO:Generating an uniform partition (78x78 parts)
+24/11/2019 13:40:08 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 13:45:34 INFO:NEXUS creation elapsed time: 0:05:26.483248
+24/11/2019 13:45:34 INFO:Starting to run MrBayes
+24/11/2019 14:03:15 INFO:MrBayes elapsed time: 0:17:40.463842
+24/11/2019 14:03:15 INFO:Starting to run CADM test
+24/11/2019 14:03:15 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.300000
+
+24/11/2019 14:03:15 INFO:Iteration 78 elapsed time: 0:23:07.082031
+24/11/2019 14:03:15 INFO:Starting iteration 79
+24/11/2019 14:03:15 INFO:Generating an uniform partition (79x79 parts)
+24/11/2019 14:03:15 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 14:08:48 INFO:NEXUS creation elapsed time: 0:05:33.120273
+24/11/2019 14:08:48 INFO:Starting to run MrBayes
+24/11/2019 14:26:38 INFO:MrBayes elapsed time: 0:17:50.218808
+24/11/2019 14:26:38 INFO:Starting to run CADM test
+24/11/2019 14:26:39 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.340000
+
+24/11/2019 14:26:39 INFO:Iteration 79 elapsed time: 0:23:23.477546
+24/11/2019 14:26:39 INFO:Starting iteration 80
+24/11/2019 14:26:39 INFO:Generating an uniform partition (80x80 parts)
+24/11/2019 14:26:39 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 14:32:12 INFO:NEXUS creation elapsed time: 0:05:33.771134
+24/11/2019 14:32:12 INFO:Starting to run MrBayes
+24/11/2019 14:50:04 INFO:MrBayes elapsed time: 0:17:51.760613
+24/11/2019 14:50:04 INFO:Starting to run CADM test
+24/11/2019 14:50:04 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.250000
+
+24/11/2019 14:50:04 INFO:Iteration 80 elapsed time: 0:23:25.636053
+24/11/2019 14:50:04 INFO:Starting iteration 81
+24/11/2019 14:50:04 INFO:Generating an uniform partition (81x81 parts)
+24/11/2019 14:50:04 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 14:55:42 INFO:NEXUS creation elapsed time: 0:05:38.118050
+24/11/2019 14:55:42 INFO:Starting to run MrBayes
+24/11/2019 15:13:35 INFO:MrBayes elapsed time: 0:17:52.985496
+24/11/2019 15:13:35 INFO:Starting to run CADM test
+24/11/2019 15:13:35 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.170000
+
+24/11/2019 15:13:35 INFO:Iteration 81 elapsed time: 0:23:31.270172
+24/11/2019 15:13:35 INFO:Starting iteration 82
+24/11/2019 15:13:35 INFO:Generating an uniform partition (82x82 parts)
+24/11/2019 15:13:35 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 15:19:19 INFO:NEXUS creation elapsed time: 0:05:43.122623
+24/11/2019 15:19:19 INFO:Starting to run MrBayes
+24/11/2019 15:37:15 INFO:MrBayes elapsed time: 0:17:56.049510
+24/11/2019 15:37:15 INFO:Starting to run CADM test
+24/11/2019 15:37:15 INFO:CADM results:           Statistics
+W           0.554261
+Chi2       22.170439
+Prob.perm   0.370000
+
+24/11/2019 15:37:15 INFO:Iteration 82 elapsed time: 0:23:39.329702
+24/11/2019 15:37:15 INFO:Starting iteration 83
+24/11/2019 15:37:15 INFO:Generating an uniform partition (83x83 parts)
+24/11/2019 15:37:15 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+24/11/2019 15:43:04 INFO:NEXUS creation elapsed time: 0:05:48.868652
+24/11/2019 15:43:04 INFO:Starting to run MrBayes

@@ -1,0 +1,9 @@
+22/11/2019 23:31:37 INFO:Loading ion maps...
+22/11/2019 23:31:40 INFO:Starting iteration 1
+22/11/2019 23:31:40 INFO:Generating an uniform partition (1x1 parts)
+22/11/2019 23:31:40 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+22/11/2019 23:33:49 INFO:NEXUS creation elapsed time: 0:02:08.726845
+22/11/2019 23:33:49 INFO:Starting to run MrBayes
+22/11/2019 23:36:57 INFO:MrBayes elapsed time: 0:03:08.545214
+22/11/2019 23:36:57 INFO:Starting to run CADM test
+22/11/2019 23:36:58 INFO:Kendall's W = 0.446404793608522
