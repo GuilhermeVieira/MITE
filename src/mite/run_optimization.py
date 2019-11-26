@@ -94,7 +94,7 @@ def run_mrbayes(nexus_path, run_num, nproc):
         os.makedirs(os.path.dirname(mblog_path))
 
     outfile = open(mblog_path + 'mb_log' + str(run_num) + '.txt', "w")
-    logging.info('Starting to run MrBayes with ' + nproc + ' processors')
+    logging.info('Starting to run MrBayes with ' + str(nproc) + ' processors')
     start = datetime.now()
 
     try:
