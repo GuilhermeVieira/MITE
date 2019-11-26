@@ -88,12 +88,12 @@ def construct_nexus(mtnw, args, partition):
 
 # Runs MrBayes with the NEXUS file as input.
 def run_mrbayes(nexus_path, run_num, nproc):
-    mblog_path = log_path + 'mb/' + dt_string
+    mblog_path = log_path + 'mb/' + dt_string + '/'
 
     if not os.path.exists(os.path.dirname(mblog_path)):
         os.makedirs(os.path.dirname(mblog_path))
 
-    outfile = open(mblog_path + '/mb_log' + str(run_num) + '.txt', "w")
+    outfile = open(mblog_path + 'mb_log' + str(run_num) + '.txt', "w")
     logging.info('Starting to run MrBayes with ' + str(nproc) + ' processors')
     start = datetime.now()
 
