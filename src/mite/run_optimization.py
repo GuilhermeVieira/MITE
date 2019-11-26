@@ -37,9 +37,13 @@ import run_cadm as cadm
 dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
 log_path = dir_path + '../../log/'
 reports_path = dir_path + '../../reports/report_mite.txt'
+nexus_filename = 'mite.nex'
+tree_filename = 'mite.nex.con.tre'
+nexus_best_filename = 'best.nex'
+tree_best_filename = 'best.nex.con.tre'
 
-min_pcount_row = 83
-min_pcount_col = 83
+min_pcount_row = 1
+min_pcount_col = 1
 max_pcount_row = 156
 max_pcount_col = 156
 
@@ -83,19 +87,19 @@ def construct_nexus(mtnw, args, partition):
     return complete_path
 
 # Runs MrBayes with the NEXUS file as input.
-def run_mrbayes(nexus_path, run_num):
+def run_mrbayes(nexus_path, run_num, nproc):
     mblog_path = log_path + 'mb/'
 
     if not os.path.exists(os.path.dirname(mblog_path)):
         os.makedirs(os.path.dirname(mblog_path))
 
     outfile = open(mblog_path + 'mb_log' + str(run_num) + '.txt', "w")
-    logging.info('Starting to run MrBayes')
+    logging.info('Starting to run MrBayes with ' + nproc + ' processors')
     start = datetime.now()
 
     try:
         subprocess.check_call(
-            ['mb', nexus_path + '/mite.nex'],
+            ['mpirun', '-np', nproc, 'mb', nexus_path + '/' + nexus_filename],
             stdout=outfile,
             stderr=subprocess.STDOUT
         )
@@ -107,7 +111,10 @@ def run_mrbayes(nexus_path, run_num):
 
 # Runs the CADM test, comparing the constructed tree with the mtDNA tree.
 def run_cadm(nexus_path):
-    logging.info('Starting to run CADM test')
+    logging.info(
+        'Starting to run CADM test (NEXUS file: ' + nexus_path + '/' +
+        nexus_filename + ')'
+    )
     stats = cadm.run(nexus_path, reports_path)
     logging.info("CADM results: " + str(stats))
 
@@ -122,9 +129,9 @@ def assess_results(stats, partition, nexus_path):
         logging.info('W = ' + str(stats[0]) + ' is the new global best')
         global_best = (stats, partition)
         best_history.append((stats, partition))
-        os.rename(nexus_path + '/mite.nex.con.tre', nexus_path + '/best.nex.con.tre')
-        os.rename(nexus_path + '/mite.nex', nexus_path + '/best.nex')
-        logging.info('Created/updated best.nex and best.nex.con.tre files')
+        os.rename(nexus_path + '/' + tree_filename, nexus_path + '/' + tree_best_filename)
+        os.rename(nexus_path + '/' + nexus_filename, nexus_path + '/' + nexus_best_filename)
+        logging.info('Created/updated ' + nexus_best_filename + ' and ' + tree_best_filename + ' files')
 
 # Run optimization procedure
 def run_basic_optimization(args):
@@ -132,13 +139,21 @@ def run_basic_optimization(args):
     shape = mtnw.mites[0].matrix.shape
     global iterations_count
 
+    logging.info(
+        'XML_PATH=' + args.xml_path +
+        '\nNEXUS_PATH=' + args.nexus_path +
+        '\nWINDOW_WIDTH=' + str(args.window_width) + ', WINDOW_HEIGHT=' + str(args.window_height) +
+        '\nBINARY=' + str(args.binary) + ', f=' + str(args.f) +
+        '\nNPROC=' + str(args.parallel)
+    )
+
     for i, j in zip(range(min_pcount_row, max_pcount_row + 1), range(min_pcount_col, max_pcount_col + 1)):
         logging.info('Starting iteration ' + str(i))
         start = datetime.now()
         partition = generate_uniform_partition(shape, i, j)
         nexus_complete_path = construct_nexus(mtnw, args, partition)
-        run_mrbayes(nexus_complete_path, i)
-        stats = run_cadm('../../output/nexus/w=2__h=2__binary__f=0.25/')
+        run_mrbayes(nexus_complete_path, i, args.parallel)
+        stats = run_cadm(nexus_complete_path)
         assess_results(stats, partition, nexus_complete_path)
         iterations_count += 1
         end = datetime.now()
@@ -148,8 +163,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "nexus_path", type=str, help="the path to store generated nexus "
-        "files"
+        "nexus_path", type=str, metavar="NEXUS_PATH", help="the path to store "
+        "generated nexus files"
     )
     parser.add_argument(
         "--xml_path", type=str, help="the path to the XML files that will "
@@ -165,12 +180,16 @@ if __name__ == '__main__':
         "reduce the MITEs", required=True
     )
     parser.add_argument(
-        "--binary", action="store_true", help="use binary MITEs to create the "
+        "-b", "--binary", action="store_true", help="use binary MITEs to create the "
         "NEXUS files"
     )
     parser.add_argument(
-        "--f", type=float, help="value for the frequency of 1's necessary to "
+        "-f", "--f", type=float, help="value for the frequency of 1's necessary to "
         "get 1 in the new window"
+    )
+    parser.add_argument(
+        "-p", "--parallel", type=int, metavar="NPROC", help="Run MrBayes in "
+        "parallel with %(metavar)s number of processors", default=1
     )
 
     args = parser.parse_args()
