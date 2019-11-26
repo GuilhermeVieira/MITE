@@ -42,10 +42,10 @@ tree_filename = 'mite.nex.con.tre'
 nexus_best_filename = 'best.nex'
 tree_best_filename = 'best.nex.con.tre'
 
-min_pcount_row = 1
-min_pcount_col = 1
-max_pcount_row = 156
-max_pcount_col = 156
+min_pcount_row = 157
+min_pcount_col = 157
+max_pcount_row = 400
+max_pcount_col = 400
 
 global_best = ([0], [])
 best_history = []
@@ -93,7 +93,7 @@ def run_mrbayes(nexus_path, run_num, nproc):
     if not os.path.exists(os.path.dirname(mblog_path)):
         os.makedirs(os.path.dirname(mblog_path))
 
-    outfile = open(mblog_path + 'mb_log' + str(run_num) + '.txt', "w")
+    outfile = open(mblog_path + dt_string + '_mb_log' + str(run_num) + '.txt', "w")
     logging.info('Starting to run MrBayes with ' + str(nproc) + ' processors')
     start = datetime.now()
 
@@ -200,6 +200,7 @@ if __name__ == '__main__':
     if (not args.binary and args.f is not None):
         parser.error("The argument --f requires the --binary flag to be set")
 
+    global dt_string
     now = datetime.now()
     dt_string = now.strftime("%d%m%Y_%H:%M:%S")
 
