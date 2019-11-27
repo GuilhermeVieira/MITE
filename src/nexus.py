@@ -45,10 +45,7 @@ mb_template = Template("""begin mrbayes;
 
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
         prset applyto=(all) ratepr=variable;
-        set usebeagle=yes beagledevice=gpu;
-        set beagleprecision=single beaglescaling=dynamic;
         mcmc ngen=$ngen samplefreq=$smpfreq;
-        sumt;
 
 end;
 """)
