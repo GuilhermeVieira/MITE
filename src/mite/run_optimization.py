@@ -42,8 +42,8 @@ tree_filename = 'mite.nex.con.tre'
 nexus_best_filename = 'best.nex'
 tree_best_filename = 'best.nex.con.tre'
 
-min_pcount_row = 157
-min_pcount_col = 157
+min_pcount_row = 1
+min_pcount_col = 1
 max_pcount_row = 400
 max_pcount_col = 400
 
