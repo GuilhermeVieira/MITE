@@ -94,7 +94,7 @@ def run_mrbayes(nexus_path, run_num, nproc):
 
     try:
         subprocess.check_call(
-            ['mpirun', '-np', str(nproc), 'mb', nexus_path + '/' + nexus_filename],
+            ['mb', nexus_path + '/' + nexus_filename],
             stdout=outfile,
             stderr=subprocess.STDOUT
         )
