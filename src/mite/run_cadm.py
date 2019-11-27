@@ -22,6 +22,7 @@
 ##                                                                              ##
 ##################################################################################
 
+import argparse
 import os
 import sys
 sys.path.append("..")
@@ -41,7 +42,7 @@ def run(nexus_path, reports_path):
             "trees with the tree obtained with the genomic data.\n")
         __print(report, 30*("-") + "\n")
         __print(report, "Target: MITE\n")
-        tree = '{0}/mite.nex.con.tre'.format(nexus_path)
+        tree = '{0}'.format(nexus_path)
         res, stats = CADM(gen, tree, '-t')
         __print(report, str(res) + "\n")
         __print(report, 30*("-") + "\n")
@@ -49,4 +50,14 @@ def run(nexus_path, reports_path):
     return stats
 
 if __name__ == '__main__':
-    run('../../output/nexus/discrete', '../../reports/report_mite.txt')
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "nexus_filepath", type=str, metavar="NEXUS_FILEPATH", help="the path "
+        "of the tree NEXUS file which will be tested against the genomic tree"
+    )
+    parser.add_argument(
+        "output", type=str, metavar="OUTPUT_PATH", help="the output file path"
+    )
+    args = parser.parse_args()
+
+    run(args.nexus_filepath, args.output)
