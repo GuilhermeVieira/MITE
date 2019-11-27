@@ -42,11 +42,6 @@ tree_filename = 'mite.nex.con.tre'
 nexus_best_filename = 'best.nex'
 tree_best_filename = 'best.nex.con.tre'
 
-min_pcount_row = 1
-min_pcount_col = 1
-max_pcount_row = 400
-max_pcount_col = 400
-
 global_best = ([0], [])
 best_history = []
 
@@ -140,7 +135,9 @@ def run_basic_optimization(args):
     global iterations_count
 
     logging.info(
-        'XML_PATH=' + args.xml_path +
+        'MIN_PCOUNT=' + str(args.min_pcount) +
+        '\nMAX_PCOUNT=' + str(args.max_pcount) +
+        '\nXML_PATH=' + args.xml_path +
         '\nNEXUS_PATH=' + args.nexus_path +
         '\nWINDOW_WIDTH=' + str(args.window_width) + ', WINDOW_HEIGHT=' + str(args.window_height) +
         '\nBINARY=' + str(args.binary) + ', f=' + str(args.f) +
@@ -162,6 +159,12 @@ def run_basic_optimization(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
+    parser.add_argument(
+        "min_pcount", type=int, metavar="MIN_PCOUNT", help="initial value for partition count"
+    )
+    parser.add_argument(
+        "max_pcount", type=int, metavar="MAX_PCOUNT", help="last value for partition count"
+    )
     parser.add_argument(
         "nexus_path", type=str, metavar="NEXUS_PATH", help="the path to store "
         "generated nexus files"
@@ -201,8 +204,11 @@ if __name__ == '__main__':
         parser.error("The argument --f requires the --binary flag to be set")
 
     global dt_string
+    global min_pcount_row, min_pcount_column, max_pcount_row, max_pcount_column
     now = datetime.now()
     dt_string = now.strftime("%d%m%Y_%H:%M:%S")
+    min_pcount_row = min_pcount_col = args.min_pcount
+    max_pcount_row = max_pcount_col = args.max_pcount
 
     if not os.path.exists(os.path.dirname(log_path)):
         os.makedirs(os.path.dirname(log_path))
