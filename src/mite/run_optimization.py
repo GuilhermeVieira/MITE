@@ -74,7 +74,7 @@ def construct_nexus(mtnw, args, partition):
     start = datetime.now()
     complete_path = nexus.run(
         mtnw, args.window_width, args.window_height, args.binary,
-        args.f, partition, dt_string + '_' + str(min_pcount_row) + '-' + str(max_pcount_row)
+        args.f, partition, '/' + dt_string + '_' + str(min_pcount_row) + '-' + str(max_pcount_row)
     )
     end = datetime.now()
     logging.info('NEXUS creation elapsed time: ' + elapsed(start, end))

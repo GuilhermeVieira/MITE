@@ -87,7 +87,7 @@ class MiteToNexusWriter:
 
     # Sets the dir name to write the nexus file
     def __set_dirname(self, w, h, f, name):
-        dirname = name + 'w=' + str(w) + '__h=' + str(h)
+        dirname = name + '_w=' + str(w) + '__h=' + str(h)
 
         if self.binary:
             dirname += '__binary' + '__f=' + str(f)
