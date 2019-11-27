@@ -83,7 +83,7 @@ def construct_nexus(mtnw, args, partition):
 
 # Runs MrBayes with the NEXUS file as input.
 def run_mrbayes(nexus_path, run_num, nproc):
-    mblog_path = log_path + 'mb/' + dt_string + '/'
+    mblog_path = log_path + 'mb/' + dt_string + '_' + min_pcount_row + '-' + max_pcount_row + '/'
 
     if not os.path.exists(os.path.dirname(mblog_path)):
         os.makedirs(os.path.dirname(mblog_path))
@@ -214,7 +214,7 @@ if __name__ == '__main__':
         os.makedirs(os.path.dirname(log_path))
 
     logging.basicConfig(
-        filename=(log_path + dt_string + '.txt'),
+        filename=(log_path + dt_string + '_' + str(args.min_pcount) + '-' + str(args.max_pcount) + '.txt'),
         level=logging.INFO,
         filemode="w",
         format='%(asctime)s %(levelname)s:%(message)s',
