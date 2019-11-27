@@ -60,9 +60,9 @@ def __reduce_dim(old, f, w, h, binary):
 # Returns a new matrix with reduced dimensionality (wrapper)
 def reduce_dim(matrix, w, h, binary, max_size=math.inf, f=0.0):
     if w >= matrix.shape[0]:
-        raise ValueError('w is too big!')
+        w = matrix.shape[0]
     if h >= matrix.shape[1]:
-        raise ValueError('h is too big!')
+        h = matrix.shape[1]
 
     reduced = matrix.copy()
     x = 0
