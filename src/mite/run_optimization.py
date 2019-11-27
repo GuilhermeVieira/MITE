@@ -74,7 +74,7 @@ def construct_nexus(mtnw, args, partition):
     start = datetime.now()
     complete_path = nexus.run(
         mtnw, args.window_width, args.window_height, args.binary,
-        args.f, partition
+        args.f, partition, dt_string + '_' + str(min_pcount_row) + '-' + str(max_pcount_row)
     )
     end = datetime.now()
     logging.info('NEXUS creation elapsed time: ' + elapsed(start, end))
@@ -83,7 +83,7 @@ def construct_nexus(mtnw, args, partition):
 
 # Runs MrBayes with the NEXUS file as input.
 def run_mrbayes(nexus_path, run_num, nproc):
-    mblog_path = log_path + 'mb/' + dt_string + '_' + min_pcount_row + '-' + max_pcount_row + '/'
+    mblog_path = log_path + 'mb/' + dt_string + '_' + str(min_pcount_row) + '-' + str(max_pcount_row) + '/'
 
     if not os.path.exists(os.path.dirname(mblog_path)):
         os.makedirs(os.path.dirname(mblog_path))

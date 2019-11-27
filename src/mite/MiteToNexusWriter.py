@@ -86,8 +86,8 @@ class MiteToNexusWriter:
         return matrix
 
     # Sets the dir name to write the nexus file
-    def __set_dirname(self, w, h, f):
-        dirname = 'w=' + str(w) + '__h=' + str(h)
+    def __set_dirname(self, w, h, f, name):
+        dirname = name + 'w=' + str(w) + '__h=' + str(h)
 
         if self.binary:
             dirname += '__binary' + '__f=' + str(f)
@@ -118,9 +118,9 @@ class MiteToNexusWriter:
         return flattened_mites
 
     # Writes the nexus file
-    def write_nexus(self, w, h, partition, f=0.0):
+    def write_nexus(self, w, h, partition, name, f=0.0):
         nw = NexusWriter()
-        dirname = self.__set_dirname(w, h, f)
+        dirname = self.__set_dirname(w, h, f, name)
         parts_list = []
 
         for m in self.mites:

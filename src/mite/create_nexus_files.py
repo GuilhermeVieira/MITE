@@ -30,13 +30,13 @@ import os
 
 from MiteToNexusWriter import MiteToNexusWriter
 
-def run(mtnw, w, h, binary, f, partition):
+def run(mtnw, w, h, binary, f, partition, name):
     logging.info(
         'Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
         ', binary=' + str(binary) + ', f=' + str(f) + ')'
     )
 
-    return mtnw.write_nexus(w, h, partition, f=f)
+    return mtnw.write_nexus(w, h, partition, name, f=f)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
