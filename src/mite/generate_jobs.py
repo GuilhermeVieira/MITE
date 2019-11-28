@@ -26,6 +26,9 @@ interval = math.ceil(end / ncores)
 if not os.path.exists(os.path.dirname(path)):
     os.makedirs(os.path.dirname(path))
 
+if not os.path.exists(os.path.dirname(path + "out/")):
+    os.makedirs(os.path.dirname(path + "/out/"))
+
 for i in range(start, end, interval):
     j = i + interval - 1
 
@@ -34,5 +37,5 @@ for i in range(start, end, interval):
 
     filename = 'job_' + str(i) + '-' + str(j)
     job = open(path + filename + '.job', "w")
-    output = path + filename + '.out'
+    output = path + "out/" + filename + '.out'
     job.write(script.format(output, i, j))
