@@ -110,7 +110,7 @@ def run_cadm(nexus_path):
         'Starting to run CADM test (NEXUS file: ' + nexus_path + '/' +
         nexus_filename + ')'
     )
-    stats = cadm.run(nexus_path, + '/' + tree_filename, reports_path)
+    stats = cadm.run(nexus_path + '/' + tree_filename, reports_path)
     logging.info("CADM results: " + str(stats))
 
     return stats 
