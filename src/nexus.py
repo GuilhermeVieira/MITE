@@ -46,6 +46,7 @@ mb_template = Template("""begin mrbayes;
         unlink revmat=(all) pinvar=(all) shape=(all) statefreq=(all);
         prset applyto=(all) ratepr=variable;
         mcmc ngen=$ngen samplefreq=$smpfreq;
+        sumt;
 
 end;
 """)
