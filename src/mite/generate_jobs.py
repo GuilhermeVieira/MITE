@@ -14,7 +14,7 @@ script = """#!/bin/bash
 #SBATCH -o {0}
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --mem=9000
+#SBATCH --mem=1000
 
 python3.6 run_optimization.py {1} {2} ../../output/nexus/ --window_width=2 --window_height=2 -b --f=0.25
 
