@@ -21,7 +21,7 @@ python3.6 run_optimization.py {1} {2} ../../output/nexus/ --window_width=2 --win
 exit 0
 """
 
-interval = math.ceil(end / ncores)
+interval = math.ceil((end - start) / ncores)
 
 if not os.path.exists(os.path.dirname(path)):
     os.makedirs(os.path.dirname(path))
