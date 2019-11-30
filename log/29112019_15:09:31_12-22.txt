@@ -1,0 +1,160 @@
+29/11/2019 15:09:31 INFO:Starting optimization routine. Partitioning ion maps up to 22x22 parts
+29/11/2019 15:09:31 INFO:Loading ion maps...
+29/11/2019 15:09:34 INFO:MIN_PCOUNT=12
+MAX_PCOUNT=22
+XML_PATH=/home/bcc/mergipe/private/ime/mac0499/MITE/src/mite//../../input/ion_map/xml/
+NEXUS_PATH=../../output/nexus/
+WINDOW_WIDTH=2, WINDOW_HEIGHT=2
+BINARY=True, f=0.25
+NPROC=1
+29/11/2019 15:09:34 INFO:Starting iteration 12
+29/11/2019 15:09:34 INFO:Generating an uniform partition (12x12 parts)
+29/11/2019 15:09:34 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 15:11:52 INFO:NEXUS creation elapsed time: 0:02:17.620961
+29/11/2019 15:11:52 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 15:31:29 INFO:MrBayes elapsed time: 0:19:37.363346
+29/11/2019 15:31:29 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 15:31:29 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5500000
+
+29/11/2019 15:31:29 INFO:W = 0.446404793608522 is the new global best
+29/11/2019 15:31:29 INFO:Created/updated best.nex and best.nex.con.tre files
+29/11/2019 15:31:29 INFO:Iteration 12 elapsed time: 0:21:55.269196
+29/11/2019 15:31:29 INFO:Starting iteration 13
+29/11/2019 15:31:29 INFO:Generating an uniform partition (13x13 parts)
+29/11/2019 15:31:29 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 15:33:56 INFO:NEXUS creation elapsed time: 0:02:26.497769
+29/11/2019 15:33:56 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 15:53:48 INFO:MrBayes elapsed time: 0:19:52.569324
+29/11/2019 15:53:48 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 15:53:48 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6200000
+
+29/11/2019 15:53:48 INFO:Iteration 13 elapsed time: 0:22:19.163035
+29/11/2019 15:53:48 INFO:Starting iteration 14
+29/11/2019 15:53:48 INFO:Generating an uniform partition (14x14 parts)
+29/11/2019 15:53:48 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 15:56:26 INFO:NEXUS creation elapsed time: 0:02:37.731991
+29/11/2019 15:56:26 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 16:15:54 INFO:MrBayes elapsed time: 0:19:27.136272
+29/11/2019 16:15:54 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 16:15:54 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.8400000
+
+29/11/2019 16:15:54 INFO:Iteration 14 elapsed time: 0:22:05.154935
+29/11/2019 16:15:54 INFO:Starting iteration 15
+29/11/2019 16:15:54 INFO:Generating an uniform partition (15x15 parts)
+29/11/2019 16:15:54 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 16:18:32 INFO:NEXUS creation elapsed time: 0:02:38.765308
+29/11/2019 16:18:32 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 16:38:01 INFO:MrBayes elapsed time: 0:19:28.139273
+29/11/2019 16:38:01 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 16:38:01 INFO:CADM results:           Statistics
+W          0.4231025
+Chi2      16.9241012
+Prob.perm  0.6600000
+
+29/11/2019 16:38:01 INFO:Iteration 15 elapsed time: 0:22:07.032322
+29/11/2019 16:38:01 INFO:Starting iteration 16
+29/11/2019 16:38:01 INFO:Generating an uniform partition (16x16 parts)
+29/11/2019 16:38:01 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 16:40:40 INFO:NEXUS creation elapsed time: 0:02:39.340380
+29/11/2019 16:40:40 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 16:59:52 INFO:MrBayes elapsed time: 0:19:12.300383
+29/11/2019 16:59:52 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 16:59:52 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6900000
+
+29/11/2019 16:59:52 INFO:Iteration 16 elapsed time: 0:21:51.800135
+29/11/2019 16:59:52 INFO:Starting iteration 17
+29/11/2019 16:59:52 INFO:Generating an uniform partition (17x17 parts)
+29/11/2019 16:59:52 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 17:02:36 INFO:NEXUS creation elapsed time: 0:02:43.064724
+29/11/2019 17:02:36 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 17:21:18 INFO:MrBayes elapsed time: 0:18:42.124501
+29/11/2019 17:21:18 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 17:21:18 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5900000
+
+29/11/2019 17:21:18 INFO:Iteration 17 elapsed time: 0:21:25.287643
+29/11/2019 17:21:18 INFO:Starting iteration 18
+29/11/2019 17:21:18 INFO:Generating an uniform partition (18x18 parts)
+29/11/2019 17:21:18 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 17:24:02 INFO:NEXUS creation elapsed time: 0:02:44.521356
+29/11/2019 17:24:02 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 17:42:55 INFO:MrBayes elapsed time: 0:18:52.748590
+29/11/2019 17:42:55 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 17:42:55 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.5300000
+
+29/11/2019 17:42:55 INFO:Iteration 18 elapsed time: 0:21:37.408851
+29/11/2019 17:42:55 INFO:Starting iteration 19
+29/11/2019 17:42:55 INFO:Generating an uniform partition (19x19 parts)
+29/11/2019 17:42:55 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 17:45:40 INFO:NEXUS creation elapsed time: 0:02:44.869797
+29/11/2019 17:45:40 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 18:04:40 INFO:MrBayes elapsed time: 0:19:00.300088
+29/11/2019 18:04:40 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 18:04:41 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6800000
+
+29/11/2019 18:04:41 INFO:Iteration 19 elapsed time: 0:21:45.386834
+29/11/2019 18:04:41 INFO:Starting iteration 20
+29/11/2019 18:04:41 INFO:Generating an uniform partition (20x20 parts)
+29/11/2019 18:04:41 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 18:07:23 INFO:NEXUS creation elapsed time: 0:02:41.995542
+29/11/2019 18:07:23 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 18:26:35 INFO:MrBayes elapsed time: 0:19:12.361016
+29/11/2019 18:26:35 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 18:26:35 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.7100000
+
+29/11/2019 18:26:35 INFO:Iteration 20 elapsed time: 0:21:54.483111
+29/11/2019 18:26:35 INFO:Starting iteration 21
+29/11/2019 18:26:35 INFO:Generating an uniform partition (21x21 parts)
+29/11/2019 18:26:35 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 18:29:21 INFO:NEXUS creation elapsed time: 0:02:45.798810
+29/11/2019 18:29:21 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 18:49:35 INFO:MrBayes elapsed time: 0:20:14.204142
+29/11/2019 18:49:35 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 18:49:35 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6800000
+
+29/11/2019 18:49:35 INFO:Iteration 21 elapsed time: 0:23:00.160807
+29/11/2019 18:49:35 INFO:Starting iteration 22
+29/11/2019 18:49:35 INFO:Generating an uniform partition (22x22 parts)
+29/11/2019 18:49:35 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
+29/11/2019 18:52:24 INFO:NEXUS creation elapsed time: 0:02:48.638806
+29/11/2019 18:52:24 INFO:Starting to run MrBayes with 1 processors
+29/11/2019 19:18:21 INFO:MrBayes elapsed time: 0:25:57.365963
+29/11/2019 19:18:21 INFO:Starting to run CADM test (NEXUS file: ../../output/nexus//29112019_15:09:31_12-22_w=2__h=2__binary__f=0.25//mite.nex)
+29/11/2019 19:18:21 INFO:CADM results:           Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6800000
+
+29/11/2019 19:18:21 INFO:Iteration 22 elapsed time: 0:28:46.152672
+29/11/2019 19:18:21 INFO:Total elapsed time: 4:08:50.553500
+29/11/2019 19:18:21 INFO:Number of iterations: 11
+29/11/2019 19:18:21 INFO:Global best: (R object with classes: ('matrix',) mapped to:
+[0.446405, 17.856192, 0.550000], [(slice(0, 1000, None), slice(0, 1250000, None)), (slice(0, 1000, None), slice(1250000, 2500000, None)), (slice(0, 1000, None), slice(2500000, 3750000, None)), (slice(0, 1000, None), slice(3750000, 5000000, None)), (slice(0, 1000, None), slice(5000000, 6250000, None)), (slice(0, 1000, None), slice(6250000, 7500000, None)), (slice(0, 1000, None), slice(7500000, 8750000, None)), (slice(0, 1000, None), slice(8750000, 10000000, None)), (slice(0, 1000, None), slice(10000000, 11250000, None)), (slice(0, 1000, None), slice(11250000, 12500000, None)), (slice(0, 1000, None), slice(12500000, 13750000, None)), (slice(0, 1000, None), slice(13750000, 15000000, None)), (slice(1000, 2000, None), slice(0, 1250000, None)), (slice(1000, 2000, None), slice(1250000, 2500000, None)), (slice(1000, 2000, None), slice(2500000, 3750000, None)), (slice(1000, 2000, None), slice(3750000, 5000000, None)), (slice(1000, 2000, None), slice(5000000, 6250000, None)), (slice(1000, 2000, None), slice(6250000, 7500000, None)), (slice(1000, 2000, None), slice(7500000, 8750000, None)), (slice(1000, 2000, None), slice(8750000, 10000000, None)), (slice(1000, 2000, None), slice(10000000, 11250000, None)), (slice(1000, 2000, None), slice(11250000, 12500000, None)), (slice(1000, 2000, None), slice(12500000, 13750000, None)), (slice(1000, 2000, None), slice(13750000, 15000000, None)), (slice(2000, 3000, None), slice(0, 1250000, None)), (slice(2000, 3000, None), slice(1250000, 2500000, None)), (slice(2000, 3000, None), slice(2500000, 3750000, None)), (slice(2000, 3000, None), slice(3750000, 5000000, None)), (slice(2000, 3000, None), slice(5000000, 6250000, None)), (slice(2000, 3000, None), slice(6250000, 7500000, None)), (slice(2000, 3000, None), slice(7500000, 8750000, None)), (slice(2000, 3000, None), slice(8750000, 10000000, None)), (slice(2000, 3000, None), slice(10000000, 11250000, None)), (slice(2000, 3000, None), slice(11250000, 12500000, None)), (slice(2000, 3000, None), slice(12500000, 13750000, None)), (slice(2000, 3000, None), slice(13750000, 15000000, None)), (slice(3000, 4000, None), slice(0, 1250000, None)), (slice(3000, 4000, None), slice(1250000, 2500000, None)), (slice(3000, 4000, None), slice(2500000, 3750000, None)), (slice(3000, 4000, None), slice(3750000, 5000000, None)), (slice(3000, 4000, None), slice(5000000, 6250000, None)), (slice(3000, 4000, None), slice(6250000, 7500000, None)), (slice(3000, 4000, None), slice(7500000, 8750000, None)), (slice(3000, 4000, None), slice(8750000, 10000000, None)), (slice(3000, 4000, None), slice(10000000, 11250000, None)), (slice(3000, 4000, None), slice(11250000, 12500000, None)), (slice(3000, 4000, None), slice(12500000, 13750000, None)), (slice(3000, 4000, None), slice(13750000, 15000000, None)), (slice(4000, 5000, None), slice(0, 1250000, None)), (slice(4000, 5000, None), slice(1250000, 2500000, None)), (slice(4000, 5000, None), slice(2500000, 3750000, None)), (slice(4000, 5000, None), slice(3750000, 5000000, None)), (slice(4000, 5000, None), slice(5000000, 6250000, None)), (slice(4000, 5000, None), slice(6250000, 7500000, None)), (slice(4000, 5000, None), slice(7500000, 8750000, None)), (slice(4000, 5000, None), slice(8750000, 10000000, None)), (slice(4000, 5000, None), slice(10000000, 11250000, None)), (slice(4000, 5000, None), slice(11250000, 12500000, None)), (slice(4000, 5000, None), slice(12500000, 13750000, None)), (slice(4000, 5000, None), slice(13750000, 15000000, None)), (slice(5000, 6000, None), slice(0, 1250000, None)), (slice(5000, 6000, None), slice(1250000, 2500000, None)), (slice(5000, 6000, None), slice(2500000, 3750000, None)), (slice(5000, 6000, None), slice(3750000, 5000000, None)), (slice(5000, 6000, None), slice(5000000, 6250000, None)), (slice(5000, 6000, None), slice(6250000, 7500000, None)), (slice(5000, 6000, None), slice(7500000, 8750000, None)), (slice(5000, 6000, None), slice(8750000, 10000000, None)), (slice(5000, 6000, None), slice(10000000, 11250000, None)), (slice(5000, 6000, None), slice(11250000, 12500000, None)), (slice(5000, 6000, None), slice(12500000, 13750000, None)), (slice(5000, 6000, None), slice(13750000, 15000000, None)), (slice(6000, 7000, None), slice(0, 1250000, None)), (slice(6000, 7000, None), slice(1250000, 2500000, None)), (slice(6000, 7000, None), slice(2500000, 3750000, None)), (slice(6000, 7000, None), slice(3750000, 5000000, None)), (slice(6000, 7000, None), slice(5000000, 6250000, None)), (slice(6000, 7000, None), slice(6250000, 7500000, None)), (slice(6000, 7000, None), slice(7500000, 8750000, None)), (slice(6000, 7000, None), slice(8750000, 10000000, None)), (slice(6000, 7000, None), slice(10000000, 11250000, None)), (slice(6000, 7000, None), slice(11250000, 12500000, None)), (slice(6000, 7000, None), slice(12500000, 13750000, None)), (slice(6000, 7000, None), slice(13750000, 15000000, None)), (slice(7000, 8000, None), slice(0, 1250000, None)), (slice(7000, 8000, None), slice(1250000, 2500000, None)), (slice(7000, 8000, None), slice(2500000, 3750000, None)), (slice(7000, 8000, None), slice(3750000, 5000000, None)), (slice(7000, 8000, None), slice(5000000, 6250000, None)), (slice(7000, 8000, None), slice(6250000, 7500000, None)), (slice(7000, 8000, None), slice(7500000, 8750000, None)), (slice(7000, 8000, None), slice(8750000, 10000000, None)), (slice(7000, 8000, None), slice(10000000, 11250000, None)), (slice(7000, 8000, None), slice(11250000, 12500000, None)), (slice(7000, 8000, None), slice(12500000, 13750000, None)), (slice(7000, 8000, None), slice(13750000, 15000000, None)), (slice(8000, 9000, None), slice(0, 1250000, None)), (slice(8000, 9000, None), slice(1250000, 2500000, None)), (slice(8000, 9000, None), slice(2500000, 3750000, None)), (slice(8000, 9000, None), slice(3750000, 5000000, None)), (slice(8000, 9000, None), slice(5000000, 6250000, None)), (slice(8000, 9000, None), slice(6250000, 7500000, None)), (slice(8000, 9000, None), slice(7500000, 8750000, None)), (slice(8000, 9000, None), slice(8750000, 10000000, None)), (slice(8000, 9000, None), slice(10000000, 11250000, None)), (slice(8000, 9000, None), slice(11250000, 12500000, None)), (slice(8000, 9000, None), slice(12500000, 13750000, None)), (slice(8000, 9000, None), slice(13750000, 15000000, None)), (slice(9000, 10000, None), slice(0, 1250000, None)), (slice(9000, 10000, None), slice(1250000, 2500000, None)), (slice(9000, 10000, None), slice(2500000, 3750000, None)), (slice(9000, 10000, None), slice(3750000, 5000000, None)), (slice(9000, 10000, None), slice(5000000, 6250000, None)), (slice(9000, 10000, None), slice(6250000, 7500000, None)), (slice(9000, 10000, None), slice(7500000, 8750000, None)), (slice(9000, 10000, None), slice(8750000, 10000000, None)), (slice(9000, 10000, None), slice(10000000, 11250000, None)), (slice(9000, 10000, None), slice(11250000, 12500000, None)), (slice(9000, 10000, None), slice(12500000, 13750000, None)), (slice(9000, 10000, None), slice(13750000, 15000000, None)), (slice(10000, 11000, None), slice(0, 1250000, None)), (slice(10000, 11000, None), slice(1250000, 2500000, None)), (slice(10000, 11000, None), slice(2500000, 3750000, None)), (slice(10000, 11000, None), slice(3750000, 5000000, None)), (slice(10000, 11000, None), slice(5000000, 6250000, None)), (slice(10000, 11000, None), slice(6250000, 7500000, None)), (slice(10000, 11000, None), slice(7500000, 8750000, None)), (slice(10000, 11000, None), slice(8750000, 10000000, None)), (slice(10000, 11000, None), slice(10000000, 11250000, None)), (slice(10000, 11000, None), slice(11250000, 12500000, None)), (slice(10000, 11000, None), slice(12500000, 13750000, None)), (slice(10000, 11000, None), slice(13750000, 15000000, None)), (slice(11000, 12000, None), slice(0, 1250000, None)), (slice(11000, 12000, None), slice(1250000, 2500000, None)), (slice(11000, 12000, None), slice(2500000, 3750000, None)), (slice(11000, 12000, None), slice(3750000, 5000000, None)), (slice(11000, 12000, None), slice(5000000, 6250000, None)), (slice(11000, 12000, None), slice(6250000, 7500000, None)), (slice(11000, 12000, None), slice(7500000, 8750000, None)), (slice(11000, 12000, None), slice(8750000, 10000000, None)), (slice(11000, 12000, None), slice(10000000, 11250000, None)), (slice(11000, 12000, None), slice(11250000, 12500000, None)), (slice(11000, 12000, None), slice(12500000, 13750000, None)), (slice(11000, 12000, None), slice(13750000, 15000000, None))])
+29/11/2019 19:18:21 INFO:Best history: [(R object with classes: ('matrix',) mapped to:
+[0.446405, 17.856192, 0.550000], [(slice(0, 1000, None), slice(0, 1250000, None)), (slice(0, 1000, None), slice(1250000, 2500000, None)), (slice(0, 1000, None), slice(2500000, 3750000, None)), (slice(0, 1000, None), slice(3750000, 5000000, None)), (slice(0, 1000, None), slice(5000000, 6250000, None)), (slice(0, 1000, None), slice(6250000, 7500000, None)), (slice(0, 1000, None), slice(7500000, 8750000, None)), (slice(0, 1000, None), slice(8750000, 10000000, None)), (slice(0, 1000, None), slice(10000000, 11250000, None)), (slice(0, 1000, None), slice(11250000, 12500000, None)), (slice(0, 1000, None), slice(12500000, 13750000, None)), (slice(0, 1000, None), slice(13750000, 15000000, None)), (slice(1000, 2000, None), slice(0, 1250000, None)), (slice(1000, 2000, None), slice(1250000, 2500000, None)), (slice(1000, 2000, None), slice(2500000, 3750000, None)), (slice(1000, 2000, None), slice(3750000, 5000000, None)), (slice(1000, 2000, None), slice(5000000, 6250000, None)), (slice(1000, 2000, None), slice(6250000, 7500000, None)), (slice(1000, 2000, None), slice(7500000, 8750000, None)), (slice(1000, 2000, None), slice(8750000, 10000000, None)), (slice(1000, 2000, None), slice(10000000, 11250000, None)), (slice(1000, 2000, None), slice(11250000, 12500000, None)), (slice(1000, 2000, None), slice(12500000, 13750000, None)), (slice(1000, 2000, None), slice(13750000, 15000000, None)), (slice(2000, 3000, None), slice(0, 1250000, None)), (slice(2000, 3000, None), slice(1250000, 2500000, None)), (slice(2000, 3000, None), slice(2500000, 3750000, None)), (slice(2000, 3000, None), slice(3750000, 5000000, None)), (slice(2000, 3000, None), slice(5000000, 6250000, None)), (slice(2000, 3000, None), slice(6250000, 7500000, None)), (slice(2000, 3000, None), slice(7500000, 8750000, None)), (slice(2000, 3000, None), slice(8750000, 10000000, None)), (slice(2000, 3000, None), slice(10000000, 11250000, None)), (slice(2000, 3000, None), slice(11250000, 12500000, None)), (slice(2000, 3000, None), slice(12500000, 13750000, None)), (slice(2000, 3000, None), slice(13750000, 15000000, None)), (slice(3000, 4000, None), slice(0, 1250000, None)), (slice(3000, 4000, None), slice(1250000, 2500000, None)), (slice(3000, 4000, None), slice(2500000, 3750000, None)), (slice(3000, 4000, None), slice(3750000, 5000000, None)), (slice(3000, 4000, None), slice(5000000, 6250000, None)), (slice(3000, 4000, None), slice(6250000, 7500000, None)), (slice(3000, 4000, None), slice(7500000, 8750000, None)), (slice(3000, 4000, None), slice(8750000, 10000000, None)), (slice(3000, 4000, None), slice(10000000, 11250000, None)), (slice(3000, 4000, None), slice(11250000, 12500000, None)), (slice(3000, 4000, None), slice(12500000, 13750000, None)), (slice(3000, 4000, None), slice(13750000, 15000000, None)), (slice(4000, 5000, None), slice(0, 1250000, None)), (slice(4000, 5000, None), slice(1250000, 2500000, None)), (slice(4000, 5000, None), slice(2500000, 3750000, None)), (slice(4000, 5000, None), slice(3750000, 5000000, None)), (slice(4000, 5000, None), slice(5000000, 6250000, None)), (slice(4000, 5000, None), slice(6250000, 7500000, None)), (slice(4000, 5000, None), slice(7500000, 8750000, None)), (slice(4000, 5000, None), slice(8750000, 10000000, None)), (slice(4000, 5000, None), slice(10000000, 11250000, None)), (slice(4000, 5000, None), slice(11250000, 12500000, None)), (slice(4000, 5000, None), slice(12500000, 13750000, None)), (slice(4000, 5000, None), slice(13750000, 15000000, None)), (slice(5000, 6000, None), slice(0, 1250000, None)), (slice(5000, 6000, None), slice(1250000, 2500000, None)), (slice(5000, 6000, None), slice(2500000, 3750000, None)), (slice(5000, 6000, None), slice(3750000, 5000000, None)), (slice(5000, 6000, None), slice(5000000, 6250000, None)), (slice(5000, 6000, None), slice(6250000, 7500000, None)), (slice(5000, 6000, None), slice(7500000, 8750000, None)), (slice(5000, 6000, None), slice(8750000, 10000000, None)), (slice(5000, 6000, None), slice(10000000, 11250000, None)), (slice(5000, 6000, None), slice(11250000, 12500000, None)), (slice(5000, 6000, None), slice(12500000, 13750000, None)), (slice(5000, 6000, None), slice(13750000, 15000000, None)), (slice(6000, 7000, None), slice(0, 1250000, None)), (slice(6000, 7000, None), slice(1250000, 2500000, None)), (slice(6000, 7000, None), slice(2500000, 3750000, None)), (slice(6000, 7000, None), slice(3750000, 5000000, None)), (slice(6000, 7000, None), slice(5000000, 6250000, None)), (slice(6000, 7000, None), slice(6250000, 7500000, None)), (slice(6000, 7000, None), slice(7500000, 8750000, None)), (slice(6000, 7000, None), slice(8750000, 10000000, None)), (slice(6000, 7000, None), slice(10000000, 11250000, None)), (slice(6000, 7000, None), slice(11250000, 12500000, None)), (slice(6000, 7000, None), slice(12500000, 13750000, None)), (slice(6000, 7000, None), slice(13750000, 15000000, None)), (slice(7000, 8000, None), slice(0, 1250000, None)), (slice(7000, 8000, None), slice(1250000, 2500000, None)), (slice(7000, 8000, None), slice(2500000, 3750000, None)), (slice(7000, 8000, None), slice(3750000, 5000000, None)), (slice(7000, 8000, None), slice(5000000, 6250000, None)), (slice(7000, 8000, None), slice(6250000, 7500000, None)), (slice(7000, 8000, None), slice(7500000, 8750000, None)), (slice(7000, 8000, None), slice(8750000, 10000000, None)), (slice(7000, 8000, None), slice(10000000, 11250000, None)), (slice(7000, 8000, None), slice(11250000, 12500000, None)), (slice(7000, 8000, None), slice(12500000, 13750000, None)), (slice(7000, 8000, None), slice(13750000, 15000000, None)), (slice(8000, 9000, None), slice(0, 1250000, None)), (slice(8000, 9000, None), slice(1250000, 2500000, None)), (slice(8000, 9000, None), slice(2500000, 3750000, None)), (slice(8000, 9000, None), slice(3750000, 5000000, None)), (slice(8000, 9000, None), slice(5000000, 6250000, None)), (slice(8000, 9000, None), slice(6250000, 7500000, None)), (slice(8000, 9000, None), slice(7500000, 8750000, None)), (slice(8000, 9000, None), slice(8750000, 10000000, None)), (slice(8000, 9000, None), slice(10000000, 11250000, None)), (slice(8000, 9000, None), slice(11250000, 12500000, None)), (slice(8000, 9000, None), slice(12500000, 13750000, None)), (slice(8000, 9000, None), slice(13750000, 15000000, None)), (slice(9000, 10000, None), slice(0, 1250000, None)), (slice(9000, 10000, None), slice(1250000, 2500000, None)), (slice(9000, 10000, None), slice(2500000, 3750000, None)), (slice(9000, 10000, None), slice(3750000, 5000000, None)), (slice(9000, 10000, None), slice(5000000, 6250000, None)), (slice(9000, 10000, None), slice(6250000, 7500000, None)), (slice(9000, 10000, None), slice(7500000, 8750000, None)), (slice(9000, 10000, None), slice(8750000, 10000000, None)), (slice(9000, 10000, None), slice(10000000, 11250000, None)), (slice(9000, 10000, None), slice(11250000, 12500000, None)), (slice(9000, 10000, None), slice(12500000, 13750000, None)), (slice(9000, 10000, None), slice(13750000, 15000000, None)), (slice(10000, 11000, None), slice(0, 1250000, None)), (slice(10000, 11000, None), slice(1250000, 2500000, None)), (slice(10000, 11000, None), slice(2500000, 3750000, None)), (slice(10000, 11000, None), slice(3750000, 5000000, None)), (slice(10000, 11000, None), slice(5000000, 6250000, None)), (slice(10000, 11000, None), slice(6250000, 7500000, None)), (slice(10000, 11000, None), slice(7500000, 8750000, None)), (slice(10000, 11000, None), slice(8750000, 10000000, None)), (slice(10000, 11000, None), slice(10000000, 11250000, None)), (slice(10000, 11000, None), slice(11250000, 12500000, None)), (slice(10000, 11000, None), slice(12500000, 13750000, None)), (slice(10000, 11000, None), slice(13750000, 15000000, None)), (slice(11000, 12000, None), slice(0, 1250000, None)), (slice(11000, 12000, None), slice(1250000, 2500000, None)), (slice(11000, 12000, None), slice(2500000, 3750000, None)), (slice(11000, 12000, None), slice(3750000, 5000000, None)), (slice(11000, 12000, None), slice(5000000, 6250000, None)), (slice(11000, 12000, None), slice(6250000, 7500000, None)), (slice(11000, 12000, None), slice(7500000, 8750000, None)), (slice(11000, 12000, None), slice(8750000, 10000000, None)), (slice(11000, 12000, None), slice(10000000, 11250000, None)), (slice(11000, 12000, None), slice(11250000, 12500000, None)), (slice(11000, 12000, None), slice(12500000, 13750000, None)), (slice(11000, 12000, None), slice(13750000, 15000000, None))])]
