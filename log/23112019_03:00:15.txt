@@ -1,6 +1,0 @@
-23/11/2019 03:00:15 INFO:Loading ion maps...
-23/11/2019 03:00:18 INFO:Starting iteration 1
-23/11/2019 03:00:18 INFO:Generating an uniform partition (1x1 parts)
-23/11/2019 03:00:18 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
-23/11/2019 03:02:31 INFO:NEXUS creation elapsed time: 0:02:13.009396
-23/11/2019 03:02:31 INFO:Starting to run MrBayes

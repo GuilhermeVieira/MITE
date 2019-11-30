@@ -1,4 +1,0 @@
-23/11/2019 10:30:29 INFO:Loading ion maps...
-23/11/2019 10:30:31 INFO:Starting iteration 1
-23/11/2019 10:30:31 INFO:Generating an uniform partition (1x1 parts)
-23/11/2019 10:30:31 INFO:Creating NEXUS file... (w=2, h=2, binary=True, f=0.25)
