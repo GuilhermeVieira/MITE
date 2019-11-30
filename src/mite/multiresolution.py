@@ -22,6 +22,7 @@
 ##                                                                              ##
 ##################################################################################
 
+import logging
 import math
 import numpy as np
 from scipy.sparse import lil_matrix
@@ -72,6 +73,41 @@ def reduce_dim(matrix, w, h, binary, max_size=math.inf, f=0.0):
         x += 1
 
     return reduced 
+
+# Returns a partition of a matrix, such that the number of parts in row and
+# column are equal
+def generate_uniform_partition(shape, pcount_row, pcount_col):
+    logging.info(
+        'Generating an partition dividing rows and cols in ' + str(pcount_row)
+        + 'x' + str(pcount_col) + ' parts'
+    )
+    partition = []
+    step_row = int(math.ceil(shape[0] / pcount_row))
+    step_col = int(math.ceil(shape[1] / pcount_col))
+
+    for i in range(0, shape[0], step_row):
+        for j in range(0, shape[1], step_col):
+            slicex = slice(i, i + step_row)
+            slicey = slice(j, j + step_col)
+            partition.append((slicex, slicey))
+
+    return partition
+
+# Returns a partition with square types
+def generate_square_partition(shape, part_size_row, part_size_col):
+    logging.info(
+        'Generating a partition with parts of size ' + str(part_size_row) +
+        'x' + str(part_size_col)
+    )
+    partition = []
+
+    for i in range(0, shape[0], part_size_row):
+        for j in range(0, shape[1], part_size_col):
+            slicex = slice(i, i + part_size_row)
+            slicey = slice(j, j + part_size_col)
+            partition.append((slicex, slicey))
+
+    return partition
 
 # Returns the parts of the partition applied to the matrix
 def get_parts(matrix, partition):
