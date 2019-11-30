@@ -124,8 +124,8 @@ def run_basic_optimization(args):
     shape = mtnw.mites[0].matrix.shape
     partition = []
     lstartr = args.pargs[0]
-    lstartc = args.pargs[2]
-    lendr = args.pargs[1]
+    lstartc = args.pargs[1]
+    lendr = args.pargs[2]
     lendc = args.pargs[3]
     lstep = args.pargs[4]
 
@@ -199,7 +199,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         "--partition_args", nargs=5, type=int,
-        metavar=("min_row_arg", "max_row_arg", "min_col_arg", "max_col_arg", "step"),
+        metavar=("min_row_arg", "min_col_arg", "max_row_arg", "max_col_arg", "step"),
         help="if partition type is S, defines the min and max number of times"
         "the matrix will be divided; if s, defines the parts min and max size",
         dest="pargs", required=True
