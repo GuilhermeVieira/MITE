@@ -51,4 +51,7 @@ class Mite:
         plt.title(self.filepath)
         plt.xlabel('m/z')
         plt.ylabel('retention time')
-        plt.show()
+        plt.savefig(self.filepath + '.png')
+        plt.clf()
+        plt.cla()
+        plt.close()

@@ -1,0 +1,17 @@
+#NEXUS
+[ID: 3261346325]
+[This file contains the trees that were found during the MCMC
+search, sorted by posterior probability. "p" indicates the
+posterior probability of the tree whereas "P" indicates the
+cumulative posterior probability.]
+
+begin trees;
+   translate
+    1 alcatraz_R1,
+    2 alcatraz_R2,
+    3 insularis_R1,
+    4 insularis_R2,
+    5 jararaca_R1,
+    6 jararaca_R2;
+   tree tree_1 [p = 1.000, P = 1.000] = [&W 1.000000] (2,((6,5),(4,3)),1);
+end;

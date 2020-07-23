@@ -92,7 +92,18 @@ if __name__ == '__main__':
     m = mtnw.mites[0].matrix.shape[0]
     n = mtnw.mites[0].matrix.shape[1]
     partition = [(slice(0, m), slice(0, n))]
+    print("=================================")
+    print(m)
+    print(n)
+    print(partition)
+    print("=================================")
+    
     run(
         mtnw, args.window_width, args.window_height, args.binary, args.f,
         partition, args.nproc
     )
+    
+    '''
+    for i in range(len(mtnw.mites)):
+        print(mtnw.mites[i].matrix.toarray())
+    '''

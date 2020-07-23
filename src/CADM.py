@@ -1,7 +1,7 @@
 ##################################################################################
 ##                                                                              ##
-##  Module with the implementation of the CADM test for comparing trees         ##
-##  from Campbell 2011                                                          ##
+##   Module with the implementation of the CADM test for comparing trees        ##
+##   from Campbell 2011                                                         ##
 ##                                                                              ##
 ##   This file is part of the featsel program                                   ##
 ##   Copyright (C) 2018 Victor Wichmann Raposo                                  ##

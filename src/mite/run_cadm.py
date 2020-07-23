@@ -33,7 +33,7 @@ def __print(output, string):
     #print(string)
     output.write(string)
 
-def run(nexus_path, reports_path):
+def run(nexus_path='../../output/nexus/bob/mite.nex.con.tre', reports_path='../../reports/bob/bob_reports.txt'):
     gen = '../../input/genomic/genomic.nex.con.tre'
 
     with open(reports_path, 'w') as report:

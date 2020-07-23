@@ -30,7 +30,7 @@ import os
 
 from MiteToNexusWriter import MiteToNexusWriter
 
-def run(mtnw, w, h, binary, f, partition, name):
+def run(mtnw, w, h, binary, f, partition, name="tres-especies"):
     logging.info(
         'Creating NEXUS file... (w=' + str(w) + ', h=' + str(h) +
         ', binary=' + str(binary) + ', f=' + str(f) + ')'

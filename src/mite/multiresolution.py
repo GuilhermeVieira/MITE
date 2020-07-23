@@ -113,6 +113,8 @@ def generate_square_partition(shape, part_size_row, part_size_col):
 def get_parts(matrix, partition):
     parts = []
 
+    print(partition)
+
     for p in partition:
         parts.append(matrix[p[0], p[1]])
 

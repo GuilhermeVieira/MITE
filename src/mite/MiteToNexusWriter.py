@@ -58,6 +58,11 @@ class MiteToNexusWriter:
                     Mite(self.input_path + self.files_aux[i], binary=self.binary)
                 )
 
+        
+        for mite in mites:
+            mite.plot()
+        
+
         return mites, run_names
 
     # Transforms an 1d array in a string
