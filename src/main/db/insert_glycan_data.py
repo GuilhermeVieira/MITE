@@ -32,7 +32,7 @@ except:
 
 cur = conn.cursor()
 
-filename = "../../data/N-glycans_table.csv"
+filename = "../../../data/N-glycans_table.csv"
 with open(filename, 'r') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
         fieldnames = reader.fieldnames
