@@ -5,8 +5,6 @@ from typing import List, Optional, Dict
 import settingsloader as loader
 from paramwriter import ParamWriter
 import subprocess
-import os
-import shutil
 
 
 class Taxon:
@@ -33,14 +31,23 @@ class SuperHirnManager:
         self.__ms_settings_file_path: Dict[str, float] = \
             loader.load_superhirn_ms_settings(ms_settings_file_path)
 
-    def process(self, dirpath: Path, raw: bool = False):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.clean()
+
+    def process(self, directory_path: Path, raw: bool = False):
         file_format: Format = Format.RAW if raw else Format.MZXML
 
         if raw:
             raise NotImplementedError("SuperHirnManager does not support raw files")
 
-        self.__detect_taxa(dirpath, file_format)
-        self.__process()
+        self.__detect_taxa(directory_path, file_format)
+        self.__run_pipeline()
+
+    def clean(self):
+        filesystem.remove_all_folders_starting_with("ANALYSIS_", self.__superhirn_path)
 
     def __detect_taxa(self, dirpath: Path, file_format: Format):
         detected_taxa: List[Taxon] = []
@@ -61,7 +68,7 @@ class SuperHirnManager:
 
         self.__detected_taxa = detected_taxa
 
-    def __process(self):
+    def __run_pipeline(self):
         for taxon in self.__detected_taxa:
             self.__do_feature_extraction(taxon.name, taxon.path)
             self.__build_alignment_tree(taxon.name, taxon.path)
@@ -83,32 +90,24 @@ class SuperHirnManager:
         self.__call_superhirn('-IN', run_name, mzxml_directory)
 
     def __multiple_alignment_between_runs(self):
-        os.chdir(str(self.__superhirn_path))
-        lc_ms_runs_path = self.__superhirn_path.joinpath('ANALYSIS_MITE/LC_MS_RUNS')
-        lc_ms_runs_path.mkdir(parents=True, exist_ok=True)
-
         for taxon in self.__detected_taxa:
-            print(str(lc_ms_runs_path.joinpath(f'/NORMALIZED_{taxon.name}.xml')))
-            shutil.copyfile(
-                str(self.__superhirn_path.joinpath(f'ANALYSIS_{taxon.name}/NORMALIZED_{taxon.name}.xml')),
-                str(self.__superhirn_path.joinpath(f'ANALYSIS_MITE/LC_MS_RUNS/NORMALIZED_{taxon.name}.xml'))
+            filesystem.copy_file(
+                self.__superhirn_path.joinpath(f'ANALYSIS_{taxon.name}/NORMALIZED_{taxon.name}.xml'),
+                self.__superhirn_path.joinpath(f'ANALYSIS_MITE/LC_MS_RUNS/NORMALIZED_{taxon.name}.xml'),
+                create_parents=True
             )
 
         self.__call_superhirn('-AR', "MITE", Path())
 
         for taxon in self.__detected_taxa:
-            Path('/user/src/mite/input/xml/').mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(
-                str(self.__superhirn_path.joinpath(f'ANALYSIS_MITE/LC_MS_RUNS_ALIGNED/{taxon.name}.xml')),
-                str(self.__superhirn_path.joinpath(f'/user/src/mite/input/xml/{taxon.name}.xml'))
+            filesystem.copy_file(
+                self.__superhirn_path.joinpath(f'ANALYSIS_MITE/LC_MS_RUNS_ALIGNED/{taxon.name}.xml'),
+                Path(f'/user/src/mite/input/xml/{taxon.name}.xml'),
+                create_parents=True
             )
 
-        for taxon in self.__detected_taxa:
-            shutil.rmtree(str(self.__superhirn_path.joinpath(f'ANALYSIS_{taxon.name}')))
-        shutil.rmtree(str(self.__superhirn_path.joinpath('ANALYSIS_MITE')))
-
     def __call_superhirn(self, superhirn_param: str, run_name: str, mzxml_directory: Path):
-        os.chdir(str(self.__superhirn_path))
+        filesystem.change_directory(self.__superhirn_path)
         with ParamWriter(self.__superhirn_path, self.__ms_settings_file_path) as pw:
             pw.create_param_file(run_name, mzxml_directory)
             superhirn: str = str(self.__superhirn_path.joinpath("SuperHirnv03"))
@@ -120,5 +119,5 @@ if __name__ == '__main__':
     superhirn_directory = Path('/apps/SuperHirn/SuperHirnv03/make/')
     settings_file_path = Path('/user/src/mite/input/config/superhirn_params.json')
 
-    manager = SuperHirnManager(superhirn_directory, settings_file_path)
-    manager.process(Path(path))
+    with SuperHirnManager(superhirn_directory, settings_file_path) as manager:
+        manager.process(Path(path))
