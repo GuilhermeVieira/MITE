@@ -1,6 +1,6 @@
 import pytest
-
-from superhirn.settingsloader import *
+from pathlib import Path
+from settingsloader import load_superhirn_ms_settings
 import json
 
 

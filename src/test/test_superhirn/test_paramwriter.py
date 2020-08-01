@@ -1,6 +1,6 @@
 import pytest
 from pathlib import Path
-from superhirn.paramwriter import ParamWriter
+from paramwriter import ParamWriter
 
 
 def test_should_create_param_file_without_custom_ms_settings(tmp_path):

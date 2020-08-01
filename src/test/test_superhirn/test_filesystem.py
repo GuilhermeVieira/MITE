@@ -40,11 +40,11 @@ def test_should_raise_file_not_found_exception():
 def test_should_copy_file(tmp_path):
     file_name = 'file.txt'
     source_directory = tmp_path.joinpath('source')
-    destionation_directory = tmp_path.joinpath('destination')
+    destination_directory = tmp_path.joinpath('destination')
     source_file = source_directory.joinpath(file_name)
-    destination_file = destionation_directory.joinpath(file_name)
+    destination_file = destination_directory.joinpath(file_name)
     source_directory.mkdir()
-    destionation_directory.mkdir()
+    destination_directory.mkdir()
     source_file.touch()
     filesystem.copy_file(source_file, destination_file)
     assert source_file.exists() and destination_file.exists()
@@ -62,9 +62,9 @@ def test_should_not_copy_file_if_destination_parent_folder_does_not_exist(tmp_pa
     with pytest.raises(FileNotFoundError):
         file_name = 'file.txt'
         source_directory = tmp_path.joinpath('source')
-        destionation_directory = tmp_path.joinpath('destination')
+        destination_directory = tmp_path.joinpath('destination')
         source_file = source_directory.joinpath(file_name)
-        destination_file = destionation_directory.joinpath(file_name)
+        destination_file = destination_directory.joinpath(file_name)
         source_directory.mkdir()
         source_file.touch()
         filesystem.copy_file(source_file, destination_file)
@@ -94,6 +94,7 @@ def test_should_copy_file_if_destination_parent_folders_do_not_exist_and_create_
     assert source_file.exists() and destination_file.exists()
 
 
+# Test remove_all_folders_starting_with()
 def test_should_remove_all_folders_starting_with(tmp_path):
     folder1 = tmp_path.joinpath('ANALYSIS_1')
     folder2 = tmp_path.joinpath('ANALYSIS_2')
