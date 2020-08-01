@@ -6,7 +6,7 @@ WORKDIR /apps
 
 RUN apt-get update && \
     apt-get -y install git && \
-    git clone https://github.com/mergipe/SuperHirn.git && \
+    git clone https://github.com/GuilhermeVieira/SuperHirn.git && \
     cd SuperHirn/SuperHirnv03/make/ && \
     make
 
