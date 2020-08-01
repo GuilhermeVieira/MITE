@@ -1,17 +1,19 @@
 from pathlib import Path
 import os
 import pytest
-import filesystem
-from superhirn.filesystem import Format
+import filesystem as filesystem
+from filesystem import Format
 
 
 # Test contains_format()
-def test_contains_format_should_find_mzXML():
-    assert filesystem.contains_format(Path('../resources/format-supported-files'), Format.MZXML) is True
+def test_contains_format_should_find_mzxml(tmp_path):
+    tmp_path.joinpath('file.mzXML').touch()
+    assert filesystem.contains_format(tmp_path, Format.MZXML) is True
 
 
-def test_contains_format_should_find_raw():
-    assert filesystem.contains_format(Path('../resources/format-supported-files'), Format.RAW) is True
+def test_contains_format_should_find_raw(tmp_path):
+    tmp_path.joinpath('file.raw').touch()
+    assert filesystem.contains_format(tmp_path, Format.RAW) is True
 
 
 def test_contains_format_with_invalid_path():
