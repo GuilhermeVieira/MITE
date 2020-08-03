@@ -1,0 +1,15 @@
+{
+    "MS1 retention time tolerance": 2.5,
+    "MS1 m/z tolerance": 6,
+    "RT end elution window": 120.0,
+    "MS1 feature signal to noise threshold": 3.0,
+    "MS1 feature intensity cutoff": 200,
+    "MS1 feature CHRG range min": 2,
+    "MS1 feature CHRG range max": 9,
+    "MS1 feature mz range min": 300,
+    "MS1 feature mz range max": 1800,
+    "FT peak detect MS1 m/z tolerance": 6,
+    "FT peak detect MS1 intensity min threshold": 200,
+    "Relative isotope mass precision": 6,
+    "Activation of MS1 feature merging post processing": 0
+}

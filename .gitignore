@@ -19,6 +19,10 @@ coverage.xml
 cover/
 
 .DS_Store
-test/.pytest_cache/v/cache/nodeids
+src/test/.pytest_cache/v/cache/nodeids
 *~
 *.swp
+
+# Temp files
+input/mzXML
+.idea/

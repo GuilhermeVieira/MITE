@@ -2,6 +2,14 @@ FROM python:3.8.3-buster
 
 WORKDIR /apps
 
+# Installing SuperHirn
+
+RUN apt-get update && \
+    apt-get -y install git && \
+    git clone https://github.com/GuilhermeVieira/SuperHirn.git && \
+    cd SuperHirn/SuperHirnv03/make/ && \
+    make
+
 # Installing OpenMPI
 
 RUN mkdir openmpi && \

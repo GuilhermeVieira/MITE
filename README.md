@@ -18,7 +18,7 @@ foo@bar:~$ docker container run -it --name mite -v $(pwd):/user/src/mite mite
 
 Now you should have a console inside the project container. Run the following command to run the project pipeline.
 ```console
-root@bar:/user/src/mite# cd src/mite/ && python pipeline.py --nproc 4 --window_height 12 --window-width 12
+root@bar:/user/src/mite# cd src/mite/ && python pipeline.py --nproc 4 --window_height 12 --window_width 12
 ```
 
 To exit the container console, run the exit command:
