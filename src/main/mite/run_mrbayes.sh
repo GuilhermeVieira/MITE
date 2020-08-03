@@ -26,7 +26,7 @@ if [ -z "$1" ]
 then
     echo "You have to specify the number of processors that will be used to run MrBayes!"
 else
-    for dir in ../../output/nexus/tres-especies; do
+    for dir in /user/src/mite/input/output/nexus/tres-especies; do
         printf '\n'
         echo $dir
         mpirun --use-hwthread-cpus -np $1 mb "$dir/mite.nex"
