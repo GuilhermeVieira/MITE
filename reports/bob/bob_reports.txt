@@ -2,3 +2,16 @@
 Report comparing topology using the CADM test of the resultingtrees with the tree obtained with the genomic data.
 ------------------------------
 Target: MITE
+$congruence_analysis
+          Statistics
+W          0.4464048
+Chi2      17.8561917
+Prob.perm  0.6700000
+
+$nperm
+[1] 99
+
+attr(,"class")
+[1] "CADM.global"
+
+------------------------------

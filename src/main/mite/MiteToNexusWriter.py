@@ -28,8 +28,8 @@ import sys
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, dir_path + '/../../src/')
 
-import multiresolution as mr
-from Mite import Mite
+import mite.multiresolution as mr
+from mite.Mite import Mite
 from nexus import NexusWriter
 
 class MiteToNexusWriter:
@@ -58,10 +58,10 @@ class MiteToNexusWriter:
                     Mite(self.input_path + self.files_aux[i], binary=self.binary)
                 )
 
-        
+        '''
         for mite in mites:
             mite.plot()
-        
+        '''
 
         return mites, run_names
 

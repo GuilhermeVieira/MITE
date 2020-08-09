@@ -28,7 +28,7 @@ import logging
 import numpy as np
 import os
 
-from MiteToNexusWriter import MiteToNexusWriter
+from mite.MiteToNexusWriter import MiteToNexusWriter
 
 def run(mtnw, w, h, binary, f, partition, name="tres-especies"):
     logging.info(

@@ -28,8 +28,6 @@ import xml.etree.ElementTree as ET
 
 
 class MiteXMLReader:
-
-    # Class constructor
     def __init__(self, path):
         self.filepath = path
         basename, extension = os.path.splitext(self.filepath)
@@ -44,13 +42,13 @@ class MiteXMLReader:
             raise ValueError(path + ' is not a XML file!')
 
     # Returns the three local quartiles of intensity values
-    def __get_local_quartiles(self):
-        intensities = []
-
-        for feature in self.features_obj.findall("MS1_FEATURE"):
-            intensities.append(float(feature.find("LC_INFO").get("AREA")))
-
-        return np.quantile(intensities, [0.25, 0.50, 0.75])
+    # def __get_local_quartiles(self):
+    #     intensities = []
+    #
+    #     for feature in self.features_obj.findall("MS1_FEATURE"):
+    #         intensities.append(float(feature.find("LC_INFO").get("AREA")))
+    #
+    #     return np.quantile(intensities, [0.25, 0.50, 0.75])
 
     # Returns the three global quartiles of intensity values
     def __get_global_quartiles(self):

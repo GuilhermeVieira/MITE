@@ -24,7 +24,7 @@
 import matplotlib.pylab as plt
 from scipy.sparse import coo_matrix, csr_matrix
 
-from MiteXMLReader import MiteXMLReader
+from mite.MiteXMLReader import MiteXMLReader
 
 class Mite:
 

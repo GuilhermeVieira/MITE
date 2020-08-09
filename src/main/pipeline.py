@@ -29,10 +29,12 @@ import argparse
 import numpy as np
 import os
 import subprocess
+import sys
 
-from MiteToNexusWriter import MiteToNexusWriter
-import create_nexus_files as nexus
-import run_cadm as cadm
+from mite.MiteToNexusWriter import MiteToNexusWriter
+import mite.create_nexus_files as nexus
+import mite.run_cadm as cadm
+
 
 
 def __print(output, string):
@@ -93,7 +95,7 @@ if __name__ == '__main__':
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     input_path = '/user/src/mite/input/xml/'
-    output_path = '/user/src/mite/input/output/nexus/'
+    output_path = '/user/src/mite/output/nexus/'
     mtnw = MiteToNexusWriter(input_path, output_path, args.binary)
     m = mtnw.mites[0].matrix.shape[0]
     n = mtnw.mites[0].matrix.shape[1]
