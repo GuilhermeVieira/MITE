@@ -20,38 +20,29 @@
 ##   along with this program.  If not, see <http://www.gnu.org/licenses/>.      ##
 ##                                                                              ##
 ##################################################################################
+from pathlib import Path
+from typing import Dict
 
+import numpy as np
 import matplotlib.pylab as plt
-from scipy.sparse import coo_matrix, csr_matrix
+from scipy.sparse import csr_matrix
 
-from mite.MiteXMLReader import MiteXMLReader
 
 class Mite:
 
-    # Class constructor
-    def __init__(self, filepath, binary=False):
-        xml_reader = MiteXMLReader(filepath)
+    def __init__(self, name: str,
+                 matrix: csr_matrix, ms_boundary_values: Dict[str, float], global_quartiles: np.quantile):
+        self.__name = name
+        self.__matrix: csr_matrix = matrix
+        self.__ms_boundary_values: Dict[str, float] = ms_boundary_values
+        self.__global_quartiles = global_quartiles
 
-        self.filepath = filepath
-        self.binary = binary
-        self.tr_min = xml_reader.get_tr_min()
-        self.tr_max = xml_reader.get_tr_max()
-        self.mz_min = xml_reader.get_mz_min()
-        self.mz_max = xml_reader.get_mz_max()
-
-        data, row, col, tr_round, mz_round = xml_reader.construct_ionmap(binary=binary)
-        shape = (int((self.tr_max - self.tr_min) * 10 ** tr_round),
-                int((self.mz_max - self.mz_min) * 10 ** mz_round))
-        self.matrix = coo_matrix((data, (row, col)), shape)
-        self.matrix = csr_matrix(self.matrix)
-
-    # Plots the mite
-    def plot(self):
-        plt.spy(self.matrix, markersize=0.1, aspect='auto', color='black')
-        plt.title(self.filepath)
+    def plot(self, output_directory: Path):
+        plt.spy(self.__matrix, markersize=0.1, aspect='auto', color='black')
+        plt.title(self.__name)
         plt.xlabel('m/z')
         plt.ylabel('retention time')
-        plt.savefig(self.filepath + '.png')
+        plt.savefig(f'{output_directory}/{self.__name}.png')
         plt.clf()
         plt.cla()
         plt.close()
