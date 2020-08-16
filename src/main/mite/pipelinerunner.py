@@ -4,7 +4,7 @@ from typing import List
 
 from Mite import Mite
 from XMLReader import MiteLoader
-from mrbayesanalysis import PhyloproteomicAnalyser, MrBayesPhyloproteomicAnalyser
+from phyloproteomicanalysis import PhyloproteomicAnalyser, MrBayesPhyloproteomicAnalyser
 from multiresolution import Partitioner
 
 
@@ -18,7 +18,7 @@ class PipelineRunner:
         self.__partitioned_mites: List[float] = partitioner.partition_mites(self.__mites)
 
         for i in range(len(self.__mites)):
-            self.__mites[i].partitioned_matrix = self.__partitioned_mites[i]
+            self.__mites[i].partitioned = self.__partitioned_mites[i]
 
         phyloproteomic_analyser.execute(self.__mites)
 
@@ -29,7 +29,7 @@ class PipelineRunner:
 
 if __name__ == '__main__':
     mite_loader = MiteLoader(Path('/user/src/mite/input/xml/'))
-    mrbayes_phyloproteomic_analyser = MrBayesPhyloproteomicAnalyser(Path('/user/src/mite/output/nexus/tres-especies'))
+    mrbayes_phyloproteomic_analyser = MrBayesPhyloproteomicAnalyser(Path('/user/src/mite/output/nexus/tres-especies'), binary=True)
 
     w = 16
     h = 16

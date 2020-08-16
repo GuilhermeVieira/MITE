@@ -28,7 +28,7 @@ import logging
 import numpy as np
 import os
 
-from mite.MiteToNexusWriter import MiteToNexusWriter
+from mite.phyloproteomicanalysis import MiteToNexusWriter
 
 def run(mtnw, w, h, binary, f, partition, name="tres-especies"):
     logging.info(
@@ -36,7 +36,7 @@ def run(mtnw, w, h, binary, f, partition, name="tres-especies"):
         ', binary=' + str(binary) + ', f=' + str(f) + ')'
     )
 
-    return mtnw.write_nexus(w, h, partition, name, f=f)
+    return mtnw.__write_nexus(w, h, partition, name, f=f)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

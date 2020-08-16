@@ -30,7 +30,7 @@ import os
 import subprocess
 from datetime import datetime
 
-from MiteToNexusWriter import MiteToNexusWriter
+from phyloproteomicanalysis import MiteToNexusWriter
 import create_nexus_files as nexus
 import multiresolution as mr
 import run_cadm as cadm

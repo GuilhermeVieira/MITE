@@ -31,10 +31,9 @@ import os
 import subprocess
 import sys
 
-from mite.MiteToNexusWriter import MiteToNexusWriter
+from mite.phyloproteomicanalysis import MiteToNexusWriter
 import mite.create_nexus_files as nexus
 import mite.run_cadm as cadm
-
 
 
 def __print(output, string):

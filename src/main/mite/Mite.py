@@ -21,28 +21,49 @@
 ##                                                                              ##
 ##################################################################################
 from pathlib import Path
-from typing import Dict
-
+from typing import Dict, List
+from scipy.sparse import csr_matrix
 import numpy as np
 import matplotlib.pylab as plt
-from scipy.sparse import csr_matrix
 
 
 class Mite:
 
-    def __init__(self, name: str,
-                 matrix: csr_matrix, ms_boundary_values: Dict[str, float], global_quartiles: np.quantile):
-        self.__name = name
+    def __init__(self, name: str, matrix: csr_matrix, ms_min_max_values: Dict[str, float], global_quartiles: np.quantile):
+        self.__name: str = name
         self.__matrix: csr_matrix = matrix
-        self.__ms_boundary_values: Dict[str, float] = ms_boundary_values
-        self.__global_quartiles = global_quartiles
+        self.__ms_min_max_values: Dict[str, float] = ms_min_max_values
+        self.__global_quartiles: np.quantile = global_quartiles
+        self.__partitioned: List[float] = []
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def matrix(self):
+        return self.__matrix
+
+    @property
+    def global_quartiles(self):
+        return self.__global_quartiles
+
+    @property
+    def partitioned(self):
+        if len(self.__partitioned) == 0:
+            raise ValueError("Mite was not partitioned yet")
+        return self.__partitioned
+
+    @partitioned.setter
+    def partitioned(self, flattened_mite: List[float]):
+        self.__partitioned = flattened_mite
 
     def plot(self, output_directory: Path):
         plt.spy(self.__matrix, markersize=0.1, aspect='auto', color='black')
         plt.title(self.__name)
         plt.xlabel('m/z')
         plt.ylabel('retention time')
-        plt.savefig(f'{output_directory}/{self.__name}.png')
+        plt.savefig(f'{str(output_directory)}/{self.__name}.png')
         plt.clf()
         plt.cla()
         plt.close()

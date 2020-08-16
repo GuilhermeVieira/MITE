@@ -120,7 +120,7 @@ class MiteLoader:
 
     def __build_mite(self, mite_path: Path) -> Mite:
         xml_reader = XMLReader(mite_path)
-        ms_boundary_values: Dict[str, float] = {
+        ms_min_max_values: Dict[str, float] = {
             "tr_min": xml_reader.get_tr_min(),
             "tr_max": xml_reader.get_tr_max(),
             "mz_min": xml_reader.get_mz_min(),
@@ -132,7 +132,7 @@ class MiteLoader:
         matrix = coo_matrix((data, (row, col)), shape)
         matrix = csr_matrix(matrix)
 
-        return Mite(mite_path.stem, matrix, ms_boundary_values, self.__global_quartiles)
+        return Mite(mite_path.stem, matrix, ms_min_max_values, self.__global_quartiles)
 
     def load_mites(self) -> List[Mite]:
         mites: List[Mite] = []
