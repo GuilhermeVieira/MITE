@@ -70,6 +70,7 @@ RUN apt-get update \
 # Installing R packages
 
 RUN R -e "install.packages('ape', dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('pvclust', dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 # Installing Python packages
 

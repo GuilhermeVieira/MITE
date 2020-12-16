@@ -5,3 +5,5 @@ DendroPy==4.4.0
 rpy2==3.3.3
 biopython==1.76
 psycopg2==2.8.5
+scikit-learn==0.23.2
+pytest-mock==3.3.1

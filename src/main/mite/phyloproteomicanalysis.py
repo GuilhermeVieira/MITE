@@ -23,10 +23,19 @@
 from abc import abstractmethod, ABC
 from pathlib import Path
 from typing import List, Dict
+
+import numpy as np
+from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.spatial.distance import pdist
+
 from discretizer import QuartileDiscretizer, BinaryDiscretizer, Discretizer
+from matplotlib import pyplot as plt
 from Mite import Mite
 from nexus import NexusWriter
 
+import rpy2.robjects as robjects
+import rpy2.robjects.numpy2ri as numpy2ri
+from rpy2.robjects.packages import importr
 
 class PhyloproteomicAnalyser(ABC):
 
@@ -38,7 +47,70 @@ class PhyloproteomicAnalyser(ABC):
 class HierarchicalClusteringPhyloproteomicAnalyser(PhyloproteomicAnalyser):
 
     def execute(self, mites: List[Mite]):
-        pass
+        heat_map = []
+        labels = []
+
+        for mite in mites:
+            labels.append(mite.name)
+            heat_map.append(mite.partitioned)
+
+        highest_intensity_sum = 0
+        for i in range(len(heat_map)):
+            for j in range(len(heat_map[i])):
+                if heat_map[i][j] > highest_intensity_sum:
+                    highest_intensity_sum = heat_map[i][j]
+
+        heat_map = np.array(heat_map)
+
+        # for i in range(len(heat_map)):
+        #     for j in range(len(heat_map[i])):
+        #         heat_map[i][j] /= highest_intensity_sum
+
+        # for i in range(len(heat_map1)):
+        #     for j in range(len(heat_map[i])):
+        #         heat_map[i][j] = 1.0 if heat_map[i][j] != 0.0 else 0.0
+
+        #heat_map = self.__remove_equal_columns(heat_map)
+
+        self.__build_hierarchical_clustering(heat_map, labels)
+
+        base = importr("base")
+        pvclust = importr("pvclust")
+        stats = importr("stats")
+        graphics = importr("graphics")
+        parallel = importr("parallel")
+
+        numpy2ri.activate()
+
+        result = stats.hclust(stats.dist(heat_map, method="euclidean"), method="average")
+        graphics.plot(result, labels=labels)
+
+        #result = pvclust.pvclust(heat_map.transpose(), nboot=1000, method_dist="canberra", method_hclust="average", parallel=True)
+        #graphics.plot(result)
+        numpy2ri.activate()
+
+    # def __remove_equal_columns(self, matrix):
+    #     index = np.argwhere(np.all(matrix < 0.5, axis=0))
+    #     index = np.argwhere(np.any(matrix > 0.2, axis=0))
+    #     print("Percentage of removed itens: " + str(len(index)/len(matrix[0])))
+    #     matrix = np.delete(matrix, index, axis=1)
+    #     return matrix
+
+    def __build_hierarchical_clustering(self, occurrence_matrix, labels):
+        metric = 'euclidean'
+        method = 'average'
+
+        Z = linkage(occurrence_matrix, method=method, metric=metric, optimal_ordering=False)
+
+        print(Z)
+        plt.figure(figsize=(10, 10))
+        plt.title("Snakes Hierarchical Clustering Dendrogram - " + metric + ", " + " " + method)
+        plt.xlabel("Snakes")
+        plt.ylabel("Distance")
+
+        SE = dendrogram(Z, labels=labels, leaf_rotation=0.0, leaf_font_size=9.0)
+        save_name = "dendogram-snakes-" + metric + "-" + method
+        plt.savefig(save_name + ".svg", format="svg")
 
 
 class MrBayesPhyloproteomicAnalyser(PhyloproteomicAnalyser):
@@ -54,6 +126,8 @@ class MrBayesPhyloproteomicAnalyser(PhyloproteomicAnalyser):
         for mite in mites:
             discretized_mites[mite.name] = discretizer.discretize(mite.partitioned)
 
+        discretized_mites = self.__remove_equal_columns(discretized_mites)
+
         self.__write_nexus(discretized_mites)
 
     # Transforms an 1d array in a string
@@ -64,6 +138,20 @@ class MrBayesPhyloproteomicAnalyser(PhyloproteomicAnalyser):
             s += str(array[i])
 
         return s
+
+    # Deletes all matrix columns that all values are the same
+    def __remove_equal_columns(self, mites: Dict[str, List[int]]):
+        matrix = np.array([value for value in mites.values()])
+        index = np.argwhere(np.all(matrix == matrix[0, :], axis=0))
+        matrix = np.delete(matrix, index, axis=1)
+
+        a = {}
+        index = 0
+        for key in mites.keys():
+            a[key] = matrix[index].tolist()
+            index += 1
+
+        return a
 
     # Writes the nexus file
     def __write_nexus(self, mites: Dict[str, List[int]]):
@@ -76,3 +164,7 @@ class MrBayesPhyloproteomicAnalyser(PhyloproteomicAnalyser):
             self.__output_path.mkdir()
 
         nw.writeFile(str(self.__output_path) + '/mite.nex')
+
+
+    # def mink(self, X):
+    #     return pdist(X, 'minkowski', p=2)

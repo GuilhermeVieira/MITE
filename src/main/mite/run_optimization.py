@@ -32,7 +32,7 @@ from datetime import datetime
 
 from phyloproteomicanalysis import MiteToNexusWriter
 import create_nexus_files as nexus
-import multiresolution as mr
+import partitioner as mr
 import run_cadm as cadm
 
 dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'

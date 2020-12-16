@@ -45,6 +45,14 @@ class Mite:
         return self.__matrix
 
     @property
+    def width(self):
+        return self.__matrix.shape[1]
+
+    @property
+    def height(self):
+        return self.__matrix.shape[0]
+
+    @property
     def global_quartiles(self):
         return self.__global_quartiles
 

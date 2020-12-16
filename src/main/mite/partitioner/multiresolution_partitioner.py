@@ -1,38 +1,12 @@
-#!/usr/bin/env python3
-
-##################################################################################
-##                                                                              ##
-##   This module implements functions needed by the multiresolution pipeline.   ##
-##                                                                              ##
-##   This file is part of the featsel program                                   ##
-##   Copyright (C) 2019 Gustavo Mendes Maciel                                   ##
-##                                                                              ##
-##   This program is free software: you can redistribute it and/or modify       ##
-##   it under the terms of the GNU General Public License as published by       ##
-##   the Free Software Foundation, either version 3 of the License, or          ##
-##   (at your option) any later version.                                        ##
-##                                                                              ##
-##   This program is distributed in the hope that it will be useful,            ##
-##   but WITHOUT ANY WARRANTY; without even the implied warranty of             ##
-##   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              ##
-##   GNU General Public License for more details.                               ##
-##                                                                              ##
-##   You should have received a copy of the GNU General Public License          ##
-##   along with this program.  If not, see <http://www.gnu.org/licenses/>.      ##
-##                                                                              ##
-##################################################################################
-
-import logging
 import math
-from typing import List
-
 import numpy as np
-from scipy.sparse import lil_matrix
-
+from typing import List
 from Mite import Mite
+from scipy.sparse import lil_matrix
+from partitioner.partitioner import Partitioner
 
 
-class Partitioner:
+class MultiresolutionPartitioner(Partitioner):
 
     def __init__(self, w, h):
         self.__w = w
@@ -60,7 +34,7 @@ class Partitioner:
             flattened_mites.append(flattened_mite)
 
         flattened_mites = np.array(flattened_mites, dtype=int)
-        #flattened_mites = self.__remove_equal_columns(flattened_mites);
+        #flattened_mites = self.__remove_equal_columns(flattened_mites)
 
         return flattened_mites
 
@@ -76,14 +50,14 @@ class Partitioner:
 
     # Returns a new matrix with reduced dimensionality
     def __reduce_dim(self, old, w, h):
-        s0 = math.ceil(old.shape[0] / w)
-        s1 = math.ceil(old.shape[1] / h)
-        new = lil_matrix((s0, s1))
-        iarray, jarray = old.nonzero()
+        s0 = math.ceil(old.shape[0] / w) #m'
+        s1 = math.ceil(old.shape[1] / h) #n'
+        new = lil_matrix((s0, s1)) # nova matriz vazia
+        iarray, jarray = old.nonzero() # Return the indices of the elements that are non-zero.
 
         if len(iarray) != 0:
             for i, j in np.nditer([iarray, jarray]):
-                win, new_pos, win_pos = self.__get_window(old, (i, j), w, h)
+                win, new_pos, win_pos = self.__get_window(old, (i, j), w, h) # pega a janela do elemento i, j (elemento não zero)
                 # Previous partition algorithm discretization
                 '''
                 if not binary:
@@ -99,7 +73,7 @@ class Partitioner:
                 if win.nnz != 0:
                     new[new_pos] = int(round(np.sum(win) / win.nnz))
                 else:
-                    new[new_pos] = 0.0
+                    new[new_pos] = 0.0 # Is this necessary?
 
         return new.tocsr(copy=True)
 
@@ -155,7 +129,7 @@ class Partitioner:
                 partition.append((slicex, slicey))
 
         return partition
-    
+
     '''
 
     # Returns the parts of the partition applied to the matrix
@@ -189,4 +163,3 @@ class Partitioner:
         index = np.argwhere(np.all(matrix == matrix[0, :], axis=0))
         matrix = np.delete(matrix, index, axis=1)
         return matrix
-
